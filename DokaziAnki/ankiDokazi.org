@@ -507,3 +507,33 @@ Dokaz: Cauchy-Schwartzova neenakost \( \left| \left\langle \vec{a}, \vec{b} \rig
 *** <1>6
 Case 5: \( \alpha = \left| \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1) \right| \)
 Case 6: \( \beta = \left| \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3) \right| \)
+
+Prove: \( \alpha, \beta < \epsilon \)
+
+Dokaz
+**** <2>1
+Obstaja \( \delta > 0 \), da za poljubna \( \xi_1, \xi_3 \in (t_0 - \delta, t_0 + \delta)  \)
+Dokaz: \( \dot{\gamma}, \ddot{\gamma} \) sta zvezni v točki \( t_0 \).
+**** <2>2 QED
+Pogoj velja tudi za \( \xi_1, \xi_3 \) za \( t_1, t_2 \in (t_0, t_0 + \delta) \)
+*** <1>7
+Prove:
+
+\[ \frac{\left| v_0 \times w \right|}{ \left| w \right|} \le \left( \left| \dot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right| \right) \epsilon \quad \forall t_1, t_2 \in (t_0, t_0 + \delta), \ \forall w \in l(t_1, t_2) ^{\perp} \setminus \left\{ 0 \right\}
+\]
+
+Dokaz: \( \alpha = \epsilon, \ \beta = \epsilon \) <1>6, ter <1>5
+*** <1>8
+
+Prove: \( \frac{\left| v_0 \times w \right|}{\left| w \right|} = \left| v_0 \right| \sin \phi\)
+
+Dokaz: definicija vektorskega produkta
+*** <1>9
+Prove:
+
+\[ \sin \phi \le \frac{\left| \dot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}{\left| \left( \dot{\gamma} \times \ddot{\gamma} \right) (t_0) \right|} \epsilon
+\]
+
+Dokaz: <1>8 in definicija \( \left| v_0 \right| = \left| \left( \dot{\gamma} \times \ddot{\gamma} \right) (t_0) \right| \)
+*** <1>10 QED
+Iz <1>9 vidimo, da je kot \( \phi \) med \( v_0 \) in \( w \in l(t_1, t_2)^{\perp} \) nujno majhen, za \( t_1 \) in \( t_2 \) blizu \( t_0 \). Tukaj naletimo na protislovje, ker \( l^{\perp} \) ni ravnina kot predpostavljeno na začetku, ampak ozek stožec okoli \( v_0 \). 
