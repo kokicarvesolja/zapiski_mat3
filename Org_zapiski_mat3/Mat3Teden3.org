@@ -1,0 +1,405 @@
+#+title: Mat3teden3
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math}
+
+* Riemann-Darbouxov integral
+*** Trditev 2.4. (p.S.) (delovna definicija integrabilnosti)
+
+Naj bo \(  f: P \to \mathbb{R} \) omejena. Tedaj je \(  f \) integrabilna na \(  P \) \(  \iff \ \forall \varepsilon > 0 \ \exists \) delitev \(  D \) za \(  P \ : S(f, D) - s(f, D) < \varepsilon\).
+
+*Dokaz*:
+
+\(  \Rightarrow \) Privzamemo \(  S(f) = s(f) \), kjer je \(  S(f) = \inf_{D} S(f, D) \) in \(  s(f) = \sup_D s(F,D) \). Naj bo \(  \varepsilon > 0 \). Po definiciji supremuma in infimuma \(  \exists \) delitvi \(  D, \ D' \) za \(  P \ni: \)
+
+\begin{align*}
+  S(f) &> S(f, D) - \varepsilon \\
+s(f) &< s(f, D) + \varepsilon
+\end{align*}
+
+ki sta enaki. Naj bo \(  D_0 \) finejša od \(  D \text{ in } D' \) hkrati. Tedaj je (po trditvi 2.1)
+
+\begin{align*}
+  S(f, D_0) - s(f, D_0) &\le S(f, D) - s(f, D') \\
+&< (I + \varepsilon) - (I - \varepsilon) = 2 \varepsilon
+\end{align*}
+
+\(  \Leftarrow \)
+
+\begin{align*}
+  0 = \inf_D \left[ S(f, D) - s(f, D) \right] & \ge \inf(S) + \inf(-s)\\
+&= S(f) - s(f) \ge 0
+\end{align*}
+\(  \implies \ S(f) - s(f) = 0 \)
+
+Q.E.D.
+*** Izrek 2.5 (p.S.)
+
+\(  \forall \) zvezna funkcija je integrabilna na \(  P \).
+
+*Dokaz*:
+
+Naj bo \( f: P \to \mathbb{R}  \) zvezna. Vzamemo \(  \varepsilon > 0 \). Velja
+
+\begin{align*}
+  S(f, D) - s(f, D) &= \sum_{Q \in D} \left| Q \right| \left( \max_Q f - \min_Q f \right)
+\end{align*}
+
+Ker je \(  f \) zvezna in je \(  P \) kompakten, je \(  f \) enakomerno zvezna. Torej \(  \exists \delta > 0 \ni \):
+
+\[ \left| x - y \right| < \delta \implies \left| f(x) - f(y) \right| < \varepsilon \quad x, y \in P
+\]
+
+Naj bo \(  D \) takšna delitev, da je \(  \mathrm{diam}Q < \delta \ \forall Q \in D \)
+
+(to je \(  \left| x - y \right| < \delta\) za \(  \forall x, y \in Q, \  \forall Q\in D \))
+
+Torej \(  \forall Q \in D, \ \forall x, y \in Q \) velja
+\(  \left| f(x) - f(y) \right|  < \varepsilon\).
+
+\[ \implies (\max_{Q} f = f(x)) - (\min_{Q} f = f(y)) < \varepsilon
+\]
+*** Lastnosti integrala (Trditev 2.6 p.S.)
+
+Oznaka \(  I(P) = \left\{ f: P \to \mathbb{R}; \ f \text{ integrabilna} \right\} \)
+
+Velja:
+
+- \(  \mathcal{C}(P) \subset I(P) \)
+- \(  f, g \in I(P) \ \implies \ f + g \in I(P) \quad \int\limits_P (f + g) \,dx = \int\limits_P f\,dx \int\limits_P g \,dx\)
+- \(  \int\limits_P (cf)\,dx = c \int\limits_P f\,dx \quad \forall c \in \mathbb{R}\)
+- \(  f, g \in I(P) \text{ in } f \le g \ [f(x) \le g(x) \forall x \in P \subset \mathbb{R} ^2] \)
+  \(  \implies \int\limits_P f\,dx  \le \int\limits_P g\,dx\)
+- \(  f \in I(P) \implies \left| f \right| \in I(P) \)
+  \(  \implies \left| \int\limits_P f\,dx \right| \le \int\limits_P \left| f \right|\,dx\)
+
+  Komentar: Prve tri točke povedo, da je \(  I(K) \) vektorski prostor in integral \(  \int\limits_P \,dx \) je linearni funkcional. Primer zadnje točke je z \(  \frac{\sin x}{x} \text{ na } (0, \infty) \) za domačo nalogo.
+
+  Pomoč pri nalogi, najprej dokaži \(  S(\left| f \right|, D) - s(\left| f \right|, D) \le S(f, D) - s(f, D) \) in potem uporabiš trditev.
+** Integracija po omejenih množicah v \(  \mathbb{R}^n \)
+
+Naj bo \(  A \subset \mathbb{R}^n \) omejena množica in \(  f: A \to \mathbb{R} \) omejena funkcija.
+
+Ker je \(  A \) omejena, obstaja nek kvader \(  K \subset \mathbb{R}^n \ni: \ A \subset K \). Funkcijo \(  f  \) trivialno razširimo na \(  K \), to je, definiramo \(  \tilde{f}: K \to \mathbb{R} \) s predpisom
+
+\[ \tilde{f}(x) = \begin{cases}
+f(x); \ x \in A \\
+0; x \in K \setminus A
+\end{cases}
+\]
+
+Tedaj definiramo
+
+\(  \int\limits_A f\,dx := \int_K \tilde{f} \, dx \), če integral na desni obstaja.
+
+/Domača naloga/: Dokaži, da je ta definicija dobra (neodvisno od izbire kvadra K).
+*** Definicija 2.9 (p.S.)
+
+Za omejeno podmnožico \(  A \subset \mathbb{R}^n \) ima (/n-razsežno/) prostornino, če je konstantna funkcija 1 integrabilna na \(  A \). Tedaj definiramo
+
+\[ V(A) = V_n (A) = \int\limits_A 1 \,dx
+\]
+
+*Opomba*: Nima vsaka omejena množica \(  A \) prostornine. Npr. \(  A = \left( [0,1] \times [0, 1] \right) \cap (\mathbb{Q} \times \mathbb{Q}) \) tedaj \( \int\limits_A 1\,dx  \) ne obstaja.
+
+Sedaj se nam pojavi vprašanje, kdaj ima množico prostornino? Išċčemo preprost toda širok kriterij.
+
+
+Zanima nas torej integrabilnost funkcija \(  \chi_A \), saj \(  \int\limits_A 1 \,dx = \int\limits_K \chi_A \,dx\) za \(  A \subset K \) kvader. Za delitev \(  D = {P_j} \) je
+
+\[ \max_{P_j} \chi_A - \min_{P_j} \chi_A = \begin{cases}
+1 - 1; \ P_j  \subset A\\
+0 - 0; \ P_j \subset A^C \\
+1 - 0; \ P_j \text{ seka  } A \text{ in  } A^C
+\end{cases}
+\]
+
+Iz tega sledi
+
+\begin{align*}
+  S(\chi_A, D) - s(\chi_A, D) &= \sum_j \left| P_j \right|(\max_{P_j} \chi_A - \min_{P_j} \chi_A)\\
+&= \sum\limits_{Q\in D} \left| Q \right|
+\end{align*}
+
+in \(  Q \) seka \(  A \text{ in } A^{C} \)
+
+Definiramo rob množice
+
+\[ \partial  A := \left\{ x \in \mathbb{R}^n; \ \forall \text{ okolica točke } x \text{ seka } A \text{ in } A^C\right\}
+\]
+*** Lema 2.7 in trditev 2.8 (p.S.)
+
+Naj bo \(  Q \subset \mathbb{R}^n \) kvader in \(  A \subset \mathbb{R}^n \) poljubna množica. Če \(  Q \) seka \(  A \text{ in } A^C \), tedaj \(  Q  \) seka \(  \partial A \)
+
+Ideja dokaza je, da na daljici \(  [a, b] \subset Q \ \exists c \in \partial A \).
+
+Posledično je
+
+\begin{align*}
+  S(\chi_A, D) - s(\chi_A, D) &\le \sum\limits_{Q\in D, Q \text{ seka } \partial A} \left| Q \right| \\
+&= S(\chi_{\partial A}, D)
+\end{align*}
+
+Če vzamemo \(  \inf_D \) sledi, če je \(  V(\partial A) = 0 \), tedaj \(  A  \) ima prostornino.
+*** Trditev 2.9
+
+Omejena množica \(  A \subset R^n \) ima (n-dim) prostornino \(  \iff \) \(  V(\partial A) = 0 \)
+
+*Dokaz*: error 404 proof not found (brez dokaza)
+*** Lem(ic)a
+
+\(  K \subset \mathbb{R}^n \) kvader in \(  f:K \to \mathbb{R} \) omejena in večja od 0. Tedaj je \(  f  \) integrabilna in \(  \int\limits_K f \,dx = 0 \) \(  \iff \) \(  S(f) = 0 \)
+
+*Dokaz*:
+
+\(  \Rightarrow \) Če \(  \int\limits_K f \,dx \ \exists \), je po definiciji enak \(  S(f) \). Torej \(  \int\limits_K f\,dx  = 0 \ \implies S(f) = 0 \).
+
+\(  \Leftarrow \) Imejmo vedno (\(  \forall K, \forall f \))
+
+\begin{align*}
+  0 & \le s(f) \le S(f) = 0 \\
+& \implies S(f) = s(f) = 0
+\end{align*}
+
+kar pomeni \(  \int\limits_K f\,dx = 0\)
+*** Posledica
+
+\(  V(B) = 0  \iff S(\chi_B) = 0 \)
+
+Uporabimo lemo za \(  f = \chi_B \)
+*** Trditev
+
+Za omejeno množico \(  B \subset R ^n \) velja
+
+\[ V(B) = 0 \iff \ \forall \varepsilon > 0 \ \exists \text{ kvadri } K_1, \ldots, K_m \in \mathbb{R} ^n \ni
+\]
+
+- \(  B \subset \bigcup_{j = 1}^m K_j \)
+- \(  \sum\limits_{j = 1}^m \left| K_j \right| < \varepsilon\)
+
+  Dokaz je očiten.
+
+  Dragi tells a joke
+
+  #+begin_quote
+Profesor pove trditev in reče, da je dokaz očiten.
+Študent ga vpraša, kako je dokaz očiten in profesor razmišlja in razmišlja in reče, da bo še dodatno razmislil.
+Profesor razmišlja in se po 1 tednu vrne nazaj na predavanje in reče študentu
+"Dokaz je res očiten."
+  #+end_quote
+*** Primeri
+
+1) \(  A = \left\{ b_1, \ldots b_m \right\} \)
+2) \(  A = [a, b] \subset \mathbb{R}^n; \ n \ge 2 \)
+
+   Za \(  n = 2 \): \(  A = \left\{ (x, 0);  \ a \le x \le b \right\} \subset \mathbb{R}^2 \)
+
+*** Trditev 2.9 (p.S.) 2024/10/16 pri Dejan The Goat Govcu
+
+Naj bo \(  A \subseteq \mathbb{R}^n \) omejena podmnožica. Velja \(  V(A) = 0 \iff \forall \ \varepsilon > 0 \) obstaja končno mnogo kvadrov \(  K_1, \ldots, K_m \) tako, da
+
+- \(  A \subseteq \bigcup_{i = 1} K_i  \)
+- \(  V(\bigcup_{i=1} K_i) < \varepsilon \) ali celo \(  \sum\limits_{i = 1}^m V(K_i) < \varepsilon\)
+
+  *Dokaz*:
+
+  Vemo že: \(  V(A) = 0 \iff \ S(\chi_A) = 0 \)
+
+  \(  \Rightarrow \) Recimo torej \(  V(A) = 0 \) in to pomeni, da je \(  S(\chi_a) = 0 \). Fiksiramo kvader \(  K: \quad A \subseteq K \) Naj bo \(  \varepsilon > 0 \). Torej obstaja delitev \(  D \) kvadra \(  K \), da je \(  S(\chi_A, D) < \varepsilon \ \left\{ K_i, \ i=1, \ldots, r \right\} \)
+
+  \[ \sum\limits_{j = 1}^r M_j \left| K_j \right|
+  \]
+
+  kar je vsota kvadrčkov, ki sekajo A.
+
+  \(  \Leftarrow \): Ideja: pokažemo, da \(  \forall \varepsilon > 0 \) velja \(  V(A) < \varepsilon \)
+
+  Izvedba ideje: Naj bo \(  \varepsilon > 0 \). Po predpostavki obstajajo kvadri \(  K_1, \ldots K_m \ni\):
+
+  - \(  A \subseteq \bigcup_{j=1}^m K_i \)
+    \(  \chi_A \le \chi_{\bigcup_{i=1}^m K_i} \), kar pomeni
+
+    \begin{align*}
+    S(\chi_A) &\le S(\chi_{\bigcup_{i=1}^m K_i}) \\
+    V(A)  &\le V(\chi_{\bigcup_{i=1}^m K_i}) < \varepsilon
+    \end{align*}
+
+    Iz česar sledi, da je \(  V(A) = 0 \)
+Q.E.D.
+*** Lema
+
+\(  f \le g \implies \ S(f) \le S(g) \text{ in } s(f) \le s(g) \)
+
+*Dokaz*:
+\begin{align*}
+  S(f) &= \inf_D S(f, D) \\
+&= \inf \sum\limits_{i=1}^m M_i \left| K_i \right|  && M_i = \sup_{K_i}f \\
+& \le \inf \sum\limits_{i=1}^m N_i \left| K_i \right| = S(g) && N_i = \sup_{K_i}g
+\end{align*}
+
+Enako velja za \(  s \).
+*** Posledica 2.10 (p.S.)
+
+Končna unija množic s prostornino 0 je množica s prostornino 0.
+
+*Dokaz*:
+
+\(  A = \bigcup_{j=1}^r A_j; \ V(A_j) = 0 \forall j \).
+Naj bo \(  \varepsilon > 0 \). Po prejšnji trditvi obstajajo kvadri \(  K_1^{(j)}, \ldots K_{m_j}^{(j) \)
+
+- \(  A_j \le \bigcup_{i=1}^{m_j} K_i^{(j)} \)
+- \(  V(\bigcup_{i=1}^{m_j} K_i^{(j)}) < \frac{\varepsilon}{r} \)
+
+Oglejmo si unijo vseh teh kvadrov:
+
+\begin{align*}
+  A &= \bigcup_{j=1}^r A_j \subseteq \bigcup_{j=1}^r \bigcup_{i=1}^{m_j}K_i^{(j)} \\
+V(\bigcup_{j=1}^r \bigcup_{i = 1}^{m_j} K_i^{(j)}) & \le \sum\limits_{j = 1}^r V(\bigcup_{i = 1}^{m_j} K_i^{(j)}) < \sum\limits_{j = 1}^m \frac{\varepsilon}{r} < \varepsilon
+\end{align*}
+
+Iz tega sledi, da je \(  V(A) = 0 \)
+
+*Alternativen (hipi) dokaz*
+
+\(  A = \bigcup_{j=1}^r A_j \). Vzamemo karakteristično funkcijo, ki jo integriramo.
+
+\begin{align*}
+ \chi_A &= \chi_{\bigcup_{j=1}^r}A_j \le \sum\limits_{j=1}^r \chi_{A_j} \quad \left. \right/\int\limits_{.}\,dV \\
+ V(A) &= \text{ do it yourself }
+\end{align*}
+*** Trditev 2.11 (p.S.)/ 2.24(po Dragiju)
+
+Naj bo \(  K \subseteq \mathbb{R}^{n-1} \) kvader in \(  f: K \to \mathbb{R} \) integrabilna. Potem ima graf \(  \Gamma_f = \left\{ (x, f(x)) \in \mathbb{R}^n; \ x \in K \right\} \) prostornino enako 0.
+
+*Dokaz*
+
+Naj bo \(  \varepsilon > 0 \). Ker je \(  f \) integrabilna, obstaja delitev \(  D = \left\{ K_i; \ i = 1, \ldots m \right\} \) kvadra K:
+
+\[ S(f, D) - s(f, D) < \varepsilon
+\]
+
+Velja
+
+\[ \sum\limits_{i = 1}^m M_i \left| K_i \right| - \sum\limits_{i=1}^m m_i \left| K_i \right| = \sum\limits_{i=1}^m (M_i - m_i) \left| K_i \right|
+\]
+
+Če torej definiramo novo družino kvadrov
+
+\[ Q_i := K_i \times [m_i, M_i]
+\]
+
+Na \(  K_i \) velja \(  m_i \le f(x) \le M_i \).
+
+Potem je
+
+\[ \Gamma_f \subseteq \bigcup_{i=1}^m Q_i
+\]
+
+To potem pomeni
+\begin{align*}
+V(\bigcup_{i=1}^m Q_i) &\le \sum\limits_{i =1 }^m V(Q_i) \\
+&= \sum\limits_{i=1}^m (M_i - m_i)\left| K_i \right| < \varepsilon
+\end{align*}
+
+Po trditvi 2.21 (po Dragiju) je \(  V(\Gamma_f)=0 \)
+*** Trditev 2.12 (p.S.)/2.25(po Dragiju)
+
+Naj bo \(  K \subseteq \mathbb{R}^n \) kvader, \(  A \subseteq K \), \(  V(A) = 0 \) in naj bo \(  f:K \to \mathbb{R} \) omejena funkcija, ki je izven množice enaka \(  0 \). Tedaj \(  \int\limits_K f\,dV \) obstaja in je enak 0.
+
+*Dokaz*:
+
+Dovolj bo pokazati, da je \(  S(f) = s(f) = 0 \). Ker je \(  f \) omejena, obstaja \(  M > 0 \): \(  \left| f \right|  \le M \), iz česar sledi
+
+\[ -M_{\chi_A}(x) \le f(x) \le M_{\chi_A} \quad \forall x \in K
+\]
+
+\begin{align*}
+  s(-M_{\chi_A}) & \le s(f) \le S(f) \le S(M_{\chi_A}) \\
+  -S(M_{\chi_A}) &\le \ldots \le MS(\chi_A) \\
+  -MS(\chi_A) & \le M \cdot V(A) \\
+ 0 = -M \cdot V(A) & \le M \cdot V(A) = 0
+\end{align*}
+
+Iz česar ponovno sledi \(  s(f) = S(f) = 0 \implies \ \int\limits_K f\,dV = 0\)
+*** Posledica 2.26 (po Dragiju)/Trditev 2.13(p.S.)
+
+Naj bo \(  K \subseteq \mathbb{R}^n \) kvader in \(  f:K \to \mathbb{R} \) omejena funkcija, ki je integrabilna na \(  K \). Če za \(  A \subseteq K \) veja \(  V(A) = 0 \) in če za omejeno funkcijo \(  \tilde{f}: K \to \mathbb{R} \) velja \(  f = \tilde{f} \) na \(  K \setminus A \), potem je \(  \tilde{f} \) integrabilna in velja
+
+\[ \int\limits_K \tilde{f}\,dV = \int\limits_K f\,dV
+\]
+
+Ne glede na definicijo \(  \tilde{f} \) na \(  A \).
+
+*Dokaz*:
+
+Definiramo \(  g:= \tilde{f} - f \). Po prejšnji trditvi je \(  g \) integrabilna in ima integral 0. To pomeni, da je \(  \tilde{f} = f + g \) integrabilna in tako sledi
+
+\[ \int\limits_K \tilde{f} \,dV = \int\limits_K f\,dV = 0
+\]
+*** Definicija 2.10 (p.S.)/ 2.27 (po Dragiju)
+
+Naj bo \(  A \subseteq \mathbb{R}^n \) poljubna množica, ne nujno omejena.
+Pravimo, da ima \(  A \) (/n-multidimenzionalno *Lebesguovo* ) *mero* 0, če \(  \forall\varepsilon>0\) obstaja števno družina kvadrov \(  (K_j)_{j \in \mathbb{N}} = {K_j,\ j \in \mathbb{N}} \) in velja
+
+- \(  A \subseteq \bigcup_{j=1}^{\infty} K_j \)
+- \(  \sum\limits_{j=1}^{\infty} \left| K_j \right| < \varepsilon\)
+
+To označimo z \(  m(A) = 0 \)
+
+Očitno velja \(  V(A) = 0 \implies m(A) = 0 \), obratno pa ne velja.
+
+Premica v ravnini ni omejena, torej nima definiranega volumna, ima pa mero 0.
+*** Zgled 2.5 (p.S.)
+
+1) Oglejmo si premico \(  \mathbb{R}\times{0} \subseteq \mathbb{R}^2 \). Premico razdelimo po celih številih. Na intervalih med cela števila postavimo kvader poljubno majhne dolžine. Izmenično postavljamo pravokotnike levo in desno od prvega tako, da se višina zmanjša za \(  \varepsilon \cdot 2^{-n}, \ n \in \mathbb{N} \)
+
+   Premica \(  \subseteq \bigcup_{j=1}^{\infty} K_j \) in to pomeni, da je skupna prostornina \(  \sum\limits_j \left| K_j \right| = \sum\limits_n \varepsilon \cdot 2 ^{-n} = \varepsilon \)
+
+2) \(  \mathbb{Q} \cap [0, 1] \subseteq \mathbb{R} \) nima volumna, saj \(  \chi_{\mathbb{Q} \cap [0, 1]}\) ni Riemannovo integrabilna. Ima pa mero 0, saj je števna.
+
+   Vsaka števna množica v \(  \mathbb{R}^n \) ima mero 0. Najprej oštevilčimo elemente A: \(  a_1, a_2, \ldots \). \(  \forall i \in \mathbb{N} \) izberemo kvader \(  K_i \) z volumnom \(  \varepsilon 2 ^{-(i+1)} \), ki vsebuje točko \(  a_i \):
+
+   - \(  A = \bigcup_{i=1}^{\infty} {a_i} \subseteq \bigcup_{i=1}^{\infty} K_i \)
+
+   - \(  \sum\limits_{i=1}^{\infty} \left| K_i \right| = \sum\limits_{i=1}^{\infty} \varepsilon \cdot 2^{-(i+1)} = \frac{\varepsilon}{2} < \varepsilon\)
+
+3) Podobno velja \(  m(\mathbb{Q}) = 0 \)
+*** Trditev 2.14 (p.S.)/ 2.29 (po Dragiju)
+
+Števna unija množic z mero 0 ima mero 0.
+
+*Dokaz*:
+
+\(  A = \bigcup_{i=1}^{\infty} A_i \) in privzemamo, da je \(  m(A_i) = 0\).
+Obstajajo kvadri, kjer i-to množico pokrijemo s kvadri: \(  (K_j^{(i)})_{j=1}^{\infty} \). in velja
+
+\begin{align*}
+  A_i & \subseteq \bigcup_{j=1}^{\infty}K_j^{(i)} \\
+\sum\limits_{j=1}^{\infty} \left| K_j^{(i)} \right| &= \frac{\varepsilon}{2^{i+1}}
+\end{align*}
+
+Torej se \(  \left\{ K_j^{(i), \ i \in \mathbb{N}}, \ j \in \mathbb{N} \right\} \) števna drużina kvadrov in
+
+\begin{align*}
+  A &\subseteq \bigcup_{i=1}^{\infty}A_i \subseteq \bigcup_{i=1}^{\infty} \bigcup_{j=1}^{\infty} K_j^{(i)} \\
+\implies \sum\limits_{i, j} \left| K_j^{(i)} \right| &= \sum\limits_{i=1}^{\infty} \sum\limits_{j=1}^{\infty} \left| K_j^{(i)} \right| \\
+& < \sum\limits_{i = 1}^{\infty} \frac{\varepsilon}{2^{(i + 1)}} = \frac{\varepsilon}{2} < \varepsilon
+\end{align*}
+*** Izrek 2.15 Lebesque (p.S.)/ 2.30(po Dragiju)
+
+Naj bo \(  K \subseteq \mathbb{R}^n \) kvader in \(  f: K \to \mathbb{R} \) omejena funkcija. potem je \(  f \) integrabilna natanko tedaj, ko ima njena mnożica točk nezveznosti mero 0.
+
+*Brez dokaza, ker za 1D zavzame popisan A4*
+
+Primer:
+- \(  \chi_{\mathbb{Q} \cap [0, 1]} \) ni integrabilna, saj je množica točk nezveznosti interval \(  [0, 1] \), ki *nima* mere 0.
+- Da pa se konstruirati funkcijo \(  f:[0,1] \to \mathbb{R} \), katere množice nezveznosti je točno \(  \mathbb{Q} \cap [0,1) \):
+
+  \[ f(x) = \begin{cases}
+  \frac{1}{m}; \ x = \frac{n}{m} \text{ okrajšan ulomek } \\
+  0, \text{ sicer }
+  \end{cases}
+  \]
+
+  Tej funkciji se reče tudi /popcorn function/ oz. na spletu jo najdeš pod imenom Thomae function.

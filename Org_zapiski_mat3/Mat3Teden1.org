@@ -1,0 +1,203 @@
+#+title: Mat3teden1
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math}
+
+2024/10/01
+* Integrali s parametrom 
+
+Integrali s parametrom: integracija družine funkcij, obravamo dinamiko teh integralov. Integrali s paramaterom so funkcije oblike \( F(t) = \int\limits_{\alpha (t)}^{\beta(t)} f(x, t) \,dx \), kjer je \( t \) parameter. Zanimajo nas lastnosti \( F \): zveznost, odvedvljivost, integrabilnost, ...
+
+\( F \) zgradimo iz \( \alpha, \beta \text{ in } f \) s pomočjo integracije.
+** Trditev 1.2 (po Simonu)
+
+Naj bodo \( a, b, c, d \in \mathbb{R} \) in \( f:[a, b] \times [c, d] \to \mathbb{R} \) zvezna. Tedaj je \( F:[c, d] \to \mathbb{R} \) definirana s predpisom \( F(t) = \int\limits_a^b f(x, t) \, dx \) zvezna.
+
+Sledi dokaz.
+** Trditev 1.3. (p.S.)
+
+Naj bo
+\( f=f(x, t): P = [a, b] \times [c, d] \to \mathbb{R} \). Privzemimo, da je
+- \( f \) zvezna na \( P \)
+- \( \frac{\partial f}{\partial t} \exists \) in je zvezna na \( P \)
+
+  Tedaj je
+
+  \begin{equation}
+  \label{eq:1}
+  F(t) := \int\limits_a^b f(x, t) \,dx
+  \end{equation}
+
+  odvedljiva na \( [c, d] \) in velja
+
+  \begin{equation}
+  \label{eq:2}
+  F'(t) = \int\limits_a^b \frac{\partial f }{\partial t} (x, t) \,dx
+  \end{equation}
+
+Sledi dokaz.
+** Posledica 1.4. (p.S.)
+
+Naj bo \( P = [a, b] \times [c, d] \). Naj bo \( f(x, t): P \to \mathbb{R}\). Privzemimo, da
+
+- je \( f\) zvezna na \( P \)
+- \( \frac{\partial f }{\partial t} \exists \) in je zvezna na \( P \)
+- imejmo še odvedljivi funkciji \( \alpha, \beta: [c, d] \to [a, b] \). Tedaj je
+
+  \begin{equation}
+  \label{eq:3}
+  F(t) = \int\limits_{\alpha(t)}^{\beta(t)}f(x, t)\,dx
+  \end{equation}
+
+  odvedljiva na \( [c, d] \) in velja
+
+  \begin{equation}
+  \label{eq:4}
+  F'(t) = \int\limits_{\alpha(t)}^{\beta(t)} \frac{\partial f}{\partial t} (x, t) \,dx +f(\beta(t), t) \cdot \beta'(t) - f(\alpha(t), t) \cdot \alpha'(t)
+  \end{equation}
+** Izrek 1.5 (Fubini, p.S.) 2024/10/02
+
+Naj bo \(  f:[a, b] \times [c, d] \to \mathbb{R} \) zvezna. Tedaj velja
+
+\begin{equation}
+\label{eq:5}
+\int\limits_a^b \left( \int\limits_c^d f(x, t) \,dt \right)\,dx = \int\limits_c^d \left( \int\limits_a^b f(x, t) \,dx \right)\,dt
+\end{equation}
+
+**Dokaz**:
+Definiramo \(  G(y) := \int\limits_a^b \int\limits_c^y f(s, t) \,dt \,ds \). Integral \(  \psi (s, y) = \int\limits_c^y f(s, t)\,dt \exists \), ker je zvezna v spremenljivki in to pomeni, da \(  G(y) \exists \).
+
+Prav tako definiramo \(  H(y) := \int\limits_c^y \int\limits_a^b f(s, t) \,ds \,dt \). Integral \(  \varphi (t) = \int\limits_a^b f(s, t) \,ds \).
+
+Ker je \(  G(c) = 0 = H(c) \) zadošča preveriti, da \(  G' = H' \).
+
+Velja
+
+\begin{align*}
+  H'(y) &= \frac{\mathrm{d}}{\mathrm{dy}} \int\limits_c^y \varphi (t)\,dt \\
+&= \varphi(y) = \int\limits_a^b f(s, y) \,ds \\
+G'(y) &= \frac{\mathrm{d}}{\mathrm{dy}} \int\limits_a^b \psi (s, y) \,ds \\
+&= \int\limits_a^b \frac{\partial }{\partial y} \psi (s, y) \,ds
+\end{align*}
+
+Da gre lahko iz totalnega odvoda dobimo parcialni odvod znotraj integrala, upoštevamo trditev 1.3.
+
+Če je \(  \psi \) zvezna, zvezno odvedljiva na \(  y \) preveri za DN.
+** Definicija 1.3 (p. S.)
+
+Naj bo \(  f: [a, \infty) \times [c, d] \to \mathbb{R} \) zvezna. Integrali \(  \left\{ I(t) = \int\limits_a^\infty f(x, t) \,dx, t \in [c, d]\right\} \) so enakomerno konvergentni (na \(  [c, d] \)), če
+
+~ ponovi se enakomerna konvergentnost funkcije iz matematike 1 ~
+
+\(  \forall \varepsilon > 0 \exists M > a \ni:  \)
+
+\[ \left| I(t) - \int\limits_a^N f(x, t) \,dx \right| < \varepsilon \, \forall N \ge M \text{ in } \forall t \in [c, d]
+\]
+** Trditev 1.6 (p. S.)
+
+Naj bo \(  f:[a, \infty) \times [c, d] \to \mathbb{R} \) zvezna. Privzamemo, da \(  \exists \) integrabilna funkcija \(  \Phi: [a, \infty) \to [0, \infty) \ni: \)
+
+\[ \forall x \ge a \, , \forall t \in [c, d]: ,\ \left| f(x, t) \right| \le \Phi(x)
+\]
+
+Tedaj
+
+\begin{equation}
+\label{eq:6}
+F(t) = \int\limits_a^{\infty} f(x, t) \,dx
+\end{equation}
+
+konvergira enakomerno na \(  [c, d] \).
+
+**Dokaz**
+
+\begin{align*}
+  \left| F(t) - \int\limits_a^M f(x, t) \,dx \right| &= \left| \int\limits_M^{\infty} f(x, t) \,dx \right| \\
+& \le \int\limits_M^{\infty}\left| f(x, t) \right| \,dx \le \int\limits_M^{\infty} \Phi(x)\,dx && \forall t
+\end{align*}
+
+Ker je \(  \Phi \) integrabilna \(  \forall \varepsilon > 0 \exists M_0 > a \ni \):
+\[ M \ge M_0  \implies \int\limits_M^{\infty} \Phi \,dx < \varepsilon \implies \left| F(t) - \int\limits_a^M f(x, t) \,dx \right| <\varepsilon \, \forall M \ge M_0 \, \forall t \in [c, d]
+\]
+** Zgled (ne vem, če je p. S.)
+
+Vzamemo  \(  0 < c < d \), \(  F(t) := \int\limits_0^{\infty} e^{-tx}\,dx; \, t \in [c, d] \).
+
+Ali so \(  F(t) \) enakomerno konvergentne?
+
+Dovolj je, da najdemo \(  \Phi = \Phi(x) : [0, \infty) \to [0, \infty) \ni \)
+1) \(  e^{-tx} \le \Phi(x) \, \forall x \, \forall t \)
+2) \(  \int\limits_0^{\infty} \Phi(x) \,dx < \infty \)
+
+Definiramo \(  \Phi(x) := e^{-cx}, \, tx \ge cx \, \forall t, \, \forall x \), potem sledi \(  e^{-tx} \le e^{-cx} \).
+
+\begin{align*}
+  \int\limits_0^{\infty} \Phi(x) \,dx &= \frac{e^{-cx}}{-c} \left. \right|_{x=0}^{x = \infty} \\
+&= \frac{1}{c} < \infty
+\end{align*}
+
+Vidimo, da \(  F(t) \) enakomerno konvergentna celo na \(  [c,\infty) \)
+** Trditev 1.7 (p.S.)
+Če je \(  f:[a,\infty) \times [c, d] \to \mathbb{R} \) zvezna in \(  F(t) := \int\limits_a^{\infty} f(x, t) \,dx \) enakomerno konvergentna na \(  [c, d] \), tedaj je \(  F \) zvezna na \(  [c, d] \).
+
+**Dokaz**:
+
+Za \(  t, t_0 \in [c, d] \) je
+
+\begin{align*}
+  \left| F(t) - F(t_0) \right| &= \left| \int\limits_a^{\infty} \left[ f(x, t) - f(x, t_0) \right] \,dx \right| \\
+&= \left| \int\limits_a^M \left[ f(x, t) - f(x, t_0) \right]\,dx + \int\limits_M^{\infty} f(x, t)\,dx - \int\limits_M^{\infty} f(x, t_0) \,dx \right| \\
+& \le \int\limits_a^M \left| f(x, t) - f(x, t_0) \right|\,dx + \left| \int\limits_M^{\infty}f(x, t)\,dx \right| + \left| \int\limits_M^{\infty} f(x, t_{0)}\,dx \right|
+\end{align*}
+
+Funkcija je neomejena, ergo nekompaktna in nam trditev 1.2 ne pomaga več.
+
+Vzamemo \(  \varepsilon > 0 \). Ker \(  F(t) \) konvergira enakomerno, \(  \exists M_0 \ge a \ni: \, \left| \int\limits_M^{\infty}f(x, u)\,dx \right| < \frac{\varepsilon}{3} \) \(  \forall M \ge M_0 \text{ in } \forall u \in [c, d] \).
+
+Za tak \(  M \) sta zadnja dva integrala \(  < \frac{\varepsilon}{3} \). Za ta (fiksirani) \(  M \ge M_0 \) je \(  f:[a, M] \times [c, d] \to \mathbb{R} \) enakomerno zvezna, zato (kot včeraj) \(  \exists \delta > 0 \ni \)
+
+\[ t, t_0 \in [c, d], \, \left| t - t_0 \right| < \delta \implies \left| f(x, t) - f(x, t_0) \right| < \frac{\varepsilon}{3(M - a)}
+\]
+
+Torej je \(  F \) zvezna.
+** Trditev 1.8 (Fubini, p.S.)
+
+Če je \(  f:[a, \infty) \times [c, d] \to \mathbb{R} \) zvezna, \(  F(t) = \int\limits_a^{\infty} f(x, t) \,dx \) enakomerno konvergentna na \(  [c, d] \). Tedaj je \(  F \) integrabilna in velja
+
+\begin{equation}
+\label{eq:7}
+\int\limits_c^d \left( \int\limits_a^{\infty} f(x, t) \,dx \right)\,dt = \int\limits_a^{\infty} \left( \int\limits_c^d f(x, t) \,dt \right)\,dx
+\end{equation}
+
+**Dokaz**:
+
+Vemo, da je \(  F \) zvezna, zato je integrabilna na \(  [c, d] \). Vemo, da velja
+
+\[ \int\limits_c^d \left( \int\limits_a^b f(x, t) \,dx \right)\,dt = \int\limits_a^b \left( \int\limits_c^d f(x, t) \,dt \right)\,dx
+\]
+
+Označimo \(  F_b(t) = \int\limits_a^b f(,x t) \,dx \). Želimo poslati \(  b \rightarrow \infty \).
+
+Velja, da je \(  \lim_{b \to \infty} F_b(t) = F(t)  \) enakomerna na \(  [c, d] \):
+
+\[ \left| F(t) - F_b(t) \right| = \left| \int\limits_b^{\infty}f(x, t) \,dx \right| \rightarrow_{b \to 0} 0
+\]
+enakomerno v \(  t \).
+
+Sledi (iz mat1):
+
+\[ \lim_{b \to \infty} \int\limits_c^d F_b (t) \,dt = \int\limits_c^d F(t) \,dt
+\]
+
+Torej leva stran (LS) ima limito za \(  b \rightarrow \infty \) in sicer
+
+\[ \int\limits_c^d \int\limits_a^{\infty}...\,dx\,dt
+\]
+
+Torej jo ima tudi desna stran (DS), ta limita pa je po definiciji
+
+\[ \int\limits_a^{\infty}\int\limits_c^d f(x, t)\,dt\,dx
+\]
+
+Q.E.D

@@ -1,0 +1,527 @@
+#+title: Mat3teden6
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+
+* Krivulje v \(  \mathbb{R} ^3 \)
+** Pritisnjena ravnina
+*** Izrek 3.4 (p.S.)/ 3.17 po Dragiju (dokaz od 5. tedna)
+
+Primera sta npr.
+
+\(  x ^3 \) je \(  o(x ^2) \), ko gre \(  x \to 0 \)
+\(  x ^2 \) je \(  o(x ^2) \), ko gre \(  x \to 0 \)
+
+Ekvivalentno \(  f(h) = o(g(h)), \ h \to a \) je, da za vsak \(  \epsilon \) obstaja okolica \(  a \), kjer velja
+
+\[ \left| f(h) \right|  \le \epsilon \left| g(h) \right|
+\]
+
+*Dokaz*:
+
+Spomnimo se razdalje med točko in ravnino:
+
+\[ d(\vec{R}, \Pi) = \left\langle \vec{R} - \vec{r}, \frac{\vec{n}}{\left| \vec{n} \right|} \right\rangle
+\]
+
+za ravnino \(  \Pi \) in vektor \(  \vec{R} \), ki kaže iz ravnine.
+
+\[ d(\gamma(t_0 + h), \Pi) = \left\langle \gamma(t_0 + h) - \gamma(t_0), \frac{\dot{\gamma}(t_0) \times \ddot{\gamma} (t_0)}{{\dot{\gamma}(t_0) \times \ddot{\gamma} (t_0)}}\right\rangle
+\]
+
+Drugi člen tega skalarnega produkta je vektor normale \(  \vec{n} \) za ravnino \(  \Pi \).
+
+Prav tako pišimo \(  \gamma(t) = (\gamma_1(t), \gamma_2 (t), \gamma_3 (t)) \), kjer je \(  t = t_0 + h \).
+
+Taylorjev izrek pravi, da \(  \gamma_i(t) = \gamma_i(t_0) + \dot{\gamma_i}(t_0) \cdot h + \ddot{\gamma}_i(t_0) \frac{ h ^2}{2} + o(h ^2) \)
+
+Zapišimo \(  \vec{o}(h ^2) = (o(h ^2),o(h ^2),o(h ^2)) \)
+
+Če uporabimo Taylorjev razvoj
+
+\begin{align*}
+  \left| \left\langle \dot{\gamma}(t_0) \cdot h ^2 + \ddot{\gamma}(t_0) \frac{h ^2}{2} + o ( h ^2 ), \vec{n} \right\rangle \right| &= \left| \vec{o}(h ^2), \vec{n} \right| \\
+& \le \left| o (h^2) \right| = o (h ^2)
+\end{align*}
+
+*Frenet-Serretov trieder ni bil obdelan! Za vaje se bo še obvestilo, ali bo ali ne. Za teoretični izpit je potrebno vprašati profesorja.*
+
+* Ploskve v \(  \mathbb{R} ^3 \)
+
+
+Osnovni primer ploskve je graf funkcije:
+
+Imejmo \(  D \subseteq \mathbb{R} ^2 \) območje (odprta povezana množica). Graf  funkcije \(  f: D \to \mathbb{R} \) je množica
+
+\[ \Gamma_f = \left\{ (x, y, f(x, y)); \ (x, y) \in D \right\}
+\]
+
+Rečemo. da smo ploskev podali eksplicitno (kot graf). Še bolj pogosto bomo ploskve podajali parametrično.
+** Definicija 4.1 (p.S.) /po Dragiju
+
+(Gladka) Ploskev v \(  \mathbb{R} ^3 \) je podana s parametrizacijo \(  \vec{r} = \vec{r}(u, v): D \to \mathbb{R}  \) pri čemer je \(  \vec{r}(u, v) = (X(u, v), Y(u, v), Z(u, v)) \) preslikava reda vsaj \(  \mathcal(C) ^1 \).
+
+Običajno privzamemo, še \(  \vec{r}_u \times \vec{r}_v \ne 0\). V tem primeru govorimo, da je parametrizacija regularna. Pravimo, da sta \(  u \) in \(  v \) krivočrtni koordinati na ploskvi
+
+Indeks \(  \vec{r}_u = \frac{\partial \vec{r}}{\partial u}  \).
+
+\[ M = \left\{ \vec{r}(u, v); \ (u, v) \in D \right\}
+\]
+
+Kaj nam pogoj \(  \vec{r}_u \times \vec{r}_v \ne 0\) pravzaprav da? Razmišljamo hevristično: matematično pogoj za vektor \(  \vec{r}= (x, y, z) \), ki da
+
+\[ \begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+X_u & Y_u & Z_u \\
+X_v & Y_v & Z_v
+   \end{vmatrix} \ne 0
+\]
+
+ker je vektorski produkt \(  \ne 0 \) mora biti vsaj ena komponenta različna od 0. Brez izgube splošnosti(okrajšano BŠS) privzemimo, da je to tretja komponenta. Torej je poddeterminanta
+
+\begin{equation}\label{mat:1}
+\begin{vmatrix}
+X_u & Y_u \\
+X_v & Y_v
+\end{vmatrix} \ne 0
+\end{equation}
+
+Oglejmi so obnašanje funkcij \(  X \) in \(  Y \) v okolici \(  \vec{r}(u, v) \). Tukaj sedaj nastopi naše hevristično razmišljanje: (aka *neformalno*)
+
+\begin{align}\label{al:1}
+  X (u + h, v+ k) & \approx = X(u, v) + h \cdot X_u(u, v) + k\cdot X_v(u, v) \\
+Y(u + h, v + k) & \approx = Y(u, v) + h \cdot Y_u(u, v) + k \cdot Y_v(u, v)
+\end{align}
+
+Sedaj pa naredimo nekaj nelegitimnega, ki pa bo pripomoglo k razumevanju. Na to sedaj pogledamo kot na linearen sistem z neznankama \(  h \) in \(  k \).
+
+Zaradi tega \ref{mat:1}  lahko sistem rešimo:
+\begin{align*}
+  h &= h(X, Y) \\
+k &= k(X, Y)
+\end{align*}
+
+Torej velja
+
+\[ Z(u + h, v + k) = Y(u + h(X, Y), v + K(X, Y))
+\]
+
+v okolici \(  (u, v) \) smo \(  Z \) izrazili kot funkcijo \(  X, Y \).
+Torej se da vsako (regularno) parametrizirano ploskev lokalno zapisati kot graf neke funkcije.
+
+*Ponavljam, da te stvari niso formalne, ker niso vse parametrizacije regularne.*
+
+Opomba: Ta argument lahko tudi formaliziramo Na mestu \ref{al:1} uporabimo izrek o inverzni preslikavi.
+
+2024/11/05
+
+Pogoj \(  \vec{r}_u \times \vec{r}_v \) zagotavlja tudi, da ima ploskev vsaki točki dobro definirano tangentno ravnino.
+** Tangentna ravnina
+
+Imamo območje \(  D\subseteq \mathbb{R}^2 \), na katerem sparametriziramo ploskev \(  M = \left\{ \vec{r}(u, v);\ (u, v) \in D \right\} \)
+
+\begin{align*}
+  \vec{r}: D &\to \mathbb{R} ^3\\
+(u, v) & \mapsto \vec{r}(u, v) = (X(u, v), Y(u, v), Z(u, v))
+\end{align*}
+
+Zanima nas tangentna ravnina v točki \(  \vec{r}(u_0, v_0) \). Vzemimo krivuljo \(  \gamma: I \to D, \ \gamma(t_0) = (\alpha(t), \beta(t)) = (u_0, v_0) \).
+
+Krivuljo preslikamo na ploskev \(  \vec{r} \circ \gamma: I \to M \).
+
+/Odvajamo
+
+\[ \frac{\mathrm{d} \vec{r}(\gamma(t))}{\mathrm{d} t} = \vec{r}_u(\gamma(t)) \cdot \dot{\alpha}(t) + \vec{r}_v(\gamma(t)) \cdot \dot{\beta} (t)
+\]
+
+Pri \(  t_0 \) dobimo ravno tangentni vektor na krivuljo \(  \vec{r} \cdot \gamma \) v točki \(  (\vec{r} \cdot \gamma)(t_0) \) je
+
+\[ \vec{r}_u (\gamma(t_0)) \cdot \vec{\alpha}(t_0) + \vec{r}_v(\gamma(t_0)) \cdot \vec{\beta}(t_0)
+\]
+
+Torej je neodivsno od krivuljo, tangenten vektor oblike
+
+\[ a \cdot \vec{r}_u (u_0, v_0) + b\cdot \vec{r}_v(u_0, v_0)
+\]
+
+Torej sta \(  \vec{r}_u \) in \(  \vec{r}_v \) bazna vektorja tangentnega prostora.
+*** Definicija 4.2
+
+(Afina) Tangentna ravnina na ploskev \(  M \) skozi točko \(  m = \vec{r}(u, v) = (x_0, y_0, z_0) \) definiramo kot množico vseh tangnetnih vektorja krivulj skozi to točko. Eksplicitno je to ravnina (potrebujemo začetno točko in pa dva smerna vektorja, ki nam razpenjata ravnina/ normalni vektor)
+
+\[ m + \mathrm{Lin} \left\{ \vec{r}_u(u, v), \vec{r}_v(u, v) \right\}
+\]
+
+Enačba tangentne ravnine je torej
+
+\[ \left\langle (x, y, z) -  (x_0, y_0, z_0), (\vec{r}_u \times \vec{r}_v)(u_0, v_0) \right\rangle
+\]
+*** Primer 1 - ploskve podane kot graf (eksplicitna oblika)
+
+Imejmo \(  f: D \to \mathbb{R}, \ D \subseteq \mathbb{R} ^2 \) območje, \(  f \) je gladka. Imamo graf funkcije
+
+\[ \Gamma_f = \left\{ (x, y, f(x, y)), \ (x, y) \in D \right\}
+\]
+
+V parametrični obliki graf zapišemo kot \(  \vec{r}: D \to \mathbb{R} ^3 \)
+
+\[ \vec{r} (x, y)  = \begin{bmatrix} x \\ y \\ f(x, y) \end{bmatrix}
+\]
+
+Odvajamo
+
+\[ \vec{r}_x =  \begin{bmatrix} 1 \\ 0 \\ f_x(x, y) \end{bmatrix} \quad  \vec{r}_y =  \begin{bmatrix} 0 \\ 1 \\ f_y(x, y) \end{bmatrix}
+\]
+
+Vektorski produkt teh vektorjev je
+
+\[ \vec{r}_x \times \vec{r}_y  = \begin{bmatrix} -f_x \\ -f_y \\ 1 \end{bmatrix}
+\]
+
+Enačba (česa? tangentne ravnine ali klobas?) je torej
+
+\[ \left\langle (x, y, z) - (x_0, y_0, z_0), (-f_x, -f_y, 1) \right\rangle = 0
+\]
+
+#+begin_quote
+        Pa jo mamo.
+#+end_quote
+
+Enačbo allegedely. Govc.
+*** Zgled 4.1 (p. S.)
+
+Rotacijski paraboloid je podan z enačbo
+
+\[ f(x, y) = x ^2 + y ^2
+\]
+
+Poiščimo tangento ravnino v točki \(  (1, 3, 10) \).
+
+Parcialna odvoda sta
+
+\[ f_x = 2x \quad f_y = 2y
+\]
+
+Enačba ravnine pomnožena z \(  -1 \) je:
+
+\begin{align*}
+  \left\langle (x, y, z) - (1, 3, 10), (-2, -6, 1) \right\rangle &= 0 && \left. \right/ \cdot(-1) \\
+\left\langle (x - 1, y - 3, z - 10), (2, 6, -1) \right\rangle &= 0 \\
+2(x - 1)  + 6(y - 3) - (z - 10) &= 0 \\
+2x + 6y - z &= 10
+\end{align*}
+*** Implicitno podane ploskve
+
+Imejmo \(  F: \mathbb{R} ^3 \to \mathbb{R}\). Ploskev definiramo kot množico ničel oz. nivojnico:
+
+\[ M = \left\{ (x, y, z) \in \mathbb{R}^3; \ F(x, y, z) = 0 \right\}
+\]
+
+Če želimo res dobiti ploskev, moramo privzeti \(  \nabla F = (\frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z}) \ne 0 \), potem so namreč izpolnjene predpostavke izreka o implicitni funkciji (glej mat1).
+
+Opomba: To je analogno včerajšnjemu pogoju \(  \vec{r}_u \times \vec{r}_v \ne 0 \). Pa parametrizacija obstaja.
+
+Poskusimo izpeljati enačbo tangentne ravnine.
+
+Iščemo torej smerne vektorje vseh možnih krivulj na ploskvi:
+
+Naj bo torej \(  m = (x_0, y_0, z_0) \) točka na ploskvi in si oglejmo poljubno krivuljo skozi to točko:
+
+\[ \vec{r}(t) = (x(t), y(t), z(t))
+\]
+
+ker krivulja leži na ploskvi, velja
+
+\[ F(x(t), y(t), z(t) = 0
+\]
+
+Če enačbo odvajamo, dobimo
+
+\[ F_x \dot{x} + F_y \dot{y} + F_z \dot{z} = 0
+\]
+
+To v resnici pravi:
+
+\[ \left\langle (\nabla F)(m), \odv{r} (t_0) \right\rangle = 0
+\]
+
+Vsi smerni vektorji krivulj skozi na ploskvi \(  M \), ki gredo skozi točko \(  m \) so pravokotni na gradient \(  (\nabla F)(m) \).
+
+To je mogoče le, če je \(  (\nabla F)(m) \) normalni vektor tangentne ravnine skozi \(  m \). Enačba tangentne ravnine je torej:
+
+\[ \left\langle (x, y, z) - (x_0, y_0, z_0), (\nabla F)(x_0, y_0, z_0) \right\rangle = 0
+\]
+*** Rotacijsko invariantne ploskve (vrtenine)
+
+Ploskev v \(  \mathbb{R}^3 \) lahko podamo tudi tako, da krivuljo v \(  xz \) ravnini zavtrimo okrog \(  z \)-osi.
+
+Izhajamo iz parametrizacije krivulje:
+
+\[ \gamma(t) =  \begin{bmatrix} x(t) \\ 0 \\ z(t) \end{bmatrix}, \ t \in I
+\]
+
+Da jo pomnožimo z rotacijsko matriko:
+
+\[ \begin{bmatrix}
+\cos \phi & - \sin \phi & 0 \\
+\sin \phi & \cos \phi & 0 \\
+0 & 0 & 1
+\end{bmatrix} \begin{bmatrix} x(t)\\ 0\\ z(t) \end{bmatrix} = \begin{bmatrix} x(t) \cos \phi\\ x(t) \sin \phi\\ z(t) \end{bmatrix}
+\]
+*** Zgled 4.2 (p.S.)
+
+Za plašč valja vzamemo daljico za \(  \gamma \):
+
+\[ \gamma(t) = \begin{bmatrix} a\\ 0\\ t \end{bmatrix}, \ t \in I
+\]
+
+Parametrizacija valja je torej
+
+\[ \vec{r} (t, \phi): \begin{bmatrix} a \cos \phi \\ a \sin \phi \\ t \end{bmatrix}, \ t \in I, \ \phi \in [0, 2\pi]
+\]
+*** Zgled 4.3 (p.S.)
+Za stožec vzamemo za \(  \gamma \) premico skozi izhodišče
+
+\[ \gamma(t) = \begin{bmatrix} t\\ 0\\ at \end{bmatrix}, \ t \in [0, b]
+\]
+
+Parametrizacija stožca je
+
+
+\[ \vec{r} (t, \phi): \begin{bmatrix}  t\cos \phi \\ t \sin \phi \\ a \end{bmatrix}, \ t \in [0, b], \ \phi \in [0, 2\pi]
+\]
+*** Zgled 4.4 (p.S.)
+
+Za sfero vzamemo \(  \gamma \) polkrožnico:
+
+\[ \gamma(t) = \begin{bmatrix} \cos t\\ 0\\  \sin t \end{bmatrix}, \ t \in [- \frac{\pi}{2}, \frac{\pi}{2}]
+\]
+
+Parametrizacija enotske sfere je torej
+
+\[ \vec{r} (t, \phi): \begin{bmatrix}  \cos t\cos \phi \\ \cos t \sin \phi \\ \sin t \end{bmatrix}, \ t \in [- \frac{\pi}{2}, \frac{\pi}{2}], \ \phi \in [0, 2\pi]
+\]
+
+Te stvari so Govcu /ful/ pri srcu, ker je topolog in ful uživa v risanju teh stvari. Although his drawing could, you know..., get better.
+*** Zgled 4.5 (p.S.)
+
+Parametrizacija krožnice je
+
+\[ \gamma(t) = \begin{bmatrix} a + r \cos t\\ 0\\ r \sin t\end{bmatrix}, \ t \in [0, 2\pi)
+\]
+
+Parametrizacija torusa je
+
+
+\[ \vec{r} (t, \phi): \begin{bmatrix}(a + r \cos t) \cos \phi \\ (a + r \cos t) \sin \phi \\ r \sin t \end{bmatrix}, \ t \in [0, 2\pi)
+\]
+** Površina ploskve
+
+True story, but sad, ker težko dobimo površino ploskve na enostaven način.
+
+\(  \vec{r}: D \to \mathbb{R} ^3 \) naj bo parametrizacija ploskve. Zanima nas, kako iz parametrizacije izračunati površino.
+
+Glej sliko 7 v Simonovi skripti (page 43).
+
+Vzemimo torej majhen pravokotnik \(  P \) z ogliščem v \(  (u, v) \) in stranicama \(  \Delta u \) in \(  \Delta v \) in ga preslikamo z \(  \vec{r} \). Če bo pravokotnik dovolj majhen, se bo preslikava \(  \vec{r} \) obnašala približno linearno in bomo zato površino "krivočrtnega štirikotnika" \(  \vec{r}(P) \) lahko aproksimirali s ploščino paralelograma z oglišči \(  \vec{r}(u, v), \ \vec{r}(u + \Delta u, v), \ \vec{r}(u, v + \Delta v) \) (četrto oglišče pa je enolično določeno s temi).
+
+Ploščina paralelograma:
+
+Stranici sta
+
+\begin{align*}
+  \vec{r}(u + \Delta u, v) - \vec{r}(u, v) &= \vec{r}_u (u + \xi \Delta u, v) \Delta u && \xi \in (0, 1) \\
+\vec{r}(u, v + \Delta v) - \vec{r}(u, v) &= \vec{r}_v (u, v + \eta \Delta v) \Delta v
+\end{align*}
+
+Dvakrat smo uporabili Lagrangeev izrek, če je pravokotnik dovolj majhen, velja \(  u + \xi \Delta u \approx u, \ v + \eta \Delta v \approx v \). Torej sta stranici paralelograma približno enaki \(  \vec{r}_u (u, v) \Delta u \quad \vec{r}_v(u, v) \Delta v \).
+
+Ploščina paralelograma je torej približno enaka
+
+\[ \left| \vec{r}_u(u, v), \times \vec{r}_v(u, v) \right| \Delta u \Delta v
+\]
+
+*hevristična izpeljava, ki pa vsebuje pravo intuicijo*
+Po drugi strani pa je ploščina paralelograma tudi približnoe naka \(  \vec{r}(P) \).
+
+S tem je motivirana definicija za površčino.
+*** Definicja:
+
+Naj bo \(  D \subseteq \mathbb{R} ^2 \) območje in \(  \vec{r}: D \to \mathbb{R} ^3 \) parametrizirana ploskev \(  M = \left\{ \vec{r}(u, v); \ (u, v) \in D \right\} \). Njeno površino \(  P(M) \) izračunamo kot
+
+\[ P(M) = \iint\limits_D \left| \vec{r}_u \times \vec{r}_v \right| \, \mathrm{du} \, \mathrm{dv}
+\]
+
+Opomba:
+
+\[]  \lVert \vec{r}_u \times \vec{r}_v  \rVert = \lVert \vec{r}_u \rVert \lVert \vec{r}_v \rVert \sin \phi
+\]
+
+Oznaka \(  \lVert \cdot \rVert\) označuje normo.
+
+\begin{align*}
+  \lVert \vec{r}_u \times \vec{r}_v \rVert &= \lVert \vec{r}_u \rVert ^2 \lVert \vec{r}_v \rVert ^2 \sin ^2 \phi \\
+&=  \lVert \vec{r}_u \rVert ^2 \lVert \vec{r}_v \rVert ^2 (1 - \cos ^2 \phi) \\
+&= \lVert \vec{r}_u \rVert ^2 \lVert \vec{r}_v \rVert ^2 - \left| \left\langle r_u, r_v \right\rangle \right| ^2
+\end{align*}
+
+kjer je \(  \left\langle r_u, r_v \right\rangle = \lVert \vec{r}_u \rVert \lVert \vec{r}_v \rVert \cos \phi\)
+
+Če pišemo
+
+\[ \lVert \vec{r}_u \rVert ^2 = E; \quad \lVert \vec{r}_v \rVert ^2 = G; \quad \left\langle r_u, r_v \right\rangle = F
+\]
+
+Tako dobimo
+
+\[ \lVert \vec{r}_u \times \vec{r}_v \rVert = \sqrt{EG - F ^2}
+\]
+
+Iz česar sledi, da je ploščina ploskve \(  M \) tako enak
+
+\[ P(M) = \iint\limits_D \sqrt{EG -F ^2} \, \mathrm{du} \mathrm{dv}
+\]
+
+*** Trditev 4.1 (p.S.)
+
+Definicija za površino ploskve je dobra (torej neodvisna od parametrizacije).
+
+*Dokaz*: Naj bosta \(  \vec{r}:D \to M \) in \(  \vec{\rho}: \Delta \to M \)  dve parametrizaciji ploskve \(  M \). Naj bo \( \Phi: \Delta \to D \ (x, y) \mapsto (u, v) \) gladka bijekcija:
+
+\[ \Phi(x, y) = (U(x, y), V(x, y)) 
+\]
+
+Privzemimo, da je to ravno bijekcija, ki podaja zvezo med obema parametrizacijama:
+
+\[ \vec{\rho} = \vec{r} \circ \Phi 
+\]
+
+Komentar: Zakaj \(  \Phi \) obstaja? Definiramo lahko \(  \Phi = \vec{r}^{-1} \circ \vec{\rho} \)
+
+Izračunajmo parcialna odvoda z uporabo verižnega pravila:
+
+\[ \vec{\rho}_x(x, y) = \vec{r}_u (U(x, y), V(x, y)) \cdot U_x(x, y) + \vec{r}_v(U(x, y), V(x, y)) \cdot V_x(x, y) 
+\]
+
+in tako dobimo
+
+\begin{align*}
+  \vec{\rho}_x &= \vec{r}_x \cdot V_x + \vec{r}_v \cdot V_x \\
+\vec{\rho}_y &= \vec{r}_u \cdot U_y + \vec{r}_v \cdot V_y
+\end{align*}
+
+Torej velja
+
+\begin{align*}
+  \vec{\rho}_x \times \vec{\rho}_y &= U_x \cdot U_y \cdot \vec{r}_u \times \vec{r}_u + U_x \cdot V_y \cdot \vec{r}_u \times \vec{r}_v + V_x \cdot U_y \cdot \vec{r}_v \times \vec{r}_u + V_x \cdot V_y \cdot \vec{r}_v \times \vec{r}_v && \vec{r}_i \times \vec{r}_i = 0 \\
+&= (U_x\cdot V_y - V_x \cdot U_y) \vec{r}_u \times \vec{r}_v \\
+&= \begin{vmatrix}
+U_x & U_y \\
+V_x & V_y
+ \end{vmatrix} \vec{r}_u \times \vec{r}_v = \det(J\Phi) \vec{r}_u \times \vec{r}_v
+\end{align*}
+
+Površina ploskve \(  M \)  je (glede na parametrizacijo \(  \vec{r} \)) enaka
+
+\begin{align*}
+  P(M) &= \iint\limits_D \lVert ( \vec{r}_u \times \vec{r}_v)(u, v) \rVert \, \mathrm{du} \mathrm{dv} \\
+ & \underset{\text{izrek 2.51}}{\overset{\text{menjava spr.}}{=}}\iint\limits_{\Delta} \lVert (\vec{r}_u \times \vec{r}_v) (\Phi(x, y)) \rVert \left| \det (J\Phi) \right| \, \mathrm{dx} \mathrm{dy} \\
+&= \iint\limits_{\Delta} \lVert (\vec{\rho}_x \times \vec{\rho}_y) (x, y) \rVert \, \mathrm{dx} \mathrm{dy}
+\end{align*}
+*** Površina ploskve podane z grafom (v Simonovih zapiski je malo daljši z \(  E, G, F \)
+
+Imejmo ploskev \(  M \) podano kot graf funkcije \(  f:D \to \mathbb{R}, \ D \subset \mathbb{R}^2 \)
+
+\[ \Gamma_f = M = \left\{ (x, y, f(x, y); \ (x, y) \in D \right\} 
+\]
+
+Zanima nas \(  P(\Gamma_f \). Od prejšnjič poznamo parametrizacijo \(  M \):
+
+\[ \vec{r}(x, y) = \begin{bmatrix} x \\ y \\ f(x, y) \end{bmatrix}, \ (x, y) \in D 
+\]
+
+Vektorji so potem
+
+\( \vec{r}_x = \begin{bmatrix} 1 \\ 0 \\ f_x \end{bmatrix} \quad  r_y = \begin{bmatrix} 0 \\ 1 \\ f_y \end{bmatrix} \quad \vec{r}_x \times \vec{r}_y = \begin{bmatrix} -f_x \\ -f_y \\ 1 \end{bmatrix}  \)
+
+Iz česar potem sledi ploščina
+
+\[ P(\Gamma_f)  = \iint\limits_D \lVert \vec{r}_x \times \vec{r}_y \rVert\, \mathrm{dx} \mathrm{dy} = \iint\limits_D \sqrt{1 + f_x ^2 + f_y ^2} \, \mathrm{dy}\mathrm{dx}
+\]
+
+Opomba: Opazimo, da je formula povsem analogna formuli za dolžino krivulje podane z grafom.
+*** Zgled 4.6 (p.S.)
+
+Imejmo rotacijski paraboloid \(  M = \Gamma_f \) podan z \(  f(x, y) = \frac{x ^2 + y ^2}{2}; \ (x, y) \in K((0, 0), 1) \) (enotski krog)
+
+Odvoda sta \(  f_x = x \ f_y = y \)
+
+\begin{align*}
+  P(\Gamma_f) &= \iint\limits_D \sqrt{1 + f_x ^2 + f_y ^2} \, \mathrm{dx} \mathrm{dy} \\
+&= \iint\limits_D \sqrt{1 + x ^2 + y ^2} \, \mathrm{dx} \mathrm{ dy} \\
+&= \int\limits_0^{2\pi} \int\limits_0^1 \sqrt{1 + r ^2} r\,\mathrm{dr}\,\mathrm{d}\phi \\
+&= \int\limits_0^{2 \pi}\,\mathrm{d} \phi \int\limits_0^1 \sqrt{1 + r ^2} r\,\mathrm{dr}  && t:= 1 + r ^2; \ dt = 2r \mathrm{dr} \\
+&= 2 \pi \frac{1}{2} \int\limits_1^2 \sqrt{t}\,\mathrm{dt}\\
+&= \pi \left. \frac{t^{\frac{3}{2}}}{\frac{3}{2}}  \right|_1^2 \\
+&= \pi \cdot \frac{2}{3} \cdot (2 \sqrt{2}  - 1) = \frac{2 \pi}{3} (2 \sqrt{2} - 1)
+\end{align*}
+** Orientacija 4.3 (p.S.)
+*** Definicija 4.4 (p.S.)
+
+Lokalna orientacija gladke regularne krivulje \(  \Gamma \) brez samopresečišč v točki \(  \gamma \in \Gamma \) je podana z izbiro enotskega tangentnega vektorja v tej točki (imamo samo dve možni izbiri).
+
+Globalna orientacija je podana z zvezno izbiro enotskih tangentnih vektorjev v vsaki točki \(  \gamma \in \Gamma \).
+
+*Opomba*: Vsaka regularna (povezana) krivulja (brez samopresečišč) ima natanko dve globalni orientaciji. To se še malenkost posploši: lahko imamo tudi odsekoma gladko krivuljo: \(  \Gamma \) unija krivulj \(  \Gamma_1, \ldots, \Gamma_n \) kjer je konec prejšnje krivulje enak začetku naslednju. V tem primeru orientacijo \(  \Gamma \) definiramo kot "usklajeno izbiro orientacij \(  \Gamma_i, \ i = 1, \ldots, n \)"
+*** Definicija 4.5 (p.S.)
+Lokalna orientacija gladke regularne ploskve \(  M \subseteq \mathbb{R} ^3 \) je izbira enotske normalne v točki \( m \in M \)
+
+Globalna orientacija ploskve \(  M \) je zvezna izbira enotskih normalnih vektorjev za vse \(  m \in M \):
+
+
+\begin{align*}
+  \vec{n}:M &\to S ^2 \\
+m & \mapsto \vec{n}(m)
+\end{align*}
+
+Kar je t.i. Gaussova preslikava, kjer je \(  S ^2 = \left\{ (x, y, z); \ x ^2 + y ^2 + z ^2 = 1 \right\} \), kar je množica enotskih vektorjev v \(  \mathbb{R} ^3 \) oz. enotska sfera.
+
+Če je ploskev \(  M \) povezana ima največ dve orientaciji \(  \vec{n} \) in \(  -\vec{n} \); lahko pa se zgodi, da nima nobene orientacije, lahko pa se zgodi, da nima nobene orientacije. Potem je \(  M \) neorientabilna ploskev.
+*** Zgled 4.7 (p.S.)
+
+Kolobar, plašč valja sta orientabilna, medtem ko Möbiusov trak pa je neorientabilen.
+*** Inducirana orientacija
+
+Imejmo ploskev z robomo \(  \vec{r}: D \to M \) parametrizacija, kjer \(  D \) zaprto območje. Imamo dva tipa točk:
+
+- /notranje točke/ na ploskvi: obstaja lokalna parametrizacija \(  K((0, 0), 1) \to M \) neke okolice te točke,
+- /robne točke/ na ploskvi: obstaja lokalna parametrizacija \(  K((0,0), 1) \cap ([0, \infty) \times \mathbb{R} \to M \)
+
+*Opomba*: Robne točke ploskve z robom tvorijo krivuljo ozrioma disjunktno unijo krivulj.
+
+*Ideja* Orientacija ploskve (z robom) porodi orientacijo na robni krivulji. Če hodim po robu ploskve in moja glava kaže v smeri normalnega vektorja (npr. navzgor), moram videti ploskev na svoji levi.
+*** Definicija 4.6 (p.S.)
+
+Naj bo \(  M \) orientabilna ploskev z robom \(  \partial M \). Za vsako točko \(  m \in \partial M \) naj bo \(  \vec{\mu} \) tisti enotski vektor iz tangentne ravnine \(  T_mM \), ki je pravokoten na \(  T_m\partial M \) (tangentno premico na \(  \partial \) v točki \(  m \)) in kaže ven iz \(  M \), in naj bo \(  \vec{n} \) enotski normalni vektor na \(  M \), podan z orientacijo.
+
+Potem vektor \(  \vec{n} \times \vec{\mu} \) določa inducirano orientacijo roba \(  \partial M \) v točki \(  m \in \partial M \).
+* Temeljni diferencialni operatorji na skalarnih in vektorskih poljih
+** Definicija 5.1 (p.S.)
+
+Naj bo \(  \Omega \subseteq \mathbb{R}^3 \), kjer je \(  \Omega \) območje. Skalarno polje na \(  \Omega \) je funkcija \(  f: \Omega \to \mathbb{R} \).
+
+Vektorsko polje na \( \Omega \) je funkcija \(  \vec{F}: \Omega \to \mathbb{R} ^3 \).
+
+\(  (x, y, z) \in \Omega \subseteq \mathbb{R} \)
+
+Skalaro polje je \(  u = f(x, y, z) \), medtem ko je vektorsko polje \(  \vec{F}(x, y, z) = (U(x, y, z), V(x, y, z), W(x, y, z)) \).
+
+Na \(  \mathbb{R}^3 \) znamo računati parcialne odvode definiramo simbol "nabla":
+
+\[ \nabla = (\frac{\partial }{\partial x}, \frac{\partial }{\partial y}, \frac{\partial }{\partial z}   )
+\]
+
+Naslednjič se definira gradient, divergenca in rotor.

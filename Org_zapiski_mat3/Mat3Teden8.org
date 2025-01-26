@@ -1,0 +1,518 @@
+#+title: Mat3teden8
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}}
+
+*Manjka ponedeljkovo predavanje, ker FP5 gre brrrr*. Allegedly se je celo uro
+delalo dokaz Trditve 6.4 (p.S.) ter pripadajoč zgled
+* Integracija po krivulja in ploskvah v \(  \mathbb{R} ^3 \)
+** Krivuljni integral
+*** Zgled 6.4 (p.S.)
+Delec z maso \(  m \) se giblje vzdolž poti \(  \gamma \) po površju Zemlje.
+Položaj Zemlje označimo z \(  \vec{r} \), kjer je izhodišče koordinatnega
+sistema v središču Zemlje. 
+Na delec deluje gravitacijska sila
+
+\[ \vec{F}_g = - G \frac{M m}{r ^2} \cdot \frac{\vec{r}}{r}
+\] 
+
+kjer je \(  r = \left| \vec{r} \right| = (x, y, z) \) in \(  G / \kappa \) gravitacijska
+konstanta. Prav tako je \(  M \) masa zemlje. 
+
+#+begin_quote
+Gledamo fiksiran delec. Ni delec fiksiran, če se giblje, ampak gledamo
+en določen delec. 
+#+end_quote
+
+Opazimo
+
+\[ \vec{F}_g = \nabla \left(\frac{G M m}{r}\right)
+\]
+
+Odvod po \(  x \)-u je
+
+\begin{align*}
+  \left(\frac{1}{r}\right)_x &= (x ^2 + y ^2 + z ^2)^{-\frac{1}{2}} \\
+&= - \frac{1}{2} (x ^2 + y ^2 + z ^2) ^{- \frac{3}{2}} \cdot 2x \\
+&= - \frac{x}{(x ^2 + y ^2 + z ^2) ^{\frac{3}{2}}} = - \frac{x}{r ^3}\\
+\implies \nabla \left(\frac{1}{r}\right) &= - \frac{(x, y, z)}{r ^3} = - \frac{\vec{r}}{r ^3}
+\end{align*}
+
+Delo, ki ga sila \(  \vec{F}_g \) opravi vzdolž poti \(  \gamma \)
+
+\begin{align}\label{eq:delo}
+  A &= \int\limits_{\gamma} \vec{F}\,\mathrm{d } \vec{r} =
+\int\limits_{\gamma} \nabla (\frac{GMm}{r}\,\mathrm{d } \vec{r} \\
+&\overset{\text{trditev}}{=} \frac{GMm}{r_1} - \frac{GMm}{r_0}
+\end{align}
+
+kjer sta \(  r_0 = \left| \vec{r}_0 \right| \) in \(  r_1 = \left| \vec{r}_1 \right| \).
+višini delčeve pozicije na začetku oz. koncu poti. Za \(  \Delta r = r_1 - r_0 \)
+(sprememba višine oddaljenosti od 0) dobimo
+
+\begin{align*}
+  A &= GMm \left( \frac{1}{r_1} - \frac{1}{r_0} \right) = GM m \cdot \frac{r_0 - r_1}{r_0 \cdot r_1} \\
+&= GM m \frac{- \Delta r}{r_0 (r_0 + \Delta r}
+\end{align*}
+
+Predpostavka o gibanju po površju Zemlje pomeni, da se \( r_1  \) ne
+razlikuje veliko od \(  r_0 \), oz. da \(  \left| \Delta r \right| \) majhen
+v primerjavi z \(  r_0 \), zato lahko aproksimiramo
+
+\[ r_0 - \Delta r = r_0 = R
+\] 
+
+kjer je \(  R \) srednji radij Zemlje. 
+
+
+#+begin_quote
+        Izrek je endemično matematična beseda. 
+#+end_quote
+
+Iz tega sledi, da približno velja
+
+\[ A = - \frac{GM}{R ^2} m \Delta r 
+\]
+
+kjer označimo \(  \frac{GM}{R ^2} = g \).
+*** (Fizikalni) izrek 6.5 (p.S.) 
+
+Delo rezultante sil (= vsote vseh sil), ki delujejo na delec, je enako
+spremembi kinetične enerije. Celotna energija je vsota kinetične in potencialne,
+je delo enako spremembi potencialne energije oz.
+
+\begin{equation}
+\label{eq:1}
+ A = -\Delta U = U(r_0) - U(r_1)   
+\end{equation}
+
+kjer sledeč \ref{eq:delo}, gravitacijski potencial \(  U \) definiramo kot
+
+\begin{equation}
+\label{eq:2}
+U(r) = - \frac{GMm}{r}
+\end{equation}
+
+Če v \ref{eq:1} in \ref{eq:2} vzamemo \(  r_1 = \infty \), je \(  U(r) \) delo,
+potrebno, da delec od razdalje \(  r \) spravimo do neskončnosti.
+
+Zadnjič
+
+\(  \vec{F} \) potencialno \(  \implies \ \rot \vec{F} = 0 \). V obratno smer
+\(  \Leftarrow \) pa ne velja. Sedaj se vprašamo, kdaj pa velja.
+*** Definicija 6.4 (p.S.)
+Območje \(  \Omega \subset \mathbb{R} ^3 \) je /zvezdasto/, če obstaja \(  \omega_0 \in \Omega \)
+tako, da velja za vsak \(  \omega \in \Omega \) je daljica \(  [\omega_0, \omega] \)
+cela vsebovana v \(  \Omega \).
+
+Vemo:
+
+\[ [\omega_0, \omega] = \left\{ (1 - t)\omega_0 + t\omega; \ t \in [0, 1] \right\}
+\]
+
+Konveksna množica je zvezdasto območje, za katero je vsak element iz njega
+dober za vlogo \(  \omega_0 \).
+
+Npr. \(  K(0,1) \setminus \left\{ 0 \right\} \) ni zvezdasto območje.
+*** Izrek 6.6
+Naj bo \(  \Omega \subset \mathbb{R} ^3 \) zvezdasto območje. in naj bo
+\(  \vec{F} \) gladko vektorsko polje na \(  \Omega \) tako, da velja
+\(  \rot \vec{F} = 0 \). Tedaj je \(  \vec{F} \) potencialno.
+
+*Dokaz*: Naj bo \(  \omega_{0} \) kot v definiciji zvezdnasto območje. Za
+poljuben \(  \omega \in \Omega \) definiramo
+
+\[ u(\omega) = \int\limits_{[\omega_0, \omega]} \vec{F}\,\mathrm{d s}
+\]
+
+Preverjamo \(  \nabla u = \vec{F} \). Parametriziramo \(  [\omega_0, \omega]
+= [(x_0, y_0, z_0), (x, y, z)]\),
+kjer je
+
+\[ \vec{r}(t) = \begin{bmatrix} (1 - t)x_0 + t x \\ (1 - t)y_0 + ty \\
+(1 - t)z_0 + tz \end{bmatrix} = \begin{bmatrix} r_{1}(t) \\ r_{2}(t) \\ r_{3}(t) \end{bmatrix}
+\]
+
+Vemo, da je
+\begin{align*}
+\int\limits_{[\omega_0, \omega]} \vec{F} \,\mathrm{d s} &= \int\limits_0^1 \left\langle \vec{F}(\vec{r}(t)), \odv{r}(t) \right\rangle_{\mathbb{R} ^3}\,\mathrm{d t} \\
+&= \int\limits_0^1 \left\langle \vec{F}(\vec{r}(t)), \omega - \omega_0 \right\rangle_{\mathbb{R} ^3}\,\mathrm{d t}
+\end{align*}
+
+Velja
+
+\[ (\nabla u)(\omega) = (u_x, u_y, u_z)(\omega)
+\]
+
+Poglejmo \(  (u_x)(\omega) \). Velja
+
+\begin{align}\label{eq:rnd1}
+  (u_x)(\omega) &= \int\limits_0^1 \frac{\partial }{\partial x} \left\langle
+\vec{F}(\vec{r}(t)), \omega - \omega_0 \right\rangle \,\mathrm{d t} \\
+&=  \int\limits_0^1 \left( \left\langle \frac{\partial }{\partial x}
+\left[ \vec{F}(\vec{r}(t)) \right], \omega - \omega_0  \right\rangle +
+\left\langle \vec{F}(\vec{r}(t)), \frac{\partial }{\partial x} (\omega - \omega_{0})
+ \right\rangle \right)\,\mathrm{d t}
+\end{align}
+
+Zanima nas, kaj je \( \frac{\partial }{\partial x} \left[ \vec{F}(\vec{r}(t)) \right]  \).
+kjer je \(  \vec{F} = (F_1, F_2, F_3) \). Velja
+
+\begin{align*}
+\frac{\partial }{\partial x} \left[ \vec{F}(\vec{r}(t)) \right] &=
+\frac{\partial }{\partial x} (F_1(\vec{r}), F_2(\vec{r}), F_3(\vec{r})) \\
+&= \left( \frac{\partial }{\partial x} (F_1(\vec{r})), \frac{\partial }{\partial x}
+(F_2(\vec{r})), \frac{\partial }{\partial x} (F_3(\vec{r})) \right)
+\end{align*}
+
+\(  F_1 \) je definiran kot \(  F_1 = F_1 (a, b, c) \). Na podoben način sta
+definirani \(  F_2 \) in \(  F_3 \).
+
+Pri odvajanju upoštevamo verižno pravilo in gledamo kot funkcijo
+\(  (x, y, z) \mapsto t(x, y, z) + (1 - t) \omega_{0} \)
+
+Za lažji prikaz:
+
+\(  \mathbb{R} ^3 \overset{\vec{r}}{\rightarrow} \mathbb{R} ^3 \overset{
+\vec{F}}{\rightarrow} \mathbb{R} ^3 \)
+
+oz. kot funkcija \(  x \)-a
+
+\[ \mathbb{R} \overset{\vec{r}}{\rightarrow} \mathbb{R} ^3 \overset{F_1}{
+\rightarrow} \mathbb{R}
+\]
+
+Torej je
+
+\begin{align*}
+  \frac{\partial }{\partial x} \left( F_1 (\vec{r}) \right) &= \left( \frac{\partial F_1}{\partial a}  \right)
+(\vec{r}(t)) \frac{\partial }{\partial x} \left( r_1(t)) \right) +
+ \left( \frac{\partial F_1}{\partial b}  \right) (\vec{r}(t)) \frac{\partial }{\partial x} \left( r_2(t)) \right) +
+  \left( \frac{\partial F_1}{\partial c}  \right) (\vec{r}(t)) \frac{\partial }{\partial x} \left( r_3(t)) \right)
+\end{align*}
+
+Odvod \(  \frac{\partial r_1(t)}{\partial x} = t  \), medtem ko sta odvoda
+\(  r_2 \) in \( r_3  \) enaka 0, ker nista odvisna od x. Glej definicijo
+\(  \vec{r} \).
+
+Iz tega potem sledi
+
+\begin{align*}
+  \frac{\partial (F_1(\vec{r}))}{\partial x} &= t\left(\frac{\partial F_1}{\partial a}\right)
+(\vec{r}(t)) \\
+   \frac{\partial (F_2(\vec{r}))}{\partial x} &= t\left(\frac{\partial F_2}{\partial a}\right)
+(\vec{r}(t)) \\
+  \frac{\partial (F_3(\vec{r}))}{\partial x} &= t\left(\frac{\partial F_3}{\partial a}\right)
+(\vec{r}(t)) \\
+\end{align*}
+
+Nadalje
+
+\begin{align*}
+  \frac{\partial }{\partial x} \left[ \vec{F}(\vec{r}(t)) \right] &=
+t \left( \left( \frac{\partial F_1}{\partial a}  \right)(\vec{r}),
+ \left( \frac{\partial F_2}{\partial a}  \right)(\vec{r}),
+ \left( \frac{\partial F_3}{\partial a}  \right)(\vec{r})\right) \\
+&\overset{\text{predpostavka}}{=} t \left( \left( \frac{\partial F_1}{\partial a}  \right) (\vec{r}(t)),
+ \left( \frac{\partial F_1}{\partial b}  \right) (\vec{r}(t)),
+ \left( \frac{\partial F_1}{\partial c}  \right) (\vec{r}(t)),\right) \\
+&= t ( \tilde{\nabla} F_1) (\vec{r})
+\end{align*}
+
+Kjer je predpostavka \(  \rot \vec{F} = 0 \), kar pomeni
+
+\[ \begin{vmatrix}
+i & j & k \\
+\partial_a & \partial_b & \partial_c \\
+F_1 & F_2 & F_3
+\end{vmatrix} = \left( \partial_b F_3 - \partial_c F_2, \partial_c F_1 - \partial_a
+F_3, \partial_a F_2 - \partial_b F_1 \right) = (\ldots, 0, 0)
+\]
+
+in je \(  \tilde{\nabla}  = (\partial_a, \partial_b, \partial_c) \)
+
+Če se tako vrnemo k prejšnjemo integralu \ref{eq:rnd1}
+
+\begin{align*}
+  (\partial_x u)(\omega) &= \int\limits_0^1 \left[ \left\langle
+t (\tilde{\nabla}F_1)(\vec{r}), \omega - \omega_0 \right\rangle
++ F_1(\vec{r}) \right]\,\mathrm{d t} \\
+&= \int\limits_0^1 \left[ t \frac{\mathrm{d} (F_1 \circ \vec{r})}{\mathrm{dt}}
++ (F_1 \circ \vec{r}) \right] \,\mathrm{d t} \\
+&= \int\limits_0^1 \frac{\mathrm{d} t \cdot F_1(\vec{r}(t))}{\mathrm{d} t}
+\,\mathrm{d t } && \text{definiramo } t \cdot F_1(\vec{r}(t)) = G_1(t) \\
+&= G_1(1) - G_1(0) = 1\cdot F_{1(\vec{r}(1))} = F_1 (\omega)
+\end{align*}
+
+S tem smo dokazali \(  \partial_x u = F_1 \) in iz tega sledi
+
+\[ \nabla u = \vec{F}
+\]
+
+Q.E.D
+** Ploskovni integral
+*** Definicija 6.5 (p.S.)
+
+Naj bo \(  M \subset \mathbb{R} \) neka regularna ploskev in \(  f: M \to \mathbb{R} \)
+zvezna.
+
+Ploskovni integral skalarnega polja \(  f \) definiramo kot
+
+\[ \int\limits_M f \,\mathrm{d S}  = \iint\limits_D f(\vec{r}(u, v))
+\left| \vec{r}_u \times \vec{r}_v \right| \, \mathrm{d u} \, \mathrm{ dv}
+\]
+
+kjer je \(  \vec{r}: D \to M \) poljubna regularna parametrizacija za M.
+
+Opombi
+
+1) Za \(  f = 1 \) dobimo površino ploskve
+2) Definicija je neodvisna od izbire parametrizacije (je dobra).
+
+*** Zgled 6.6 (p.S.)
+
+Naj bo \(  M \) zgornja polovica homogene sfere (s središčem v \(  0 \))
+v \(  \mathbb{R} ^3 \) z radijem \(  a \). Iščemo njeno težišče
+\(  T = (x_T, y_T, z_T) \).
+
+Velja \(  x_T = y_T = 0 \).
+
+\begin{align*}
+  z_T &= \frac{1}{m(M)} \iint\limits_M z \rho \, \mathrm{dS} \\
+&= \frac{\rho}{\rho \frac{4 \pi a}{2}} \iint\limits_M z \, \mathrm{ dS}  && f(x, y, z) = z\\
+&= \frac{\rho}{\rho \frac{4 \pi a}{2}} \iint\limits_M f(x, y, z) \, \mathrm{ dS} \\
+\end{align*}
+
+Parametrizacija za \(  M \): uporabimo sferične koordinate, nivojnica
+\(  \left\{ r = a \right\} \).
+
+\[ \vec{r} = \vec{r}(\phi, \theta) = (x, y, z)
+\]
+
+\begin{align*}
+  x &= a \sin \theta \cos \phi \\
+y &= a \sin \theta \sin\phi \\
+z &= a \cos \theta && \phi \in [0, 2\pi), \ \theta \in [0, \frac{\pi}{2}]
+\end{align*}
+
+Iz tega potem sledi, da je
+
+\begin{align*}
+  I &= \int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}} a \cos \theta
+\left| \vec{r}_{\phi} \times \vec{r}_{\theta} \right|\,\mathrm{d } \theta\,\mathrm{d } \phi \\
+&= \ldots = \pi a ^3
+\end{align*}
+
+Iz tega sledi, da je \(  z_T = \frac{a}{2} \) in težišče je tako
+\(  T = (0, 0 , \frac{a}{2}) \)
+*** Definicija 6.6 (p.S.)
+
+Naj bo \(  M \) ploskev z orientacijo \(  \vec{N} \). Ploskovni integral zveznega vektorskega polja \(  \vec{F}:M \to \mathbb{R} ^3 \) je definirano s predpisom
+
+\[ \int\limits_M \vec{F} \,\mathrm{d S} = \int\limits_M^{} \left\langle \vec{F}, \vec{N} \right\rangle\,\mathrm{d S}
+\]
+
+*Enoličnost definicije*: Predznak integrala je odvisen od izbire ene izmed dveh orientacij \(  \vec{N} \).
+
+*Opomba*: Če je \(  \vec{r}=\vec{r}(u, v): D \to M, \ D \subset \mathbb{R} ^2 \) neka
+regularna parametrizacija za \(  M \), lahko vzamemo
+
+\[  \vec{N} = \frac{\vec{r}_u \times \vec{r}_v}{\left| {\vec{r}_u \times \vec{r}_v} \right|}
+\]
+
+Sledi, da je
+
+\begin{align*}
+\int\limits_M^{}\vec{F}\,\mathrm{d S} &= \iint\limits_D^{} \left\langle
+\vec{F}(\vec{r}(u, v)), \vec{N}(u, v) \right\rangle \left|
+\vec{r}_u \times \vec{r}_v \right|\,\mathrm{d u} \, \mathrm{dv} \\
+\implies \int\limits_M^{} \vec{F} \,\mathrm{d S} &= \int\limits_D^{} \left\langle
+\vec{F}(\vec{r}), \vec{r}_u \times \vec{r}_v \right\rangle\,\mathrm{d u} \,
+\mathrm{dv}
+\end{align*}
+*** Integracija po delih (/per partes/)
+
+Za \(  n = 1 \) je integracija po delih
+
+\begin{align*}
+  (uv)' &= u v' + u'v \\
+uv' &= (uv) ' - u' v && \left. \right/ \mathrm{dx} \\
+\int\limits_a^bu\,\mathrm{d v} &= \left. (uv) \right|^{x = b}_{x = a}- \int\limits_a^b v \,\mathrm{d u}
+\end{align*}
+
+Za enodimenzionalni primer imamo \(  \left\{ a, b \right\} = \partial \left[ a, b \right] \), če pa imamo območje \(  M \) pa je
+
+\[ \int\limits_M^{}\phi\,\mathrm{d V} \rightarrow \int\limits_{\partial M}^{}\tilde{\phi}\,\mathrm{d V}
+\]
+
+oz. integracija po delih je
+
+\[ \int\limits_{\partial M}^{}\psi \,\mathrm{d V} \overset{\text{lahko izrazimo kot}}{\longrightarrow} \int\limits_M^{} D \psi\,\mathrm{d V}
+\]
+
+kjer je \(  D \) nek diferencialni operator.
+
+*** Gaussov izrek (6.8)
+
+Naj bo \(  \Omega \) odprta omejena množica v \(  \mathbb{R}^3 \) z (odsekoma) gladkim robom, \(  \vec{F} \) pa naj bo \(  C^1 \) vektorsko polje v okolici \(  \bar{\Omega} = \Omega \cup \partial \Omega \). Tedaj je
+
+\[ \iint\limits_{\partial \Omega}^{} \vec{F}\,\mathrm{d S} =  \iiint\limits_{\Omega}^{} \dive \vec{F} \,\mathrm{d V}
+\]
+
+*Opomba*: \(  \partial \Omega \) je ploskev z orientacijo \(  \vec{N} \), ki kaže ven iz \(  \Omega \), pravimo ji zunanja normala.
+
+*Dokaz*: Za primer, ko \(  \Omega \) lahko zapišemo kot območje md dvema grafoma, za vse tri koordinatne ravnine.
+
+[[file:figures/GaussIzrek.svg]]
+
+Označimo \(  \vec{F} = (X, Y, Z) \). Tedaj je
+
+\[ \dive \vec{F} = X_x + Y_y + Z_z
+\]
+
+Označimo z \(  \vec{N} = (N_1, N_2, N_3) \) zunanjo normalno. Želimo
+
+\[ \iint\limits_{\partial \mho} (XN_1 + YN_2 + ZN_3) \,\mathrm{d S} = \iiint\limits_{\Omega}(X_x + Y_y + Z_z) \,\mathrm{d V}
+\]
+
+Dovolj je dokazati samo za eno komponento, npr.
+
+\[ \iint\limits_{\partial \Omega}^{}  ZN_3 \,\mathrm{d S} = \iiint\limits_{\Omega} Z_z \,\mathrm{d V}
+\]
+
+Desno stran enačbe označimo z DS, in levo stran označimo z LS.
+
+Naj bo
+
+\[ \Omega = \left\{ (x, y, z) \in \mathbb{R} ^3 ; \ f(x, y) < z < g(x, y) \right\}
+\]
+
+Dokazali smo obstoj predpostavke \(  f, g \).
+
+Rob grafa je tako
+
+\[ \partial \Omega = \Gamma_f + \Gamma_g + \text{ "plašč "}
+\]
+
+Plašč je v narekovajih, ker je v našem primeru plašč valja, vendar v splošnem primeru, pa ni.
+
+Leva stran enačbe je tako oblike
+
+\[ \implies \mathrm{LS} = \iint\limits_{\Gamma_f} ZN_3 + \iint\limits_{\Gamma_g} ZN_3 + \iint\limits_{\text{plašč}} ZN_3
+\]
+
+Zadnji integral je enak nič, saj po definiciji naše normale, vektor normale na plašču z vrednostmi \(  \vec{N} = (\cdot, \cdot, 0) \)
+
+Parametrizacija grafa \(  \Gamma_f \) je: \(  \vec{r}(x, y) = (x, y, f(x, y)); \ (x, y) \in D \subset \mathbb{R} ^2 \)
+
+
+Izračunamo, da je \(  \left| \vec{r}_x \times \vec{r}_y \right|  = \sqrt{1 + f_x ^2 + f_y ^2}\) in iz tega, dobimo, da je normala in tretja komponenta normale enaka
+
+\[ \vec{N} = \frac{\vec{r}_x \times \vec{r}_y}{\left| \vec{r}_x \times \vec{r}_y \right|} \quad N_3 = \frac{- 1}{\sqrt{1 + f_x ^2 + f_y ^2}}
+\]
+
+\[ \implies \mathrm{LS} = \iint\limits_{D} Z(x, y, f(x, y)) \left( - \frac{1}{\sqrt{1 + f_x ^2 + f_y ^2}} \right) \sqrt{1 + f_x ^2 + f_y ^2} \,\mathrm{d x} \, \mathrm{dy} + \iint\limits_{D} Z(x, y, g(x, y)) \left( \frac{1}{\sqrt{1 + g_x ^2 + g_y ^2}} \right) \sqrt{1 + g_x ^2 + g_y ^2} \,\mathrm{d x} \, \mathrm{dy}
+\]
+
+Drugi člen produkta je \(  N_3(\vec{r}) \) in tretji člen \(  \left| \vec{r}_x \times \vec{r}_y \right| \)
+
+Iz tega nadalje sledi
+
+\begin{align*}
+ \implies \mathrm{LS} &= \iint\limits_D \left[ Z(x, y, g(x, y)) - z(x, y, f(x, y)) \right]\,\mathrm{d x} \, \mathrm{dy} \\
+&= \iiint\limits_{f(x, y)}^{g(x, y)} Z_z (x, y, t) \,\mathrm{d t} \, \mathrm{dx dy} \\
+&= \iiint\limits_{\Omega} Z_z \,\mathrm{d V} = \mathrm{DS}
+\end{align*}
+
+In s tem je glavnina dokaza enaka.
+*** Sestavljanje območij
+
+#+begin_quote
+        Kot je značilno za knjige v zahodnem svetu dodamo podnaslov, ki je zmeraj daljši od naslova.
+#+end_quote
+
+Odpravljanje pogoja, da je \(  \Omega \) območje med dvema sferama.
+
+[[file:figures/sestavljanje_obmocij.svg]]
+
+\[ \Omega = \Omega_1 \cup \Omega_2
+\]
+
+kjer \(  \Omega_1, \ \Omega_2 \) zadoščata pogoju, da sta med dvema grafoma. Iz tega sledi,
+
+\begin{align*}
+  \iiint\limits_{\Omega}^{}\dive \vec{F} \,\mathrm{d V} &= \iiint\limits_{\Omega_1}^{} \dive \vec{F} \,\mathrm{d V} + \iiint\limits_{\Omega_2}^{} \dive \vec{F} \,\mathrm{d V} \\
+&\overset{\text{Gauss}}{=} \iint\limits_{\partial \Omega_1}^{}\vec{F} \,\mathrm{d S} + \iint\limits_{\partial \Omega_2}^{}\vec{F} \,\mathrm{d S}
+\end{align*}
+
+vendar velja, da \(  \partial \Omega \ne \partial \Omega_1 \cup \partial \Omega_2 \).
+
+Integrala po \(  \Sigma \) se izničita, ker integriramo isto funkcijo, toda vsakič z nasprotno normalo.
+*** Primer 6.7 (p.S.)
+
+Imamo \(  \Omega = K(0, 1) \) enotsko kroglo v \(  \mathbb{R} ^3 \) in vektorsko polje \(  \vec{F} = (x, y, z) \ (\vec{F} = \mathrm{id}) \)
+
+\begin{align*}
+  \iint\limits_{\partial \Omega}^{} \vec{F} \,\mathrm{d }\vec{S} &\overset{\text{Gauss}}{=} \iiint\limits_{\Omega}^{} \dive \vec{F} \,\mathrm{d V} \\
+&= 3V(\Omega) = 4\pi
+\end{align*}
+*** Primer 6.8 (p.S.)
+
+Imamo vektorsko polje \(  \vec{F} = (y ^2, z ^3, x ^2) \) in plašč stožca \(  M = \Sigma = \left\{ x ^2+ y ^2 \le z ^2 \text{ in } 0 \le z \le 1 \right\}\)
+
+[[file:figures/stozec.svg]]
+
+Zanima nas integral
+
+\[ I = \iint\limits_M^{} \vec{F} \,\mathrm{d }\vec{S}
+\]
+
+Območje lahko parametriziramo kot
+
+\[ \Sigma = \left\{ (r \cos \phi, r \sin \phi, z); r \le z \le 1 \right\}
+\]
+
+Želimo uporabiti Gaussov izrek. Poiščemo \(  \Omega \) tako, da je \(  M \) del \(  \partial \Omega \). Vzamemo \(  \Omega := \Sigma, \ \partial \Omega = M \cup K \), kjer je \(  K \) osnovna ploskev stožca. Tako je
+
+\begin{align*}
+  \iint\limits_M^{} \vec{F} \,\mathrm{d }\vec{S} &= \iint\limits_{\partial \Omega}^{} \vec{F} \,\mathrm{d S} - \iint\limits_K^{} \vec{F} \,\mathrm{d }\vec{S} \\
+&\overset{\text{Gauss}}{=} \iiint\limits_{\Omega}^{} \dive \vec{F} \,\mathrm{d V} - \iint\limits_K^{} \vec{F} \,\mathrm{d } \vec{S} \\
+\dive \vec{F} &= 0 && \text{ glej definicijo divergence } \\
+&= - \iint\limits_K^{} \vec{F} \,\mathrm{d }S = \ldots = - \frac{\pi}{4}
+\end{align*}
+
+kjer smo \(  K := \left\{ (r \cos \phi, r \sin \phi, 1); \ r \in [0, 1], \phi \in [0, 2\pi] \right\} \) parametrizirali.
+
+#+begin_quote
+        Biti ali ne biti konsistenten z vektorskimi oznakami. To je sedaj vprašanje.
+#+end_quote
+*** Primer
+
+Naj bo \(  \vec{F} = (U, V, W) \) vektorsko polje definirano v okolici točke \(  \vec{r}_0 \in \mathbb{R} ^3 \).
+
+Tedaj je
+
+\[ (\dive \vec{F})(\vec{r}_0) = \left(\frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} + \frac{\partial W}{\partial z} \right) (\vec{r}_0)
+\]
+
+Za divergenco potrebujemo (ortonormirani) koordinatni sistem, za \(  \vec{F} \) ga pa ne. Kaj se zgodi, če en ONS nadomestimo z drugim? Kako se to pozna na divergenci?
+
+Naj bo \(  \vec{F} \in C^1 \).
+
+\[  \left( \dive \vec{F} \right)(\vec{r}_0) = \lim_{\epsilon \searrow 0} \left\langle \dive \vec{F} \right\rangle_{K(\vec{r}_0, \epsilon)}
+\]
+
+Kjer je \(  (\dive \vec{F}) \) zvezna funkcija v okolici \(  \vec{r}_0 \) in pa \(  \left\langle \dive \vec{F} \right\rangle_{K(\vec{r}_0, \epsilon)}\) povprečje \(  \dive \vec{F} \) po krogli \(  K(\vec{r}_0, \epsilon) \).
+
+Oziroma drugače povedano
+
+\[ \frac{1}{V(K(\vec{r}_0, \epsilon))} \iiint\limits_K^{} \dive \vec{F} \,\mathrm{dV} \frac{3}{4\pi} \frac{1}{\epsilon ^3} \iint\limits_{S ^2 (\vec{r}_0, \epsilon)}^{} \vec{F} \,\mathrm{d }\vec{S}
+\]
+
+kar je neodvisno od izbire koordinat.
+
+In odgovor na zgornja vprašanja je, da se nič ne zgodi.

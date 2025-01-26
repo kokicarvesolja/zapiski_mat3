@@ -1,0 +1,509 @@
+#+title: Anki Dokazi
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+
+* Trditev 2.19
+
+Naj bo \(  K \subset \mathbb{R}^n \) kvader in \(  f: K \to [0, \infty) \) omejena. Tedaj velja
+
+\[ \int\limits_K f \,dx = 0 \ \implies \  f = 0 \text{ s.p. } K
+\]
+** Dokaz
+*** 1.
+Case: \(  K_n = \left\{ x \in K; \ f(x) \le \frac{1}{n} \right\}, \ n \in \mathbb{N} \)
+*** 2.
+\(  0 \le \chi_{K_n} \le nf \) velja povsod na \(  K \)
+**** <2>.1
+\(  f \ge 0 \)
+Dokaz: zaradi definicije funkcije \(  f(x) \) v 1.
+**** <2>.2 QED
+*** 3.
+\[ 0 \le S(\chi_{K_n}) \le n \cdot S(f) = 0
+\]
+**** <3>.1
+Case: \(  S(\chi_{K_n}) = \inf_D S(\chi_{K_n}, D)  \).
+**** <3>.2
+\(  0 \le S(\chi_{K_n}, D) \le S(nf, D) = n S(f, D) \) za vsako delitev \(  D \) kvadra \(  K \)
+Dokaz: 2. ter definicije zgornje Darbouxove vsote:
+
+\begin{align*}
+  S(f, D) &= \sum\limits_{i = 1}^n \sum\limits_{j = 1}^m M_{ij} \left| P_{ij} \right| && M_{ij} = \sup f(x, y) \\
+S(nf, D) &= \sum\limits_{i=1}^n \sum\limits_{j=1}^m n M_{ij} \left| P_{ij} \right|\\
+= n S(f, D)
+\end{align*}
+**** <3>.3
+\( n \cdot S(f) = 0  \), ker je \(  \int\limits_K^{} f\,\mathrm{d x} = 0 \)
+Dokaz: predpostavka v trditvi
+**** <3>.4 QED
+*** 4.
+\(  S(\chi_{K_n}) = 0 \)
+
+Dokaz: 3.
+*** 5.
+\[ \int\limits_K^{} \chi_{K_n}\,\mathrm{d x} = \int\limits_{K_n}^{}1\,\mathrm{d x} = 0
+\]
+
+Dokaz: definicija karakteristične funkcije \(  \chi_{K_n} \) ter 4.
+
+/zdi se mi, da je implicitno privzeto, da je funkcija integrabilna in po definiciji je integrabilna, ko sta \(  s(f) = S(f) \) enaki.
+*** 6.
+\[ V(K_n) \exists \ \land \ V(K_n = 0)
+\]
+
+Dokaz: 5.
+*** 7.
+\[ m(K_n) = 0 \ \forall n \in \mathbb{N}
+\]
+
+Dokaz: Trditev 2.17, če je \(  A \subset \mathbb{R}^n \) kompaktna množica, potem je \(  V(A) = 0 \ \iff \ m(A) = 0 \).
+*** 8.
+\[ m(\left\{ f \ne 0 \right\}) = m(\bigcup_{n \in \mathbb{N}} K_n) = 0
+\]
+
+Dokaz: 7.
+* Izrek 2.20 (Fubini-Tonelli)
+
+Naj bo \(  f:[a,b] \times [c, d] \to \mathbb{R} \) integrabilna. Privzamemo, da je \(  \forall x \in [a, b] \) funkcija \(  f(x, \cdot): [c, d] \to \mathbb{R}, \ y \mapsto f(x, y) \) definirana kot integrabilna na \(  [c, d] \). Tedaj je
+
+\[ \iint\limits_{[a, b] \times [c, d]}^{} f(x, y) \,\mathrm{dx dy} = \int\limits_a^b \int\limits_c^d f(x, y) \,\mathrm{d y}\,\mathrm{d x}
+\]
+
+Če je \(  f \) zvezna, potem je
+
+\[ \iint\limits_{[a, b]\times [c, d]}^{} f(x, y) \,\mathrm{d xdy} = \int\limits_{a }^b \left( \int\limits_c^d f(x, y) \,\mathrm{d y} \right)\,\mathrm{d x} = \int\limits_c^d \left( \int\limits_a^b f(x, y)\,\mathrm{d x} \right)\,\mathrm{d y}
+\]
+
+** Dokaz
+*** <1>1
+\(  g: [a, b] \to \mathbb{R} \),
+
+\[ g (x) = \int\limits_c^d f(x, y) \,\mathrm{d y}
+\]
+
+Dokaz: Funkcija \(  g \) obstaja, ker je \(  f \) integrabilna.
+*** <1>2
+Assume: \(  I = [a, b], \ J = [c, d] \)
+Prove:
+\[ \iint\limits_{I \times J}^{} f(x, y)  \,\mathrm{d x dy} = \int\limits_I^{} g(x) \,\mathrm{d x}
+\]
+Dokaz:
+**** <2>1
+Assume: delitvi \(  D_1 = \left\{ I_i = [x_{i-1}, x_i]; \ i = 1, \ldots, m \right\} \) za \(  I \) in \( D_2 = \{J_j = [y_{j - 1}, y_j]; \ j = 1, \ldots n \} \) za \(  J \).
+Prove: \(  D_1 \times D_2 \) je delitev za \(  I \times J \)
+***** <3>1
+\(  D_1 \) je projekcija na \(  I \)
+***** <3>2
+\(  D_2 \) je projekcija \(  J \)
+***** <3>3 QED
+By: <3>1 in <3>2
+**** <2>2
+Assume: \(  P_{ij} = I_i \times J_j \) in
+
+\(  m_{ij} (f) = \inf_{P_{ij}} f \) in \(  M_{ij} (f) = \sup_{P_{ij}} f \)
+
+Prove:
+\[ s(f, D) \le \sum\limits_{i = 1}^m \inf_{x \in I_i} g(x) \left| I_i \right| = s(g, D_1)
+\]
+
+Dokaz:
+***** <3>1
+\[ s(f, D) = \sum\limits_{i = 1, j=1}^{m, n} m_{ij} (f) \left| P_{ij} \right| = \sum\limits_{i=1}^m \left( \sum\limits_{j = 1}^n m_{ij}(f) \left| J_j \right| \right) \left| I_i \right|
+\]
+Dokaz: definicija spodnje Darbouxove vsote ter \(  \left| P_{ij} \right| = \left| J_j \right| \left| I_i \right|\)
+***** <3>2
+\[ \sum\limits_{j =1}^{n} m_{ij} (f) \left| J_j \right| \le \sum\limits_{j = 1}^m m_j (f(x, \cdot)) \left| J_j \right| = s(f(x, \cdot), D_2) \le \int\limits_J^{} f(x, y) \,\mathrm{d y} = g(x)
+\]
+
+Dokaz: Integrabilno po Darbouxu ter definicije \(  m_{ij} \) in \(  m_j \).
+***** <3>3
+\[ \sum\limits_{j=1}^n m_{ij} (f) \left| J_j \right| \le \inf_{x \in I_i} g(x)
+\]
+
+Dokaz: <3>2 in \(  \inf_{x \in I_i} g(x) \le g(x) \)
+***** <3>2 QED
+Dokaz: <3>1, in <3>3 ter definicija spodnje Darbouxove vsote
+**** <2>3
+Simetrično s supremumi
+**** <2>4
+ \( s(f, D) \le s(g, D_1) \le S(g, D_1) \le S(f, D)  \)
+ Dokaz: <2>2 in <2>3
+**** <2>5
+Assume: \(\forall \epsilon > 0 \)
+Prove:
+\[ S(g, D_1) - s(g, D_1) < \epsilon
+\]
+Dokaz:
+***** <3>1
+\[ S(f, D) - s(f, D) < \epsilon
+\]
+Dokaz: \(  f \) je integrabilna in obstaja taka delitev \(  D \)
+***** <3>2 QED
+Dokaz: <3>1 in <2>4
+**** <2>6 QED
+*** <1>3 QED
+Dokaz: <1>2
+* Trdite 2.43
+Predpostavke:
+- \( I = [a,b] \)
+- \( \alpha, \beta: I \to \mathbb{R} \) zvezne in \( \alpha \le \beta \)
+- \( A: \left\{ \left( x, y) \right) \in \mathbb{R} ^2, \ x \in I, y \in \left[ \alpha(x), \beta(x) \right] \right\} \)
+- \( f: A \to \mathbb{R} \)
+
+\[ \iint\limits_A^{} f(x, y)  \,\mathrm{d x dy} = \int\limits_a^b \int\limits_{\alpha(x)}^{\beta(x)} f(x, y) \mathrm{dy dx}
+\]
+** Dokaz
+*** <1> 1
+Obstaja pravokotnik \( P \subset \mathbb{R} ^2 \) tako, da \( A \subset P \)
+
+Dokaz: \( \alpha(x), \beta (x) \) sta zvezni in na intervalu \( [a, b] \) omejeni.
+*** <1>2
+Case: \( \tilde{f}: A \to \mathbb{R} \):
+\[ \tilde{f} (x, y) = \begin{cases}
+f(x, y), \ (x, y) \in A \\
+0; \text{ else}
+\end{cases} = f \cdot \chi_{A}
+\]
+Prove: \( \tilde{f} \)  je integrabilna na \( P \)
+Dokaz:
+**** <2>1
+Točke nezveznosti funkcije \( \tilde{f} \) so vsebovane v \( \Gamma_{\alpha} \cup \Gamma_{\beta} \).
+**** <2>2
+\( V(\Gamma_{\alpha} \cup \Gamma_{\beta}) = 0 \)
+Dokaz:
+Prostornina unije grafov s prostornino 0 je 0.
+**** <2>3
+\( \tilde{f}\) je zvezna skoraj povsod
+Dokaz: <2>2 ter definicija s.p.
+**** <2>4 QED
+Dokaz: <2>3 in Lebesgue
+*** <1>3
+Prove: \( \tilde{f}(x, \cdot) \) je integrabilna \( \forall x \in I \)
+Dokaz: \( \tilde{f} \) je odsekoma zvezna na \( [c, d] \)
+*** <1>4
+\begin{align*}
+  \iint\limits_A^{} f(x, y) \,\mathrm{dx dy} &= \iint\limits_P^{} \tilde{f}(x, y) \,\mathrm{d x dy} \\
+&= \int\limits_a^{ b } \left( \int\limits_c^d \tilde{f}(x, y) \mathrm{dy}) \right\mathbb{dx} \\
+&= \int\limits_a^b \int\limits_{\alpha}^{\beta} f(x, y) \mathrm{dx dy}
+\end{align*}
+* Izrek 2.45
+Predpostavke:
+- \( A \subset \mathbb{R}^n, \ B \subset \mathbb{R} ^n  \) kvadra
+- \( f: A \times B \to \mathbb{R} \) integrabilna
+- \( f(x, \cdot) \) integrabilna na \( B \forall x \in A \)
+
+\[ \iint\limits_{A \times B}^{}f \,\mathrm{d x dy} = \int\limits_A^{} \left( \int\limits_B^{}f(x, y) \, \mathrm{dx} \right) \, \mathrm{dy}
+\]
+* Posledica 2.46
+\( F: K = [a, b] \times [c, d] \times [e, f] \to \mathbb{R} \) zvezna
+
+\[ \iiint\limits_K^{} F(x, y, z) \,\mathrm{d V} = \iint\limits_{[a,b] \times [c, d]}^{} \left( \int\limits_e^f F(x, y, z)\, \mathrm{dz} \right) \,\mathrm{d dxdy} = \int\limits_a^b \left( \int\limits_c^d \left[ \int\limits_e^f F(x, y, z) \, \mathrm{dz} \right] \mathrm{dy} \right) \mathrm{dx}
+\]
+* Trditev 2.47
+Predpostavke:
+- \( A \subset \mathbb{R} ^2  \) ima ploščino
+- \( \alpha, \beta: A \to \mathbb{R} \) zvezna in \( \alpha < \beta \)
+- \( B = \left\{ (x, y, z) \in A \times \mathbb{R}, \, \alpha(x, y) \le y \le B(x, y) \right\} \)
+- \( f: B \to \mathbb{R} \) je zvezna
+
+\[ \iiint\limits_B^{} f(x,y, z)  \,\mathrm{d V} = \iint\limits_A^{} \left( \int\limits_{\alpha(x)}^{\beta(x)} f(x, y, z) \, \mathrm{dz} \right) \,\mathrm{d y dx}
+\]
+* Definicija 2.50
+Predpostavke:
+- \( U^{\text{odp}} \subset \mathbb{R}^n \)
+- \( \phi_1, \ldots, \phi_m: U \to \mathbb{R} \) parcialno odvedljiva na vse spremenljivke
+
+/Jacobijevo matriko/ za \( \phi = \left( \phi_1, \ldots, \phi_m \right) \) definiramo kot
+
+\[ J\phi = \begin{bmatrix}
+\frac{\partial \phi_1}{\partial x_1} & \mathbb{ldots} & \frac{\partial \phi_1}{\partial x_m}  \\
+\vdots & \ddots & \ldots \\
+\frac{\partial \phi_m}{\partial x_1} & \ldots & \frac{\partial \phi_m}{\partial x_m}
+\end{bmatrix}
+\]
+* Izrek 2.51
+Predpostavek:
+- \( A \subset \mathbb{R} ^n \) omejena množica s prostornino
+- \( \phi: A \to \mathbb{R} ^n \) injektivna in razreda \( C^1 \)
+- \( \det J\phi(x) \ne 0 \forall x \in A \)
+- \( x \mapsto \det(J(\phi(x))) \) omejena in različna od 0
+- \( \phi(A) \) je odprta v \( R ^n \) s prostornino
+- \( f: \phi(A) \to \mathbb{R} \) je integrabilna
+
+  Tedaj je tudi \( x \mapsto f(\phi(x)) \left| \det J\phi(x) \right| \) integrabilna na \( A \) in velja
+
+  \[ \int\limits_{\phi(A)}^{} f(x) \, \mathrm{dx} = \int\limits_A^{} f(\phi(t)) \left| \det J \phi(t) \right| \, \mathrm{dt}
+  \]
+* Skica dokaza:
+*** <1>1
+Case:
+- \( A \) je pravokotnik,
+- \( n = 2 \),
+- \( f \) je zvezna,
+- \( \left\{ P_j \right\} \) neka delitev za \( A \)
+Prove:
+
+\[ \iint\limits_{\phi(A)}^{} f(x, y)  \,\mathrm{d x dy} = \sum\limits_{ j}^{} \iint\limits_{\phi(P_j)}^{} f(x, y) \,\mathrm{d x dy}
+\]
+
+Dokaz: Injektivnost
+*** <1>2
+Prove:
+
+\[ \sum\limits_j^{} \iint\limits_{\phi(P_j)}^{} f(x, y) \,\mathrm{d x dy} = \sum\limits_j^{} \left\langle f \right\rangle_{\phi(P_j)} \left| \phi(P_j) \right|
+\]
+
+Dokaz: Izrek o srednji vrednosti med \( f \) in \( Q \)
+
+\[ \left\langle f \right\rangle_Q = \frac{1}{\left| Q \right|} \int\limits_Q^{} f \, \mathrm{dx}
+\]
+*** <1>3
+\( \left\langle f \right\rangle_{\phi(P_j)} = f(\phi(u_j, v_j)) \)
+*** <1>4
+Prove:
+\[ \left| \phi(P_j) \right| \approx = \left| \det J\phi  \right|
+\]
+Dokaz:
+**** <2>1
+[[file:jacobi_dokaz.svg]]
+**** <2>2 QED
+
+\begin{align*}
+  \left| \phi(P_j) \right| &= \left| \left( \phi(u + \Delta u, v) - \phi(u, v) \right) \times \left( \phi(u, v + \Delta v) - \phi(u, v) \right) \right| \\
+&= \frac{\partial \phi}{\partial u} \Delta u \times \frac{\partial \phi}{\partial v} \Delta v \\
+&= \left| \phi_u \times \phi_v \right| \Delta u \Delta v \\
+&= \begin{bmatrix}
+\left( \phi_1 \right)_u & \left( \phi_1 \right)_v \\
+\left( \phi_2 \right)_u & \left( \phi_2 \right)_v
+ \end{bmatrix} = \left| \det J \phi \right|
+\end{align*}
+*** <1>5
+Prove:
+\[ \iint\limits_{\phi(A)}^{} f(x, y) \,\mathrm{d xdy} = \sum\limits_j^{} f(\phi(x, y)) \left| \det J\phi \right| \Delta u \Delta v
+\]
+
+Dokaz: <1>2, ter <1>4
+*** <1>6 QED
+Dokaz: <1>5 je Riemannova vsota za funkcijo \( f \circ \phi \left| \det J \phi \right|  \), kjer je \( \Delta u \Delta v \) velikost delilnega pravokotnika za \( A \). Posledično v limiti dobimo
+
+\[ \int\limits_A^{} f \circ \phi \left| \det J \phi \right| \, \mathrm{dS} = \int\limits_A^{} f(\phi(\xi, \eta)) \left| \det J\phi(\xi, \eta) \right| \mathbb{d} \xi \mathrm{d}\eta
+\]
+
+* Definicija 2.16
+
+Naj ima telo \(  T \subset \mathbb{R}^3 \) gostoto \(  \rho = \rho(x, y, z) \). Če je \(  \rho = \text{ konst. } \) je telo homogeno.
+
+Masa telesa \(  T \) je definirana kot
+
+\[ m(T) = \iiint\limits_T \rho(x, y, z) \, \mathrm{dV}
+\]
+* Definicija 2.17
+Težišče telesa \(  T \) je točka \(  (x_t, y_t, z_t) \subset \mathbb{R} ^3 \) za katero velja
+
+\begin{align*}
+  x_t &= \frac{1}{m(T)} \iiint\limits_T x \rho(x, y, z) \, \mathrm{dV} \\
+  y_t &= \frac{1}{m(T)} \iiint\limits_T y \rho(x, y, z) \, \mathrm{dV}\\
+  z_t &= \frac{1}{m(T)} \iiint\limits_T z \rho(x, y, z) \, \mathrm{dV}
+\end{align*}
+
+Kompaktneje se to zapiše kot
+
+\[ \mathbf{x}_t = \frac{1}{m(T)} \int\limits_T (x, y, z) \rho \,\mathrm{dx} = \frac{1}{m(T)} \int\limits_T \vec{\xi} \rho\,\mathrm{dV}
+\]
+
+kjer je \(  \vec{\xi} = (x, y, z) \) vektorska funkcija. Težišče nam pove povprečje položajev glede na utež \(  \rho \)
+* Definicja 2.18
+
+Vztrajnostni moment telesa \(  T \subset \mathbb{R} ^3 \) pri vrtenju okoli osi \(  \gamma \subset \mathbb{R}^3 \) je enako
+
+\[ J_{\gamma} = \int\limits_T d(\vec{x}, \gamma) ^2 \rho(\vec{x}) \,\mathrm{d\vec{x}}
+\]
+
+kjer je \(  d(\vec{x}, \gamma) \) oddaljenost točke \(  \vec{x} = (x, y, z) \) od osi \(  \gamma \).
+
+V posebnem primeru je to:
+
+\[ J_z = \iiint\limits_T (x ^2 + y ^2) \rho(x, y, z) \, \mathrm{dx}\, \mathrm{dy} \mathrm{dz}
+\]
+* Posplošeni RD integral v \(  \mathbb{R} ^n \)
+1) \(  f: D \to [0, \infty] \) omejena.
+
+   \[ \int\limits_D f\,\mathrm{dV} := \lim_{a \to \infty} \int\limits_{D \cap [-a, a] ^n} f\,\mathrm{dV}
+   \]
+
+   Če vsi izrazi na desni obstajajo.
+
+2) \(  f: D \to [0, \infty) \) neomejena. Tedaj definiramo
+
+   \[ \int\limits_D f\,\mathrm{dV} := \lim_{M \to \infty} \int\limits_D \min \{f(x), M\}\,\mathrm{dx}
+   \]
+
+   če vsi izrazi na desni obstajajo.
+
+3) \(  f:D \to \mathbb{R} \) (ni več pozitiven neskončen interval!)
+
+   Poljubno funkcijo poskusimo izraziti s pomočjo pozitivnih funkcij (saj imam zanje že imamo definicijo).
+
+   Definiramo
+
+   \[ f_+ := \max \{f, 0\}
+   \]
+    Torej, če je funkcija pozitivna vzamemo njeno pozitivno vrednost, drugače je 0. Obratno velja za
+
+    \[ f_- = \min\{-f, 0\}
+    \]
+
+   [[file:figures/izlimitirani_integral.svg]]
+
+    In velja
+
+    \[ f = f_+ - f_-, \quad f_{\pm} \ge 0
+    \]
+
+    Iz česar sledi
+
+    \[ \int\limits_D f\,\mathrm{dx} := \int\limits_D f_+\,\mathrm{dV} - \int\limits_D f_-\,\mathrm{dV}
+    \]
+
+    Če oba integrala na desni obstaja in sta končna (nočemo razlike dveh neskončnosti).
+
+    Poglejmo absolutno vrednost \(  \left| f \right|  = f_+ + f_-\), iz česar sledi, da je za definicijo \(  \int\limits_D f\,\mathrm{dV} \) pomembno, da obstaja \(  \int\limits_D \left| f \right| \,\mathrm{dV} \).
+* Definicija 3.3
+Pot je gladka, če je \(  \vec{r} \in C^1 (I) \) za \(  I \subset \mathbb{R} \).
+* Definicija 3.4
+Gladka krivulja v \(  \mathbb{R} ^3 \) je gladka pot \(  \vec{r} = \left( x, y, z \right): I \to \mathbb{R} ^3 \), za katero velja \(  \odv{r} (t) \ne 0 \) za vsak \(  t \in I \). Taka krivulja je tudi injektivna (in nima samopresečišč).
+* Definicija 3.6
+Če je \(  \vec{r}: [a, b] \to [0, \infty) \) gladka krivulja, katere tir označimo z \(  \Gamma \), je dolžina \(  \Gamma \) definirana kot
+
+\[ l(\Gamma) = \int\limits_a^b \left| \odv{r}(t) \right|\,\mathrm{d t}
+\]
+* Trditev 3.7
+Prove: Definicija 3.6 je dobra (torej neodvisna od izbrane parametrizacije)
+** Dokaz
+*** <1>1
+Case 1: \(  \vec{r}: I = [a, b] \to \Gamma \)
+Case 2: \(  \vec{\rho}: J = [\alpha, \beta] \to \Gamma \) (druga regularna parametrizacija)
+Case 3: \(  h \in C^1:J \to I \)
+
+Prove:
+
+\[ \vec{\rho} = \vec{r} \circ h
+\]
+
+Dokaz: Case 3, 2, in 1
+*** <1>2
+\[ \int\limits_{\alpha}^{\beta} \left| \odv{\rho} (u) \right|\,\mathrm{d u} = \int\limits_{\alpha}^{\beta} \left| \odv{r}(h(u)) \right| \left| h'(u) \right|\,\mathrm{d u} = \int\limits_a^b \left| \odv{r} (t) \right|\,\mathrm{d t}
+\]
+Dokaz: <1>1 in verižno pravilo
+*** <1>3 QED
+Dokaz: <1>2
+* Definicija 3.10
+Enotski tangnenti vektor
+
+\[ \frac{\odv{r}(t) }{\left| \odv{r} (t) \right|}
+\]
+
+Tangenta v točki \(  \odv{r}(t_0) \) premica skozi \(  \vec{r}(t_0) \) v smeri tangentnega vektorja na \(  \Gamma \) v točki \(  \vec{r}(t_0) \).
+
+Enačba premice je
+
+\[ (x, y, z) = \vec{r}(t_0) + \lambda \odv{r}(t_0)
+\]
+
+Normalna ravnina na \(  \vec{r}(t_0) \) je ravnina skozi \(  \vec{r}(t) \) pravokotna na tangentni vektor.
+* Izrek 3.15
+Predpostavke:
+
+- \(  \gamma \) je regularna parametrizacija \(  C^2 \) neke krivulje \(  \mathbb{R} ^3 \)
+- Za dani \(  t_0 \in \mathbb{R} \) privzamemo, da je
+
+\[ \vec{v}_0 = \left( \odv{\gamma} \times \oddv{\gamma} \right) (t_0) \ne 0
+\]
+
+Tedaj obstaja \(  \delta > 0 \) tako, da sta za poljubni točki \(  t_1, t_2 \in \left( t_0 - \delta, t_0 + \delta \right) \), kjer so \(  t_1, t_2 \) in \(  t_0 \) različne, točke \(  \tilde{\gamma}(t_1), \vec{\gamma}(t_2), \vec{\gamma(t_0)} \) nekolinearne.
+
+** Dokaz (s protislovjem)
+*** <1>1
+Assume: točke \(  \gamma(t_1), \gamma(t_2), \gamma(t_0) \) so kolinearne
+Case 1: \(  l = l(t_1, t_2) \) je premica z izhodiščem \(  \left( \cdot, \gamma(t_0) \right) \), ki jih povezuje
+Case 2: \( w \in l^{\perp}  \)
+Case 3: \(  t_0 < t_1 < t_2 \)
+
+Prove:
+
+\[ \left\langle \gamma(t_1) - \gamma(t_0), w \right\rangle = \left\langle \gamma(t_2) - \gamma(t_0), w \right\rangle = 0
+\]
+
+Dokaz: Definicija skalarnega produkta ter Case 2, in Assume
+*** <1>2 Rolleov izrek
+Prove: Obstaja točki \(  \xi_1, \xi_2 \in \mathbb{R} \) tako, da velja
+
+\[ t_0 < \xi_1 < t_1 < \xi_2 < t_2\ \ni: \ \left\langle \odv{\gamma}(\xi_1), w \right\rangle = \left\langle \odv{\gamma}(\xi_2), w \right\rangle = 0
+\]
+
+Dokaz: Rolleov izrek, matematika 1, ter odvod \( \frac{\mathrm{d} }{\mathrm{d} t} \left\langle \vec{\gamma}(t) - \vec{\gamma}(t_0), w \right\rangle \) (odvod konstante)
+
+**** Rolleov izrek
+
+/Spomni se/: Rolleov izrek (Matematika 1, Mrčun, str. 163)
+
+Predpostavke:
+- \( a, b \in \mathbb{R}, \ a < b \)
+- \( f: [a, b] \to \mathbb{R} \) zvezna funkcija
+- \( f \) odvedljiva na \( (a, b) \)
+
+Če velja \( f(a) = f(b)  \), potem obstaja takšna točka \( c \in (a, b) \)
+
+\[ f'(c) = 0
+\]
+
+V našem primeru je \( f(t) = \left\langle \gamma (t) - \gamma(t_0), w \right\rangle \)
+***** Dokaz
+****** <2>1
+
+\( f \) omejena.
+
+Dokaz: \( f \) je definirana na zaprti omejeni podmnožici in zvezna.
+****** <2>2
+Case: \( u, v \in [a, b], \ f(u) = \sup (f), \ f(v) = \inf(f) \)
+
+Prove: \( c = u \)
+
+Dokaz: \( u \in (a, b) \) je ekstrem funkcije \( f \), po Case <2>2
+****** <2>3
+\( c = v \)
+Dokaz: \( v \in (a, b) \) je ekstrem funkcije f , po Case <2>2
+****** <2>4
+\( \forall c \in (a, b)  \)
+
+Dokaz: \( f = \text{konst} \) za \( \left\{ u, v \right\} \subset \left\{ a, b \right\} \)
+****** <2>5 QED
+Dokaz: <2>2, <2>3, <2>4
+
+*** <1>3
+Prove: Obstaja \(  \xi_3 \in \left( \xi_1, \xi_2 \right) \) tako, da velja
+
+\[ \left\langle \oddv{\gamma}(\xi_3), w \right\rangle = 0
+\]
+
+Dokaz: Rolleov izrek ter odvod iste funkcije
+*** <1>4
+Case 4: \( \epsilon > 0  \)
+
+Prove:
+
+\[ v_0 \times w = \left\langle \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1), w \right\rangle \cdot \ddot{\gamma} (t_0) - \left\langle \ddot{\gamma} (t_0) - \ddot{\gamma}(\xi_3), w \right\rangle \cdot \dot{\gamma} (t_0)
+\]
+
+Dokaz: Linearna algebra \( (a \times b) \times c = (a \cdot c) \cdot b - (b \cdot c) \cdot a \) ter odšteli smo \( \dot{\gamma}(t_0) \) <1>2 in od \( \ddot{\gamma}(t_0) \) <1>3, saj je produkt <1>2 in <1>3 z \( w \) enak 0 - in se tako ne spremeni.
+*** <1>5
+\[ \left| v_0 \times w \right| \le \left( \left| \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1) \right| \cdot \left| \ddot{\gamma}(t_0) \right| - \left| \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3) \right| \cdot \left| \dot{\gamma}(t_0) \right|\right) \left| w \right|
+\]
+
+Dokaz: Cauchy-Schwartzova neenakost \( \left| \left\langle \vec{a}, \vec{b} \right\rangle \right| \le \left| \vec{a} \right|  \cdot \left| \vec{b} \right|\)
+*** <1>6
+Case 5: \( \alpha = \left| \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1) \right| \)
+Case 6: \( \beta = \left| \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3) \right| \)

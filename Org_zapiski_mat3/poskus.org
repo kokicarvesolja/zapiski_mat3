@@ -1,0 +1,13 @@
+#+title: Poskus
+#+startup: entitiespretty nil
+
+Naj bo \(  D \subset \mathbb{R} ^2 \) območje z (odsekoma) gladkim robom...
+
+\[ \int\limits_{\partial D}^{} X\,\mathrm{d x} + Y \, \mathrm{dy} = \iint\limits_D^{} \left( Y_x - X_y \right) \,\mathrm{d x} \, \mathrm{dy}
+\]
+
+\[ \left( \vec{n} \cdot \left( \vec{r}(s) - r(0) \right) \right) \cdot \vec{n} = \left( \frac{1}{\sqrt{2}} (0, -1, 1) \cdot (x, y, z) \right) \cdot \frac{1}{\sqrt{2}}(0, -1, 1)
+\]
+
+\[ (x, y, z) - \frac{1}{2} (0, y, z)
+\]

@@ -1,0 +1,1072 @@
+#+title: Mat3teden12
+#+startup: nolatexpreview
+#+startup: entitiespretty nil
+#+startup: show2levels
+#+latex_header: \usepackage{amsmath} \usepackage{unicode-math}
+#+latex_header: \renewcommand{\theta}{\vartheta} \renewcommand{\phi}{\varphi} \renewcommand{\epsilon}{\varepsilon}
+#+latex_header: \newcommand{\odv}[1]{\dot{\vec{#1}}} \newcommand{\oddv}[1]{\ddot{\vec{#1}}}
+#+latex_header: \newcommand{\rot}{\mathrm{rot}}\newcommand{\dive}{\mathrm{div}}
+#+latex_header: \newcommand{\undd}[1]{\underline{\underline{#1}}}
+
+Pri doc. dr. Klemnu Šivicu
+* Navadne diferencialne enačbe
+** Sistemi linearnih diferencialnih enačb
+Iščemo \(  n \)-terico funkcij \(  y_1, y_2, \ldots, y_n: I \to \mathbb{R} \), kjer je \(  I \) nek interval, ki zadoščajo sistemu enačb
+
+\begin{align}\label{ali:SDE}
+  y_1 ' &= a_{11} y_1 + a_{21} y_2 + \ldots a_{n1} y_n + b_1 \\
+  y_2 ' &= a_{12} y_1 + a_{22} y_2 + \ldots a_{n2} y_n + b_2 \\
+& \vdots \\
+  y_n ' &= a_{1n} y_1 + a_{2n} y_2 + \ldots a_{nn} y_n + b_n
+\end{align}
+
+kjer so \(  a_{ij}, b_j : I \to \mathbb{R} \) zvezne funkcije.
+
+Označimo
+
+\[ \vec{y} = \begin{bmatrix} y_{1} \\ y_{2} \\ \vdots \\ y_{n} \end{bmatrix}, \quad \vec{b} = \begin{bmatrix} b_{1} \\ b_{2} \\ \vdots \\ b_{n} \end{bmatrix}
+\]
+
+ter
+
+\[ A = \begin{bmatrix}
+a_{11} & \ldots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{n1} & \ldots & a_{nn}
+\end{bmatrix}
+\]
+
+\(  A \) je dana matrična funkcija, \(  \vec{b} \) je dana vektorska funkcija, \(  \vec{y} \) pa je iskana vektorska funkcija. Sistem enačbe \ref{ali:SDE} je ekvivalenten enačbi
+
+\begin{equation}
+\label{eq:1}
+\vec{y}' = A \cdot \vec{y} + \vec{b}
+\end{equation}
+
+Sistem \ref{eq:1} je homogen, če je \(  \vec{b} = 0 \) (ničelna vektorska funkcija).
+*** Primer 7.13 (p.S.)
+
+\begin{align*}
+  y_1 ' &= xy_1 + y_2 + 1 \\
+y_2 ' &= y_1 + 2e^x y_2 + \sin x
+\end{align*}
+
+Torej so
+
+\[ \vec{y} = \begin{bmatrix} y_{1} \\ y_{2} \end{bmatrix} \quad A = \begin{bmatrix}
+x & 1 \\
+1 & 2e^x
+\end{bmatrix} \quad \vec{b} = \begin{bmatrix} 1 \\ \sin x \end{bmatrix}
+\]
+Sistem je ekvivalenten \ref{eq:1}
+** Trditev 7.6
+Naj bo \(  \vec{y}_0 \) neka rešitev enačbe \ref{eq:1}. Potem velja
+
+\[ \left\{ \text{resitve enacbe } \ref{eq:1} \right\} = \left\{ \text{resitve enacbe } \vec{y}' = A \cdot \vec{y} \right\} + \vec{y}_0
+\]
+
+*Dokaz*;
+
+Če je \(  \vec{y} \) rešitev enačbe \(  \vec{y}' = A\cdot \vec{y} \), potem je
+
+\begin{align*}
+  (\vec{y} + \vec{y}_0) &= \vec{y}' + \vec{y}_0 ' \\
+&= A \vec{y} + A \vec{y}_0 + \vec{b} \\
+&= A(\vec{y} + \vec{y}_0) + \vec{b}
+\end{align*}
+
+Iz tega sledi, da je \(  \vec{y} + \vec{y}_0 \) je rešitev enačbe \(  \vec{z}' = A \vec{z} + \vec{b} \).
+
+Obratno, če je \(  \vec{y} \) rešitev enačbe \(  \vec{y}' = A \cdot \vec{y} + \vec{b} \) je
+
+\begin{align*}
+  (\vec{y} - \vec{y}_0) ' &= \vec{y}' - \vec{y}_0 ' \\
+&= A \vec{y} + \vec{b} - A \vec{y}_0 - \vec{b} \\
+&= A (\vec{y} - \vec{y}_0)
+\end{align*}
+
+Tako je \(  \vec{y} - \vec{y}_{0} \) rešitev homogene enačbe.
+
+Enačbo \ref{eq:1} torej rešujemo v dveh korakih: najprej poiščemo splošno rešitev homogenega dela \(  \vec{y}' = A \cdot \vec{y} \), potem pa poiščemo še neko partikularno rešitev enačbe \(  \vec{y}' = A \vec{y} + \vec{b} \).
+*** Homogeni deli:
+
+Vemo: Splošna rešitev diferencialne enačbe \(  y' = a(x) y \) je
+
+\[ y = C e^{\int\limits_{}^{}a(x)\,\mathrm{d x}}
+\]
+
+Podobno velja za rešitve sistema \(  \vec{y}' = A \cdot \vec{y} \):
+
+splošna rešitev je oblike
+
+\[ \vec{y} = e^{\int\limits_{}^{} A(x)\,\mathrm{d x}} \cdot \vec{c}
+\]
+
+kjer je \(  \vec{c} \) vektor konstant.
+
+Rešitev homogenega sistema linearnih diferencialnih enačb 1. reda je *vektorski prostor*. Dimenzija tega prostora je \(  n \).
+** Izrek 7.7 (p.S.)
+
+Naj bo \(  J \subseteq \mathbb{R} \) omejen odprt interval in \(  A: \bar{J} \to \mathbb{R}^{n \times n} \) matrična funkcija z zveznimi koeficienti. Vzemimo \(  x_0 \in J \) in \(  \xi_0 \in \mathbb{R}^n \). Potem obstaja natanko ena rešitev sistema \(  \vec{y}' = A\cdot \vec{y} \),  \(  \vec{y}(x_0) = \vec{\xi}_0 \), ki je definirana povsod na \(  J \).
+
+Rešitve sistemov linearnih diferencialnih enačb so definirane *povsod* na J, whereas pri LDE pa samo nekje na J.
+
+Izberemo linearno neodvisne rešitve sistema \(  \vec{y}' = A \cdot \vec{y} \) z oznako \(  \vec{y}_1, \vec{y}_2, \ldots, \vec{y}_n \). Iz njih tvorimo matriko
+
+\[ \underline{Y} = \left[ \vec{y}_1, \vec{y}_2, \ldots, \vec{y}_n \right]
+\]
+
+Matriki \(  \underline{Y} \) pravimo fundamentalna matrika sistema \(  \vec{y}'= A \cdot \vec{y} \). Velja splošna rešitev sistema \(  \vec{y}' = A \cdot \vec{y} \) je \(  \vec{y} = Y \cdot \vec{c} \), kjer je \(  \vec{c} \) vektor konstante.
+
+Če fundamentalno matriko \(  Y \) odvajamo, dobimo
+
+\[ \underline{Y} ' = A \underline{Y}
+\]
+** Izrek 7.8 (p.S.) (variacija konstante)
+
+Naj bo \(  \underline{Y} \) fundamentalna matrika sistem \(  \vec{y}' = A \cdot \vec{y} \). Potem je vektorska funkcija
+
+\[ \vec{y}_p  = \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x}
+\]
+
+(partikularna) rešitev sistema \(  \vec{y}' = A \cdot \vec{y} + \vec{b} \).
+
+To pomeni, da je
+
+\[ \vec{y}_p (x) = \underline{Y}(x) \int\limits_{x_0}^x \underline{Y}^{-1} (\xi) \vec{b}(\xi) \,\mathrm{d }\xi
+\]
+
+je iskana partikularna rešitev.
+
+*Dokaz*:
+Upoštevamo pravilo za produkt na matričnih funkcijah:
+
+\begin{align*}
+ \vec{y}_p ' &= \left( \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x} \right)' \\
+&= \underline{Y}' \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x} + \underline{Y} \left( \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x} \right)'  && \left( \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x} \right)' = \underline{Y}^{-1} \vec{b} \\
+&= A \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x} + \underline{Y} \underline{Y}^{-1} \vec{b}{} && \underline{Y}' = A \cdot \underline{Y}\\
+&= A \left( \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b}\,\mathrm{d x} \right) + \vec{b} = A \vec{y}_p + \vec{b}
+\end{align*}
+** Definicija 7.7 (p.S.)
+
+Naj bodo \(  \vec{y}_1, \ldots, \vec{y}_n : I \to \mathbb{R} \) vektorska funkcija, definirana na odprtem intervalu \(  I \subseteq \mathbb{R} \). Potem determinanto \(  W = \det \underline{Y} \), kjer je \(  \underline{Y} = \left[ \vec{y}_1, \ldots \vec{y}_n \right] \) imenujemo determinanta Wrońskega.
+
+Spomnimo se: sled matrike je vsota diagonalnih elementov
+
+\[ \mathrm{sl} B = \mathrm{tr} B = \sum\limits_{i=1}^n b_{ii}
+\]
+** Izrek 7.9 2024/12/17
+Naj bo \(  \underline{Y} : I \to \mathbb{R}^{n \times n} \) matrična funkcija, ki reši enačbe \(  \underline{Y}' = A \cdot \underline{Y} \). Potem za \(  W = \det \underline{Y} \) velja
+
+\[ W(x) = W(x_0) e^{\int\limits_{x_0}^x \mathrm{tr} A (\xi)\,\mathrm{d } \xi}
+\]
+
+\(  \forall x, x_0 \in I \).
+
+*Dokaz* za n=2
+
+To pomeni, da sta
+
+\[ \underline{Y} = \begin{bmatrix}
+y_{11} & y_{12} \\
+y_{21} & y_{22} \end{bmatrix} \quad A = \begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}\end{bmatrix}
+\]
+
+To pomeni, da je \(  \underline{Y}' = A \cdot \underline{Y} \) oz.
+
+\[ \begin{bmatrix}
+y_{11} ' & y_{12} ' \\
+y_{21}' & y_{22}'
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix} \cdot
+\begin{bmatrix}
+y_{11} & y_{12} \\
+y_{21} & y_{22}
+\end{bmatrix}
+\]
+
+Tako dobimo sistem enačb
+
+\begin{align*}
+y_{11} ' &= a_{11} y_{11} + a_{12}y_{21} \\
+y_{12} ' &= a_{11} y_{12} + a_{12}y_{22} \\
+y_{21} ' &= a_{21} y_{11} + a_{22}y_{21} \\
+y_{22} ' &= a_{21} y_{12} + a_{22}y_{22} \\
+\end{align*}
+
+Determinanta Wronskega je ravno sledi \(  W = \det Y = y_{11 } y_{22} - y_{12} y_{21} \). To sedaj odvajamo in dobimo
+
+\begin{align*}
+  W' &= y_{11 }' y_{22} + y_{11 }y_{22} ' - y_{12} ' y_{21} - y_{12} y_{21}' \\
+&= a_{11} y_{11 }y_{22} = a_{12} y_{21} y_{22} + a_{21}y_{11 }y_{12} + a_{22} y_{11 }y_{22} \\
+&- a_{11}  a_{12} y_{21} - a_{12} y_{22} y_{21} - a_{21}y_{11 }y_{12 }- a_{22} y_{21} y_{12} \\
+&= (a_{11 } + a_{22}) y_{11 }y_{22} - (a_{11 } + a_{22}) y_{12} y_{21} \\
+&= (a_{11 } + a_{22}) (y_{11 }y_{22} - y_{12}y_{21}) \\
+&= \mathrm{tr} A \det Y = \mathrm{tr} A \cdot W
+\end{align*}
+
+Dobili smo \(  W' = \mathrm{tr} A \cdot W \)
+
+To je homogena, linearna diferencialna enačba 1. reda. Rešitev je \(  W(x) = W(x_0) \cdot e^{\int\limits_{x_0}^x \mathrm{tr} A (\xi)\,\mathrm{d }\xi} \), kar je Liouvilleova formula.
+*** Zgled 7.14(p.S.)
+
+Iščemo \(  x = x(t) \) in \(  y = y(t) \), ki rešita sistem
+
+\begin{align*}
+  \dot{x} &= x - \frac{y}{t} + 1 \\
+\dot{y} &= (1 + t) x - y + t
+\end{align*}
+
+Definiramo
+
+\[ \vec{z} (t) = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix} \quad A = \begin{bmatrix}
+1 & -\frac{1}{t} \\
+1+ t & -1
+\end{bmatrix} \quad \vec{b} = \begin{bmatrix} 1 \\ t \end{bmatrix}
+\]
+
+Sistem je ekvivalenten \(  \odv{z} = A \vec{z} + \vec{b} \).
+Za reševanje homogenega sistema \(  \odv{z} = A \vec{z} \) bi radi uporabili Liouvilleovo formulo. Eno rešitev sistema
+
+\begin{align*}
+  \dot{x} &= x - \frac{y}{t} \\
+\dot{y} &= (1 + t) x - y
+\end{align*}
+
+uganemo kot \(  x=1, \ y = t \). Sled matrike \(  \mathrm{tr}A = 1 - 1 = 0 \).
+
+Z uporabo Liouvilleove formula
+
+\[ W(t) = W(t_0) e^{\int\limits_{t_0}^t 0\,\mathrm{d }\xi} = W(t_0)
+\]
+
+iz česar sledi, da je \(  W(t) \) konstantna funkcija. Rešitev \(  (x, y) \) diferencialne enačbe lahko pomnožimo z poljubno konstanto, zato lahko predpostavimo, da je \(  W= 1 \).
+
+\begin{align*}
+  1 &= Q = \begin{vmatrix}
+x_1 & x_2 \\
+y_1 & y_1
+ \end{vmatrix} \\
+&= \begin{vmatrix}
+1 & x_2 \\
+t & y_2
+ \end{vmatrix} \\
+&= y_2 - tx_2 \implies y_2 = 1  + tx_2
+\end{align*}
+
+Vstavimo v sistem
+
+\[ x_2 = x_2 - \frac{1}{t} - \frac{t x_2}{t} = - \frac{1}{t}
+\]
+
+\begin{align*}
+  \dot{y}_2 = (tx_2) \dot{} = x_2 + t\dot{x}_2 - 1 - tx_2 \\
+\dot{x}_2 &= - \frac{1}{t}
+ & \implies x_2 \int\limits_{}^{} i \frac{1}{t}\,\mathrm{d t} = - \log t \\
+y_2 &= 1 - t \log t
+\end{align*}
+
+Tako smo dobili rešitev homogene enačbe, ki je
+
+\[ \begin{bmatrix} x_2 \\ y_{2} \end{bmatrix} = \begin{bmatrix} -\log t  \\ 1 - t\log t _{2} \end{bmatrix}
+\]
+
+Splošna rešitev homogene enačbe je
+
+\[ \begin{bmatrix} x \\ y \end{bmatrix} = A \cdot \begin{bmatrix} 1 \\ t \end{bmatrix} + B \cdot \begin{bmatrix} - \log t  \\ 1 - t\log t \end{bmatrix}
+\]
+
+Fundamentalna matrika je
+
+\[ Z = \begin{bmatrix}
+1  & - \log t  \\
+t  & 1  - t  \log t
+\end{bmatrix}
+\]
+
+Partikularna rešitev je
+
+\begin{align*}
+  \vec{z}_p &= Z(t) = \int\limits_{t_0}^t Z(\tau) ^{-1} \vec{b} (\tau)\,\mathrm{d} \tau \\
+&= \begin{bmatrix}
+1  & - \log t  \\
+t & 1 - t \log t
+ \end{bmatrix} \cdot \int\limits_{t_0}^t \begin{bmatrix}
+1 - \tau \log \tau & \log \tau \\
+- \tau & 1
+ \end{bmatrix} \begin{bmatrix} 1 \\ \tau \end{bmatrix}\,\mathrm{d } \tau \\
+&= \begin{bmatrix}
+1  & - \log t  \\
+t & 1 - t \log t
+ \end{bmatrix} \cdot \int\limits_{t_0}^t \begin{bmatrix} 1 \\ 0 \end{bmatrix} \,\ \mathrm{d} \tau \\
+&= \begin{bmatrix}
+1  & - \log t  \\
+t & 1 - t \log t
+\end{bmatrix} \begin{bmatrix} t + C \\ D \end{bmatrix} \\
+&= \begin{bmatrix} t  \\ t ^2 \end{bmatrix} + C \begin{bmatrix} 1  \\ t  \end{bmatrix} + D \begin{bmatrix} - \log t  \\ 1 - t\log  \end{bmatrix}
+\end{align*}
+
+Prvi del je partikularna rešitev, drugi del pa je homogena rešitev.
+** Sistemi linearnih diferencialnih enačb s konstantnimi koeficienti
+
+To je sistem oblike
+
+\begin{align*}
+  y_1' &= a_{11 } y_1 + a_{12} y_2 + \ldots + a_{1n} y_n + b_1 \\
+y_2 ' &= a_{21} y_1 + a_{22} y_2 + \ldots + a_{2n} y_n + b_2 \\
+& \vdots \\
+y_n ' &= a_{n1} y_1 + a_{n2} y_2 + \ldots + a_{nn} y_n + b_n
+\end{align*}
+
+kjer so \(  y_1, \ldots, y_n \) neznane funkcije, \(  b_1, \ldots, b_n : I \to \mathbb{R} \) dane funkcije in \(  a_{ij} \in \mathbb{R} \) (konstante).
+
+V vektorski obliki
+
+\begin{equation}
+\label{eq:2}
+\vec{y}' = A \vec{y} + \vec{b}
+\end{equation}
+
+kjer je \(  \vec{y} \) neznana vektorska funkcija, \(  \vec{b} \) dana vektorska funkcija in \(  A \) matrika števil. Enačba je homogena, če je \(  \vec{b} \) ničelna vektorska fukcija.
+
+
+Spomnimo se: reṡitev homogene linearne diferencialne enačbe s konstantnimi koeficienti  \(  y' = a y \) je \(  y(x) = C e^{ax } \). Radi bi, da bi bila rešitev enačbe \(  \vec{y}' = A \vec{y}  \) oblike \(  \vec{y} = e^{xA} \cdot \vec{c} \) , kjer je \(  \vec{c} \) vektor konstant.
+
+Intermezzo:
+
+Kaj je \(  e^A \)?
+
+Kako izračunamo \(  f(B) \), če je \(  f \) funkcija? Če je \(  f \) polinom \(  f(x) = \sum\limits_{k=0}^m a_k x^b \), potem je \(  f(B) = \sum\limits_{k=0}^m a_k B^k \). Če je funkcija \(  f \) realno analitična, jo lahko razvijemo v Taylorjevo vrsto \(  f(x) = \sum\limits_{ = 0}^{\infty} a_k x^k \). Radi bi definirali \(  f(B) = \sum\limits_{k=0}^{\infty} \).
+
+To je smiselno samo za tiste funkcije in matriko, ko vrsta konvergira. Da lahko sploh govorimo o konvergenci matričnih vrst, moramo vpeljati metriko na matriko (nekakšno mero).
+
+Če prav razumem, da s to metriko matrike primerjamo - da lahko vemo ali sta dve matriki blizu ali daleč.
+
+Za \(  B \in \mathbb{R}^{n \times n} \) definiramo supremum normo
+
+\begin{equation}
+\label{eq:3}
+\lVert B \rVert = \sup_{\xi \in \mathbb{R}^n, \left| \epsilon \right| = 1} \left| B \epsilon \right|
+\end{equation}
+
+To je norma na matrikah. To pomeni, da veljajo lastnosti za normo:
+- \(  \lVert B \rVert  \ge 0 \) in \(  \lVert B \rVert  = 0 \iff B =0 \)
+- \(  \lVert \alpha B \rVert  = \left| \alpha \right| \lVert B \rVert\) za vse \(  \alpha \in \mathbb{R} \) in \(  B \in \mathbb{R} ^{n \times n} \).
+- trikotniška neenakosti \(  \lVert A + B \rVert  \le  \lVert A \rVert + \lVert B \rVert\)
+
+Za našo normo velja tudi:
+- \(  \left| B \epsilon \right| \le \lVert B \rVert \left| \epsilon \right|\) za vsak \(  B \in \mathbb{R} ^{n\times n} \) in vsak \(  \epsilon \in \mathbb{R}^n \)
+- \(  \lVert AB \rVert \ge \lVert A \rVert \lVert B \rVert \) za vse \(  A, B \in \mathbb{R} ^{n \times n} \)
+
+Norma \(  \lVert \cdot \rVert \) definira metriko na matrikah
+
+\[ d(A, B) = \lVert A - B \rVert
+\]
+
+Za metriko \(  d \) je \(  \mathbb{R}^{n \times n} \) poln metričen prostor: vsako Cauchyjevo zaporedje je konvergentno.
+** Definicija 7.8 (p.S.)
+
+Če je \(  A: J \to \mathbb{R} ^{n \times n} \) matrična funkcija z zveznimi koeficienti, definiramo njeno normo kot \(  \lVert A \rVert = \sup_{u \in J} \lVert A(u) \rVert \), kjer je slednje operatorska norma matrike \(  A(u) \).
+** Posledica 7.10 (p.S.)
+\(  \forall x \in J \) in \(  \xi \in \mathbb{R}^n \) je
+
+\begin{align*}
+  \left| A(x) \xi \right| & \le \lVert A \rVert \cdot \left| \xi \right| \\
+\left| A(x) \xi \right|  & \le \lVert A(x)  \rVert \left| \xi \right| \le \lVert A \rVert \left| \xi \right|
+\end{align*}
+** Definicija 7.9 (p.S.)
+
+Za \(  B \in \mathbb{R}^{n\times n} \) definiramo
+
+\begin{equation}
+\label{eq:4}
+e^B = \sum\limits_{j=0}^{\infty} \frac{B^j}{j!}
+\end{equation}
+
+kjer je \(  \sum\limits_{j=0}^{\infty} \frac{x^j}{j!}  \) je Taylorjeva vrsta funkcije \(  f(x) = e^x \).
+
+Ali vrsta \(  \sum\limits_{j=0}^{\infty} \frac{B^j}{j!} \) konvergira? Označimo \(  s_n = \sum\limits_{j= 0}^n \frac{B^j}{j!} \). Ker je \(  \mathbb{R} ^{n \times n} \) poln metričen prostor glede na matriko \(  d \), je dovolj dokazati, da je zaporedje \(  (s_n)_n \) Cauchyjevo.
+
+Naj bo \(  m > n \):
+
+\begin{align*}
+  \left\lVert s_m - s_n \right\rVert &= \lVert \sum\limits_{j=0}^m \frac{B_j}{j!} - \sum\limits_{j=0}^n \frac{B^j}{j!} \rVert \\
+&= \left\lVert \sum\limits_{j = n+1}^m \frac{B^j}{j!} \right\rVert \le \sum\limits_{j = n+1}^m \frac{\lVert B^j \rVert}{j!} \\
+& \le \sum\limits_{j = n+1}^m \frac{\left\lVert B  \right\rVert^j}{j!}
+\end{align*}
+kar je številska vrsta.
+
+Vemo, da Taylorjeva vrsta eksponentne funkcije, konvergira povsod na \(  \mathbb{R} \), torej tudi za \(  x = \lVert B \rVert \). Zato gre \(  \sum\limits_{j= n+ 1}^m \frac{\lVert B \rVert ^j}{j!} \) proti 0, ko gresta \(  m \) in \(  n \) proti neskončno.
+
+Dobili smo, da \(  \lVert s_m - s_n \rVert \overset{m,n \to \infty}{\longrightarrow} 0 \) in tako je \(  (s_n)_n \) je Cauchyjevo in posledično konvergira.
+** Izrek 7.11 (p.S.)
+
+Če je \(  AB = BA \), potem je
+
+\[ e^{A + B } = e^A \cdot e^B
+\]
+
+Brez dokaza, ampak vstaviš noter neskončne vsote in jih zmnožiš. Če matriki ne komutirata, to ni nujno res.
+
+Spomnimo se \(  f \) je v \(  x \) odvedljiva z odvodom \(  f'(x) \), če je
+
+\[ \lim_{h \to 0} \left( \frac{f(x + h) - f(x) }{h} - f'(x) \right) = 0
+\]
+** Izrek 7.12 (p.S.)
+Naj bo \(  A \in \mathbb{R}^{n \times n} \) poljubna matrika. Potem je funkcija \(  Y: \mathbb{R} \to (\mathbb{R}^{n \times n}, \lVert \cdot \rVert), \ x \mapsto e^{xA} \) odvedljiva, v smislu, da za vsak \(  x \in \mathbb{R} \) obstaja matrika \(  Y'(x) \in \mathbb{R}^{n \times n} \), da je
+
+\[ \lim_{h \to 0} \lVert Y'(x) - \frac{Y(x + h) - Y(x)}{h} \rVert = 0
+\]
+
+Poleg tega velja \(  Y'(x) = A Y (x), \forall x \)
+
+*Dokaz*
+
+\begin{align*}
+   \left\lVert A Y(x) - \frac{Y(x + h) - Y(x)}{h}  \right\rVert &= \left\lVert A e^{xA} - \frac{e^{(x + h) A} - e^{xA}}{h} \right\rVert \\
+&\overset{*}{=}  \left\lVert A e^{xA} - \frac{e^{xA} \cdot e^{hA} - e^{xA}}{h}  \right\rVert \\
+&= \left\lVert e^{xA} \left( A - \frac{e^{hA} - I}{h} \right) \right\rVert \\
+& \le  \left\lVert e^{xA}  \right\rVert \cdot \left\lVert \frac{1}{h} e^{hA} - \frac{1}{h} I - A \right\rVert \\
+&=  \left\lVert e^{xA}  \right\rVert \cdot  \left\lVert \frac{1}{h} \sum\limits_{j=0}^{\infty} \frac{(hA)^j}{j!} - \frac{1}{h}I - A  \right\rVert \\
+&=  \left\lVert e^{xA}  \right\rVert \cdot  \left\lVert \frac{1}{h} I + A + \sum\limits_{j=2}^{\infty} \frac{(hA)^j}{j! h} - \frac{1}{h} I - A  \right\rVert \\
+&=  \left\lVert e^{xA}  \right\rVert \cdot  \left\lVert \sum\limits_{j=2}^{\infty} \frac{h^{j - 1}A^j}{j!}  \right\rVert \\
+& \le  \left\lVert e^{xA}  \right\rVert \cdot \sum\limits_{j = 2}^{\infty} \left| h \right|^{j -1} \frac{ \left\lVert A^j  \right\rVert}{j!} \\
+& \le  \left\lVert e^{xA}  \right\rVert \cdot \sum\limits_{j = 2}^{\infty} \left| h \right|^{j-1} \frac{ \left\lVert A  \right\rVert ^j}{j!} \\
+&=  \left\lVert e^{xA}  \right\rVert \cdot \left| h \right| \cdot  \left\lVert A  \right\rVert ^2 \cdot \sum\limits_{j=2}^{\infty} \frac{\left| h \right|^{j - 2}  \left\lVert A  \right \rVert ^{j -2}}{j!}
+\end{align*}
+
+/* pomeni, da \(  xA, hA \) komutirata.
+
+Zanima nas ta izraz, ko gre \(  h\to 0 \), zato lahko predpostavimo \(  \left| h \right| < 1 \).
+
+\begin{align*}
+  \left \lVert e^{xA} \right \rVert \cdot \left| h \right| \left \lVert A \right \rVert ^2 \sum\limits_{j=2}^{\infty} \frac{\left| h \right| ^{j - 2} \left \lVert A \right \rVert ^{j -2}}{j!} & \le \left \lVert e^{xA}  \right \rVert \left| h \right| \left \lVert A \right \rVert ^2 \cdot \sum\limits_{j = 2}^{\infty} \frac{\left \lVert A \right \rVert ^{j - 2}}{j!} \\
+&= \left \lVert e^{xA} \right \rVert \left| h \right| \left \lVert A \right \rVert ^2 \sum\limits_{k = 0}^{\infty} \frac{\left \lVert A \right \rVert^k}{ (k + 2)! }
+& \le \left \lVert e^{xA}  \right \rVert \left| h \right| \left \lVert A \right \rVert ^2 \sum\limits_{k = 0}^{\infty} \frac{\left \lVert A \right \rVert ^k}{k!} && \text{ vsota je stevilska vrsta } \\
+&= \left \lVert e^{xA}  \right \rVert \left \lVert A \right \rVert ^2 e^{\left \lVert A \right \rVert} \left| h \right| \overset{h \to 0}{\longrightarrow} 0
+\end{align*}
+
+saj je zadnji člen neodvisen od \(  h \), kar pomeni, da
+
+\[ \lim_{h \to  0} \lVert A Y(x) - \frac{Y(x + h) - Y(x) }{h} \rVert  = 0
+\]
+
+za vse \(  x \in \mathbb{R} \).
+** Posledica 7.13 (p.S.)
+
+\(  Y(x) = e^{xA} \) je rešitev Caucyjevega problema \(  Y' = A Y,  \ Y (0) = I  \).
+** Definicija 7.10
+Tak \(  Y(x) \) se imenuje fundamentalna rešitev Cauchyjevega problema.
+** Posledica 7.14 (p.S.)
+Splošna reṡitev sistema \(  \vec{y}' = A \vec{y} \), kjer je \(  \vec{y} : J \to \mathbb{R} ^n \) neka funkcija, je podana s predpisom
+
+\[ \vec{y} (x) = e^{xA} \vec{c}
+\]
+
+kjer je \(  \vec{c} \) vektor konstant.
+
+*Dokaz*: Povedali smo, da je rešitev sistema \(  \vec{y}' = A \vec{y} \) \(  n \)-razsežen vektorski prostor.
+
+Če je
+
+\[ \vec{c} = \begin{bmatrix} c_1 \\ \vdots \\ c_3 \end{bmatrix}
+\]
+
+potem je
+
+\begin{align*}
+  e^{xA} \vec{c} &= c_1 e^{xA} \cdot e_1 + c_2 e^{xA} \cdot e_2 + \ldots + c_n e^{xA} \cdot e_n
+\end{align*}
+
+kjer so
+
+\[ e_i = \begin{bmatrix} 0 \\ \vdots \\ 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+\]
+
+\(  e^{xA} \cdot e_i \) je \(  i \)-ti stolpec matrike \(  e^{xA} \). Pokazati je treba le še, da so stolpci matrike \(  e^{xA} \) linearno neodvisni.
+
+Zakaj so stolpci \(  e^{xA} \) linearno neodvisni? To velja natanko takrat, ko je \(  e^{xA} \) obrnljiva \(  \iff \ \det e^{xA} \ne 0 \).
+
+Zakaj je \(  \det e^{xA} \ne 0 \)?
+
+\(  Y(x) = e^{xA} \) je rešitev diferencialne enačbe \(  Y' = A \cdot Y \). Vemo, da za determinanto Wrońskega \(  W(x) = \det (\underline{Y}(x)) = \det (e^{xA}) \) velja
+
+\[ W(x) = W(0) e^{\int\limits_0^x \mathrm{tr} A\,\mathrm{d }\xi}
+\]
+
+kjer je \(  A \) konstantna matrika. Vemo, da je
+
+\[ W(0) = e^{0A} = \det I = 1
+\]
+
+To pomeni, da je integral v eksponentu
+
+\[ \int\limits_0^x \mathrm{tr} A\,\mathrm{d }\xi = \mathrm{tr}A \left. \xi \right|_0 ^x = x \mathrm{tr}A
+\]
+
+To pomeni, da je
+
+\[ \det e^{xA} = e^{x \mathrm{ tr} A} > 0
+\]
+
+ker je \(  x \mathrm{tr} A \) samo število.
+
+Iz tega sledi, da je \(  \det e^{xA} \ne 0 \)in nadalje, da so stolpci \(  e^{xA} \) so linearno neodvisni.
+
+Hkrati smo dokazali še
+
+\[ \det (e^{xA}) = e^{x \mathrm{ tr}A}
+\]
+
+Kako izračunamo \(  e^{xA} \)? Recimo najprej,  da je \(  A \) diagonalizabilna. To pomen, da obstaja diagonalna matrika \(  D \) in obrnljiva matrika \(  P \), da je
+
+\[ A = P D P ^{-1}
+\]
+
+\(  D \) ima na diagonali lastne vrednosti, stolpci \(  P \) pa so lastni vektorji.
+
+Če imamo diagonalizabilo matriko na neko potenco \(  k \), se vmesne instance \(  P \) in \(  P^{-1} \) med sabo pokrajšajo
+
+\[ A^k = (P D P ^{-1})^k = P D P^{-1} P D P^{-1} \ldots PDP^{-1} = P D^k P^{-1}
+\]
+
+\begin{align*}
+  e^{xA} &= \sum\limits_{k = 0}^{\infty} \frac{(xA)^k}{k!} \\
+&= \sum\limits_{k=0}^{\infty} \frac{P x^k D^k P_1}{k!} \\
+&= P \sum\limits_{k=0}^{\infty} \frac{(xD)^k}{k!} P^{-1} \\
+&= P e^{xD} P^{-1}
+\end{align*}
+
+Če je
+
+\[ D = \begin{bmatrix}
+d_1 &   &   \\
+& \ddots  &   \\
+&  & d_n
+\end{bmatrix}
+\]
+
+je potem
+
+\[ e^{xD} = \begin{bmatrix}
+\sum\limits_{k=0}^{\infty} \frac{(d_1 x)^k}{k!} & &  \\
+ & \ddots & \\
+&  & \sum\limits_{k=0}^{\infty} \frac{(d_n x)^k}{k!}
+\end{bmatrix} = \begin{bmatrix}
+e^{d_1 x} &  &  \\
+& \ddots  &  \\
+ &  & e^{x d_n}
+\end{bmatrix}
+\]
+
+in nadalje
+
+\[ e^{xA} = P \begin{bmatrix}
+e^{d_1 x} & & \\
+& \ddots & \\
+&  & e^{d_n x}
+\end{bmatrix} P^{-1}
+\]
+
+Kaj pa, če se \(  A \) ne da diagonalizirati? Potem \(  A \) zapišemov Jordanski obliki:
+
+\[ A = P J P^{-1}
+\]
+
+kjer je \(  J \) Jordanova matrika matrike \(  A \)
+
+\[ J = \begin{bmatrix}
+J_1 &  &  \\
+ & J_2 &  \\
+ &  &  J_3
+\end{bmatrix}
+\]
+
+kjer so \(  J_i \) Jordanove kletke.
+
+Jordanove kletke so oblike
+
+\[ \begin{bmatrix}
+\lambda_j& 1 & & & \\
+& \lambda_j& 1 & &   \\
+& &  \ddots & \ddots  && \\
+& & & & \lambda_j & 1 \\
+& & & & &\lambda_j
+\end{bmatrix}
+\]
+
+kjer je \(  \lambda_j \) lastna vrednost matrike \(  A \). Vsaka Jordanska kletka ima samo eno lastno vrednost. Dve Jordanski kletki imata enako ali različno lastno vrednost. Vsaka Jordanska kletka pripada enemu lastnemu vektorju matrike \(  A \). Število Jordnaskih kletk, ki pripadajo lastni vrednosti \(  \lambda_j \) je enako številu linearno neodvisnih lastnih vektorjev za lastno vrednost \(  \lambda_j \). To je enako
+
+\[ \mathrm{dim} \left( \mathrm{ker} (A - \lambda_j I) \right)
+\]
+
+kjer je \(  \mathrm{ker} (A - \lambda_j I) \) je lastni podprosto za lastno vrednost \(  \lambda_j \).
+
+Temu število rečemo geometrična večkratnost lastne vrednosti \(  \lambda_j \). Algebraična večkratnost lastne vrednosti \(  \lambda_j \) je stopnja ničle \(  \lambda_j \) v karakterističnem polinomu.
+
+To je enako vso velikosti vseh Jordanskih kletk, ki pripadajo lastni vrednosti \(  \lambda_j \).
+
+\begin{align*}
+  e^{xA} &= \sum\limits_{k=0}^{\infty} \frac{(xA)^k}{k!} \\
+&= \sum\limits_{k=0}^{\infty} \frac{(xPJP^{-1})^k}{k!} \\
+&= \sum\limits_{k=0}^{\infty} \frac{P (xJ)^k P^{-1}}{k!} \\
+&= P \left( \sum\limits_{k=0}^{\infty} \frac{(xJ)^k}{k!} \right) P^{-1} \\
+&= P e^{xJ} P^{-1}
+\end{align*}
+
+Kaj pa je \(  e^J \)?
+
+Če je
+
+\[ J = \begin{bmatrix}
+J_1  &  & \\
+ & \ddots  & \\
+ &  & J_k
+ \end{bmatrix}
+\]
+
+kjer so \(  J_i \) Jordanske kletke, je
+
+\[ e^J = \begin{bmatrix}
+e^{J_1}  &  & \\
+ & \ddots  & \\
+ &  & e^{J_k}
+ \end{bmatrix}
+\]
+
+Kaj je \(  e^J \), če je \(  J \) Jordanova kletka:
+
+\[ J = \begin{bmatrix}
+\lambda & 1  &  & \\
+ & \ddots  & \ddots & \\
+& & \lambda & 1 \\
+ &  &  & \lambda
+ \end{bmatrix}
+\]
+
+Pišemo \(  J = \lambda I + N  \), kjer je
+
+\[ N = \begin{bmatrix}
+0 & 1 &  & \\
+& \ddots & \ddots  & \\
+& &  & 0 & 1 \\
+& & & & 0
+\end{bmatrix}
+\]
+
+\[ N ^2 = \begin{bmatrix}
+0 & 0 & 1 & \\
+& \ddots & \ddots  & \ddots \\
+& &  & 0 & 0  \\
+& & & & 0
+\end{bmatrix}
+\]
+
+\[ N^{n -1} =\begin{bmatrix}
+0  & \ldots & 1\\
+ & \ddots  &  \vdots \\
+ &  & 0
+ \end{bmatrix}
+\]
+
+in \(  N^n = 0 \). \(  N \) je nilpotentna matrika.
+
+To pomeni, da je
+
+\begin{align*}
+  e^{xJ} &= e^{x (\lambda I + N)} = e^{x\lambda I} \cdot e^{xN} \\
+&= e^{x\lambda } \cdot \sum\limits_{k=0}^{\infty} \frac{(xN)^k}{k!} \\
+&= e^{\lambda x I} \sum\limits_{k= 0}^{n -1} \frac{(xN)^k}{k!} \\
+&= e^{\lambda x} \cdot \begin{bmatrix}
+1 & x & \frac{x ^2}{2} & \frac{x ^3}{3} & \ldots  &\frac{x^{n- 1}}{(n - 1)!} \\
+& 1 & x & \frac{x ^2}{2} & & \\
+& & 1 & x & & \\
+& & & \ddots & \ddots & \\
+& & & & & 1
+\end{bmatrix}
+\end{align*}
+*** Primer 7.15
+Rešimo sistem enačb
+
+\begin{align*}
+  y' &= y + 4z \\
+z' &= y + z
+\end{align*}
+
+To pomeni, da je
+
+\[ A = \begin{bmatrix}
+1 & 4 \\
+1 & 1
+\end{bmatrix}
+\]
+
+Imamo sistem
+
+\[ \begin{bmatrix} y \\ z \end{bmatrix} ' = A \cdot \begin{bmatrix} y \\ z \end{bmatrix}
+\]
+
+Poiṡčemo lastne vrednosti in lastne vektorje matrike \(  A \):
+
+\[ \det (A - \lambda I) = \begin{bmatrix}
+1 - \lambda & 2 \\
+1  & 1 - \lambda
+\end{bmatrix} = (1 - \lambda) ^2 - 4 = ( \lambda - 3 ) (\lambda - 1)
+\]
+
+Lastni vrednost sta torej \(  \lambda = 3, -1  \) in lastni vektorji so
+
+\(  \lambda = 3 \):
+
+\[ A - 3 I = \begin{bmatrix}
+-2 & 4 \\
+1 & -2
+\end{bmatrix}
+\]
+
+Kaj je v jedru te matrike?
+
+\[ \begin{bmatrix} 2 \\ 1 \end{bmatrix}
+\]
+
+ter \(  \lambda = -1  \):
+
+\[ A + I = \begin{bmatrix}
+2 & 4 \\
+1 & 2
+\end{bmatrix}
+\]
+
+Kaj je v jedru?
+
+\[ \begin{bmatrix} 2 \\ -1 \end{bmatrix}
+\]
+
+To pomeni, da sta matriki
+
+\[ D = \begin{bmatrix}
+3 & 0 \\
+0 & -1
+\end{bmatrix}  \quad P = \begin{bmatrix}
+2 & 2 \\
+1 & -1
+\end{bmatrix}
+\]
+
+in
+
+\[ e^{xA} = \begin{bmatrix}
+2 & 2 \\
+1 & -1
+\end{bmatrix} \begin{bmatrix}
+e^{3x}  &  \\
+& e^{-x} \\
+\end{bmatrix} P^{-1}
+\]
+
+Splošna rešitev sistema je
+
+\[ \begin{bmatrix} y \\ z \end{bmatrix} = \begin{bmatrix}
+2 & 2 \\
+1 & -1
+\end{bmatrix} \begin{bmatrix}
+e^{3x}  &  \\
+& e^{-x} \\
+\end{bmatrix} P^{-1} \begin{bmatrix} A \\ B \end{bmatrix}
+\]
+
+kjer sta \(  A, B \) poljubni konstanti, \(  P \) je obrnljiva, zato je \(  P^{-1} \begin{bmatrix} A \\ B \end{bmatrix} \) vektor poljubnih konstant
+
+\[ \begin{bmatrix} C \\ D \end{bmatrix}
+\]
+
+Lahko pišemo
+
+\begin{align*}
+  \begin{bmatrix} y \\ z \end{bmatrix} &=
+\begin{bmatrix}
+2 & 2 \\
+1 & -1
+\end{bmatrix} \begin{bmatrix}
+e^{3x}  &  \\
+& e^{-x} \\
+\end{bmatrix} \begin{bmatrix} C \\ D \end{bmatrix} \\
+&= \begin{bmatrix}
+2e^{3x} & 2e^{-x} \\
+e^{3x} & -e^{-x}
+ \end{bmatrix}
+\begin{bmatrix} C \\ D \end{bmatrix} \\
+&=
+\begin{bmatrix} 2C e^{3x} + 2De^{-x} \\
+Ce^{3x} - De^{-x} \end{bmatrix}
+\end{align*}
+*** Primer 7.16
+
+Rešimo sistem enačb
+
+\begin{align*}
+  y' &= y + z \\
+z' &= -y + 3z
+\end{align*}
+
+V vektorskem zapisu je to
+
+\[ \begin{bmatrix} y \\ z \end{bmatrix}' = A \cdot \begin{bmatrix} y \\ z \end{bmatrix}
+\]
+
+kjer je
+
+\[ A = \begin{bmatrix}
+1 & 1 \\
+-1 & 3
+\end{bmatrix}
+\]
+
+Lastne vrednosti
+
+\begin{align*}
+  \det (A - \lambda I) &= \begin{bmatrix}
+1 - \lambda & 1  \\
+-1  & 3 - \lambda
+ \end{bmatrix} \\
+&= (\lambda - 2) ^2
+\end{align*}
+
+Edina lastna vrednost je \(  2 \) in njena algebraična kratnost je tudi \(  2 \).
+Lastni vektorji
+
+\begin{align*}
+  A - 2 I &= \begin{bmatrix}
+-1 & 1 \\
+-1 & 1
+ \end{bmatrix}
+\end{align*}
+
+Jedro je
+
+\begin{align*}
+  \begin{bmatrix}
+-1 & 1 \\
+-1 & 1
+ \end{bmatrix}
+\begin{bmatrix} u \\ v \end{bmatrix} &=
+\begin{bmatrix} v - u \\ v - u \end{bmatrix} = 0 \\
+& \implies v = u
+\end{align*}
+
+Lastni podprostor je \(  1 \) razsežen z bazo \(  \begin{bmatrix} 1 \\ 1 \end{bmatrix} \)
+
+\(  A \) se ne da diagonalizirati in moramo poiskati Jordansko formo, ki je oblike
+
+\[ J = \begin{bmatrix}
+2 & 1 \\
+& 2
+\end{bmatrix}
+\]
+
+ker \(  A \) ni diagonalizabilna, je v desnem zgornje kotu \(  1 \). V \(  2 \times 2 \) primeruni drugi možno kot
+
+\[ \begin{bmatrix}
+2 & 0 \\
+0 & 2
+\end{bmatrix}\text{ ali }\begin{bmatrix}
+2 & 1 \\
+0 & 2
+\end{bmatrix}
+\]
+
+Za \(  P \) moramo poiskati korenske vektorje. Ker je \(  A \in \mathbb{R}^{n\times n} \) in je \(  2 \) njena edina lastna vrednost, je \(  (A - 2I) ^2 = 0 \).
+
+\[ \mathrm{ker} (A - 2 I) ^2 = \mathbb{R} ^2
+\]
+
+Korenski vektor je vektor \(  w \), ki leži v \(  \mathrm{ker} (A - 2 I )^2 \), ampak ne leži v \(  \mathrm{ker} (A - 2I) \). Npr.
+
+\[w = \begin{bmatrix} -1  \\ 1 \end{bmatrix}
+\]
+
+Vektor v jedru, ki ga iščemo, je oblike
+
+\begin{align*}
+v  & =(A - 2I) \cdot w  \\
+&= \begin{bmatrix}
+-1 & 1 \\
+-1 & 1
+ \end{bmatrix}
+\begin{bmatrix} -1 \\ 1 \end{bmatrix}
+=
+\begin{bmatrix} 2 \\ 2 \end{bmatrix}
+\end{align*}
+
+To pomeni, da je
+
+\begin{align*}
+  P &=
+\begin{bmatrix}
+2 & -1 \\
+2 & 1
+ \end{bmatrix}
+\end{align*}
+
+Preverite, da res velja \(  A = P J P^{-1} \). Izračunati moramo
+
+\begin{align*}
+  e^{xA} &= P e^{xJ} P ^{-1} = P e^{x(2I + N)} P^{-1} \\
+&= P e^{2x} \cdot e^{xN} P^{-1} \\
+&= P e^{2x} \cdot
+\begin{bmatrix}
+1 & x \\
+0 & 1
+ \end{bmatrix}
+P^{-1}
+\end{align*}
+
+Splošna rešitev sistem je
+
+\begin{align*}
+  \begin{bmatrix} y \\ z \end{bmatrix}&= P e^{2x} \begin{bmatrix}
+1 & x \\
+0 & 1
+\end{bmatrix}
+P ^{-1}
+\begin{bmatrix} A \\ B \end{bmatrix} \\
+  \begin{bmatrix} y \\ z \end{bmatrix}&= P e^{2x} \begin{bmatrix}
+1 & x \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix} C \\ D \end{bmatrix}
+\\
+&=
+\begin{bmatrix}
+2 & -1 \\
+2 & 1
+ \end{bmatrix}
+\begin{bmatrix}
+e^{2x} & xe^{2x} \\
+0 & e^{2x}
+ \end{bmatrix}
+ \begin{bmatrix} C \\ D \end{bmatrix} \\
+&= \begin{bmatrix}
+2e^{2x} & 2xe^{2x} - e^{2x} \\
+2e^{2x} & 2xe^{2x} + e^{2x}
+ \end{bmatrix}
+\begin{bmatrix} C \\ D \end{bmatrix} \\
+&= \begin{bmatrix} 2Ce^{2x}+ 2Dxe^{2x} - De^{2x} \\
+2Ce^{2x} 2D x e^{2x} + De^{2x} \end{bmatrix}
+\end{align*}
+*** Primeri 7.17
+
+Rešimo sistem
+
+\begin{align*}
+  y' &= y - z \
+z' &= y + z
+\end{align*}
+
+Matrika \(  A = \begin{bmatrix}
+1 & -1 \\
+1 & 1
+\end{bmatrix} \)
+
+Lastne vrednosti so kompleksne in sicer \(  \lambda = 1 \pm i \), lastna vektorja pa sta
+
+\[ w_{\pm} = \begin{bmatrix} \mp i  \\ 1  \end{bmatrix}
+\]
+
+Sledi
+
+\begin{align*}
+  D &=
+\begin{bmatrix}
+1 + i & 0 \\
+0 & 1 - i
+ \end{bmatrix} \\
+P &=
+\begin{bmatrix}
+i  & -i  \\
+1  & 1
+ \end{bmatrix} \\
+P^{-1} &= \frac{1}{2i}
+\begin{bmatrix}
+1 & i \\
+-1 & i
+ \end{bmatrix}
+\end{align*}
+
+in torej ob upoštevanju \(  e^{ix} = \cos x + i \sin x \):
+
+\begin{align*}
+  e^{xA} &= \frac{1}{2} \\
+&= \begin{bmatrix}
+1 & -i \\
+i & 1
+ \end{bmatrix}
+\begin{bmatrix}
+e^x (\cos x + i \sin x) & 0 \\
+ & e^x (\cos x - i \sin x)
+ \end{bmatrix}
+\frac{1}{2}
+\begin{bmatrix}
+-i & 1 \\
+i & 1
+ \end{bmatrix} \\
+&= e^x \begin{bmatrix}
+\cos x &  - \sin x\ \\
+ \sin x  & \cos x \
+ \end{bmatrix}
+\end{align*}
+** Trditev 7.16 (p.S.)
+
+1) Naj bo \(  A \in \mathbb{C}^{n \times n} \):Če je \(  \lambda \) lastna vrednost matrike \(  A \) z lastnim vektorjem \(  \vec{v} \in \mathbb{C}^n \), potem je \(  \vec{y} (x) = e^{\lambda x} \vec{v} \) ena od rešitev diferencialne enačbe \(  \vec{y} ' = A \vec{y} \).
+2) Naj bo \(  A \in \mathbb{R}^{n \times n } \) potem velja
+   1) Če je \(  \lambda \in \mathbb{C} \) lastna vrednost z lastnim vektorjem \(  \vec{v} \in \mathbb{C}^n \), potem je \(  \bar{\lambda} \) tudi lastna vrednost z lastnim vektorjem \(  \vec{\bar{v} \).
+   2) Če funkcija \(  \vec{y} \) reši enačbo  \(  \vec{y}' = A \vec{y} \), jo rešita tudi realni in imaginarni del funkcije \(  \vec{y} \).
+
+*Dokaz*
+1) smo že
+2) bla
+   1) \(  A \vec{v} = \lambda \vec{v} \implies \bar{A} \vec{\bar{v}} = \bar{\lambda} \vec{\bar{v}} \)
+   2) \(  \vec{y} = \vec{a} + i \vec{b} \). Potem je
+      \begin{align*}
+      \vec{a} ' + i \vec{b}' &= A ( \vec{a} + i \vec{b} ) \\
+       &= A \vec{a} + A i \vec{b} \\
+       &\implies a' = A \vec{a}, \  \vec{b}' = A \vec{b}
+      \end{align*}
+* Linearne diferencialne enačbe višjih redov
+To so enačbe oblike
+
+\[ a_n y^{(n)} + a_{n-1} y^{(n -1)} + \ldots + a_1 y' + a_0 y = b
+\]
+
+kjer so \(  a_0, a_1, \ldots, a_{n - 1}, a_n \) dane funkcije. Iščemo \(  y \). Linearno diferencialno enačbo reda \(  n \) prevedemo na sistem \(  n \) diferencilanih enačb 1. reda.
+
+Definiramo
+
+\begin{align*}
+  A &=
+\begin{bmatrix}
+0 & 1 &  & & \\
+ &  \ddots & \ddots & &\\
+& & & 0 & 1  \\
+- \frac{a_0}{a_n} & - \frac{a_1}{a_n} & \ldots & & \frac{- a_{n - 1}}{a_n}
+\end{bmatrix}
+\end{align*}
+** Trditev
+
+Preslikava
+
+\[ N:y \mapsto \begin{bmatrix} y \\ y' \\ y'' \\ \vdots  \\ y^{(n)}\end{bmatrix}
+\]
+
+\[ \left\{ \text{resitve enacbe} \right\} \to \left\{ \text{resitve sistema } \vec{z}' = A \vec{z} + \vec{g} \right\}
+\]
+
+kjer je \(  \vec{g} = (0 \ldots 0 \frac{b}{a_n}) \). Funkcija je bijektivna. Inverz
+
+\[ \begin{bmatrix} z_1 \\ \vdots \\ z_n \end{bmatrix} \mapsto z_{1}
+\]
