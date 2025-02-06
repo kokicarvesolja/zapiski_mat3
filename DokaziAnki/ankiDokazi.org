@@ -536,4 +536,1031 @@ Prove:
 
 Dokaz: <1>8 in definicija \( \left| v_0 \right| = \left| \left( \dot{\gamma} \times \ddot{\gamma} \right) (t_0) \right| \)
 *** <1>10 QED
-Iz <1>9 vidimo, da je kot \( \phi \) med \( v_0 \) in \( w \in l(t_1, t_2)^{\perp} \) nujno majhen, za \( t_1 \) in \( t_2 \) blizu \( t_0 \). Tukaj naletimo na protislovje, ker \( l^{\perp} \) ni ravnina kot predpostavljeno na začetku, ampak ozek stožec okoli \( v_0 \). 
+Iz <1>9 vidimo, da je kot \( \phi \) med \( v_0 \) in \( w \in l(t_1, t_2)^{\perp} \) nujno majhen, za \( t_1 \) in \( t_2 \) blizu \( t_0 \). Tukaj naletimo na protislovje, ker \( l^{\perp} \) ni ravnina kot predpostavljeno na začetku, ampak ozek stožec okoli \( v_0 \).
+* Izrek 3.15.1
+Predpostavke:
+
+- \(  \gamma \) je regularna parametrizacija \(  C ^2 \) neke krivulje \(  \mathbb{R} ^3 \)
+- za poljuben \(  t_0 \in \mathbb{R} \) velja
+
+  \[ v_0 = \left( \dot{\gamma} \times \ddot{\gamma} \right)(t_0) \ne 0
+  \]
+- \(  t_1, t_2 \in \left( t_0 - \delta, t_0 + \delta \right) \), in \(  t_1 \ne t_2 \ne t_0 \) so različne.
+
+S \(  \Pi (t_1, t_2) \) označimo ravnino skozi \(  \gamma(t_1), \gamma(t_2), \gamma(t_0) \). Ravnina \(  \Pi(t_1, t_2) \) limitira proti ravnini z normalo \(  v_0 \), ko gresta \(  t_1, t_2 \to t_0 \).
+** Dokaz
+*** <1>1
+Ravnina \(  \Pi (t_1, t_2) \) obstaja in je enolično določena.
+
+Dokaz: Izrek 3.15
+*** <1>2
+Dovolj je dokazati:
+
+Enotske normale \(  \vec{n}(t_1, t_2) \) na \(  \Pi(t_1, t_2) \) limitirajo k \(  \pm \frac{v_0}{\left| v_0 \right|} \), ko \(  t_1, t_2 \to t_0 \).
+**** <2>1
+Case 1: do predznaka natančno
+
+\[ \vec{n} (t_1, t_2) = \frac{\left[ \gamma(t_1) - \gamma(t_2) \right] \times \left[ \gamma(t_2) - \gamma(t_1) \right]}{\left| \left[ \gamma(t_1) - \gamma(t_2) \right] \times \left[ \gamma(t_2) - \gamma(t_1) \right] \right|}
+\]
+
+Prove: \(  \vec{n}(t_1, t_2) \) je zvezna funkcija argumentov \(  t_1, t_2 \in \mathbb{R} ^2 \) na \(  \left( t_0 - \delta, t_0 + \delta \right) \times \left( t_0 - \delta, t_0 + \delta \right) \).
+
+Dokaz: \(  \gamma \) je zvezna funkcija argumentov \(  t_2, t_1 \) iz predpostavke 1.
+**** <2>2
+Case 2: \(  \epsilon > 0 \)
+Case 3: definiramo \(  f(t) = \left\langle \gamma(t) - \gamma(t_0), \vec{n} (t_1, t_2) \right\rangle \).
+
+Obstajata \(  t_0 < \xi_1 < t_1 \xi_2 < t_2 \) tako, da velja
+
+\begin{align*}
+  0 &= f'(\xi_1) = \left\langle \dot{\gamma}(\xi_1), \vec{n}(t_1, t_2) \right\rangle \\
+0 &= f'(\xi_2) = \left\langle \dot{\gamma} (\xi_2), \vec{n} (t_1, t_2) \right\rangle
+\end{align*}
+
+Dokaz: Rolleov izrek
+**** <2>3
+
+Obstaja \(  \xi_3 \in \left( \xi_1, \xi_2 \right) \) tako, da velja
+
+\[ f''(\xi_3) = \left\langle \ddot{\gamma}(\xi_3), \vec{n}(t_1, t_2) \right\rangle = 0
+\]
+
+Dokaz: Rolleov izrek
+**** <2>4
+
+Velja
+
+\[ \left| v_0 \times \vec{n}(t_1, t_2) \right| \le \left( \left| \dot{\gamma}(t_0 - \dot{\gamma}(\xi_1)) \right| \left| \ddot{\gamma})(t_0) \right| + \left| \ddot{\gamma} (t_0) - \ddot{\gamma}(\xi_3) \right| \left| \dot{\gamma}(t_0) \right|\right) \left| \vec{n}(t_1, t_2) \right|
+\]
+
+in \(  \left| \vec{n}(t_1, t_2) \right| = 1 \)
+
+Dokaz:
+***** <3>1
+
+\begin{align*}
+  v_0 &= \left[ \dot{\gamma}(t_0) \times \ddot{\gamma}(t_0) \right] \times \vec{n} (t_1, t_2) \\
+&= \left\langle \dot{\gamma}(t_0), \vec{n}(t_1, t_2) \right\rangle \cdot \ddot{\gamma} (t_0) - \left\langle \ddot{\gamma}(t_0), \vec{n}(t_1, t_2) \right\rangle \cdot \dot{\gamma}(t_0) \\
+&= \left\langle \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1), \vec{n} (t_1, t_2) \right\rangle \cdot \ddot{\gamma}(t_0) - \left\langle  \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3), \vec{n}(t_1, t_2) \right\rangle \cdot \dot{\gamma} (t_0)
+\end{align*}
+
+Dokaz:
+
+\(  (a \times b) \times c = (a \cdot c) \cdot b - (b \cdot c) \cdot a \) ter v zadnji vrstici <2>2, ter <2>3
+***** <3>2 QED
+<3>1 in trikotniška neenakost
+**** <2>5
+Case 4: \(  \delta > 0 \)
+
+Za \(  \xi_1, \xi_3 \in (t_0 - \delta, t_0 + \delta) \) velja
+
+\begin{align*}
+  \left| \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1) \right| &< \epsilon  \\
+\left| \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3) \right| &< \epsilon
+\end{align*}
+
+Dokaz: definicija zveznosti funkcije
+**** <2>6
+
+\[ \sin \phi (t_1, t_2) \le \frac{\left| \dot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}{\left| \dot{\gamma} \times \ddot{\gamma} \right|(t_0)} \epsilon
+\]
+
+Kot \(  \phi(t_1, t_2) \) je oster, saj je \(  \epsilon > 0 \), ampak majhen.
+
+Dokaz:
+***** <3>1
+\[ \left| v_0 \times \vec{n}(t_1, t_2) \right| = \left| v_0 \right| \sin \phi
+\]
+
+Dokaz: definicija vektorskega produkta in \(  \left| \vec{n}(t_1, t_2) \right| = 1 \)
+***** <3>2
+
+\[ \left| v_0 \right| \sin \phi \le \frac{\left| \dot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}{\left| \dot{\gamma} \times \ddot{\gamma} \right| (t_0)}
+\]
+
+Dokaz: <3>1 in <2>4
+***** <3>3 QED
+Dokaz: <3>2
+
+**** <2>7
+Case 5: \(  \tilde{v}_0 = \frac{v_0}{\left| v_0 \right|} \)
+
+\[ \left| \tilde{v}_0 - \vec{n} \right| ^2 = 2(1 - \cos \phi)
+\]
+
+Dokaz: analiza 1
+
+\[ \left| \tilde{v}_0 - \vec{n} \right| = \left| \tilde{v}_0 \right| + \left| \vec{n} \right| - 2 \left\langle \tilde{v}_0, \vec{n} \right\rangle = 2 - 2\cos \phi
+\]
+
+in \(  \left| \tilde{v}_0 \right| = \left| \vec{n} \right| = 1 \).
+**** <2>8 QED
+Dokaz: <2>7: razlika \(  1 - \cos \phi \) gre proti 0, ko \(  t_1, t_2 \to t_0 \), ker oster kot \(  \phi \to 0 \).
+*** <1>3 QED
+Dokaz: <1>2
+* Definicija 3.16
+Ravnini skozi \(  T_0 = \gamma(t_0) \) in z normalo \(  \left( \dot{\gamma} \times \ddot{\gamma} \right) (t_0) \ne 0  \) pravimo pritisnjena ravnina na krivuljo \(  \gamma \) v točki \(  T_0 \).
+* Izrek 3.17
+
+Če je \(  \Pi = \Pi(t_0) \) pritisnjena ravnina na \(  \gamma \) v točki \(  \gamma(t_0)\) velja
+
+\[ d(\gamma(t_0 + h), \Pi) = o \left( h ^2 \right), \ h \to 0
+\]
+
+kjer je \(  f(h) = o(g(h)), h \to a \).
+** Dokaz
+*** <1>1
+Case 1: \(  \gamma(t) = \left( \gamma_1(\tilde{t}), \gamma_2 (\tilde{t}), \gamma_3 (\tilde{t}) \right) \) za \(  \tilde{t} = t_0 + h \).
+Case 2: \(  \vec{o}(h ^2) = \left( o(h ^2),  o(h ^2),  o(h ^2)  \right) \)
+
+Velja
+
+\[ d (\gamma(\tilde{t}), \Pi) = \left\langle \gamma(\tilde{t}) - \gamma(t_0), \frac{\dot{\gamma}(t_0) \times \ddot{\gamma}(t_0)}{\left| \dot{\gamma}(t_0)\times \ddot{\gamma}(t_0) \right|}  \right\rangle
+\]
+
+Dokaz:
+Za razdaljo med vektorjem \(  \vec{R} \), ki kaže iz ravnine in poljubno ravnino \(  \Sigma \) z normalnim vektorjem \(  \vec{n}_{\Sigma} \) velja
+
+\[ d \left( \vec{R}, \Sigma \right) = \left\langle \vec{R} - \vec{r}, \frac{\vec{n}_{\Sigma}}{\left| \vec{n}_{\Sigma} \right|} \right\rangle
+\]
+*** <1>2
+Velja
+
+\[ \left| \left\langle \dot{\gamma}(t_0) \cdot h ^2 + \ddot{\gamma}(t_0) \cdot \frac{h ^2}{2} + \vec{o}(h ^2), \vec{n} \right\rangle \right| = o(h ^2)
+\]
+
+Dokaz:
+**** <2>1
+\[ \gamma_i (\tilde{t}) = \gamma_i (t_0) + \dot{\gamma}_i (t_0) \cdot h + \ddot{\gamma}_i (t_0) \cdot \frac{ h ^2}{2} + o(h ^2), \quad i = 1, 2, 3
+\]
+
+Dokaz: Razvoj \(  \gamma_i (\tilde{t}) \) v Taylorjevo vrsto
+**** <2>2
+
+\begin{align*}
+ \left| \left\langle \dot{\gamma}(t_0) \cdot h ^2 + \ddot{\gamma}(t_0) \cdot \frac{h ^2}{2} + \vec{o}(h ^2), \vec{n} \right\rangle \right| &= \left| \left\langle o(h ^2), \vec{n} \right\rangle \right| \\
+& \le \left| o(h ^2) \right| = o(h ^2)
+\end{align*}
+
+Dokaz: Združimo <1>1 in <2>1, trikotniška neenakost in pa skalarni produkt pravokotnih vektorjev (\(  \dot{\gamma} \), \(  \ddot{\gamma} \) na \(  \vec{n} = \dot{\gamma} \times \ddot{\gamma} \)) je enak 0
+**** <2>3 QED
+*** <1>3 QED
+* Definicija 4.1
+Ploskev v \(  \mathbb{R} ^3 \) je podana s parametrizacijo \(  \vec{r} = \vec{r}(u, v): D \to \mathbb{R} \), pri čemer je \(  \vec{r}(u, v) = \left( X(u, v), Y(u, v), Z(u, v) \right) \) preslikava reda vsaj \(  C^2 \). Zahtevamo še, da je \(  \vec{r}_u \times \vec{r}_v \ne 0 \). V tem primeru pravimo, da je parametrizacija regularna. \(  u, v \) sta krivočrtni koordinati na ploskvi \(  M = \left\{ \vec{r}(u, v), \ (u, v)  \in D \right\} \)
+* Definicija 4.2
+
+(Afina) tangentna ravnina na ploskev \(  M \) skozi točko \(  m = \vec{r}(u, v) = (x_0, y_0, z_0) \) definiramo kot množico tangentnih vektorjev krivulj skozi to točko. Eksplicitno je to ravnina
+
+\[ m + \mathrm{Lin} \left{ \vec{r}_u (u, v), \vec{r}_v (u, v) \right}
+\]
+
+Enačba tangentne ravnine je torej
+
+\[ \left\langle (x, y, z) - \left( x_0, y_0, z_0 \right),  \left( \vec{r}_u \times \vec{r}_v \right)(u, v) \right\rangle
+\]
+
+/Opomba/: za predstavitev ravnine potrebujemo začetno točko \(  m \) ter bazna vektorja, ki razpenjata ravnino
+** Dodatno:
+
+Upoštevamo stvari definirane v definiciji 4.1
+
+Zanima nas tangentna ravnina v točki \(  \vec{r}(u_0, v_0) \). Imamo krivuljo \(  \gamma: I \to D \), ki preslika \(  \gamma(t_0) = \left( \alpha(t), \beta(t) \right) = (u_0, v_0) \). Krivuljo preslikamo na ploskev \(  \vec{r} \circ \gamma: I \to M \).
+
+\[  \frac{\mathrm{d} }{\mathrm{d} t} \vec{r}(\gamma(t)) = \vec{r}_u(\gamma(t)) \cdot \dot{\alpha}(t) + \vec{r}_v (\gamma(t)) \cdot \dot{\beta}(t)
+\]
+
+Pri \(  t_0 \) je to tangentni vektor na krivuljo \(  (\vec{r} \circ \gamma)(t_0) \)
+
+\[ \vec{r}_u(\gamma(t_0)) \cdot \dot{\alpha}(t_0) + \vec{r}_v(\gamma(t_0)) \cdot \dot{\beta}(t_0) = a \cdot \vec{r}_u(u_0, v_0) + b \cdot \vec{r}_v (u_0, v_0)
+\]
+
+Kakor v opombi, sta \(  \vec{r}_u \) in \(  \vec{r}_v \) naša bazna vektorja.
+* Implicitno podane ploskve
+
+Funkcija \(  F: \mathbb{R} ^3 \to \mathbb{R} \) je funkcija 3 spremenljivk. Ploskev definiramo kot množico ničel oz. nivojnico
+
+\[ M = \left\{ (x, y, z) \in \mathbb{R} ^3, F(x, y, z) = 0 \right\}
+\]
+
+z dodanim pogojem \(  \nabla F = \left( \frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z}  \right) \ne 0 \), kar je enakovredno \(  \vec{r}_u \times \vec{r}_v \ne 0 \) pri eksplicitni funkciji.
+** Tangentna ravnina implicitno podane ploskve
+Imamo točko \(  m = (x_0, y_0, z_0) \) na ploskvi \(  M \) in poljubno krivuljo, ki gre skozi to točko
+
+\[ \vec{r}(t) = \left( x(t), y(t), z(t) \right)
+\]
+
+in leži na ploskvi \(  M \) za vsak \(  t \). Poleg tega imamo tudi funkcijo \(  F = F(x, y, z) \) in ker leži na ploskvi, po definiciji velja
+
+\begin{equation}
+\label{eq:1}
+ F(x(t), y(t), z(t)) = 0
+\end{equation}
+
+Enačbo \ref{eq:1} odvajamo po \(  t \) in dobimo
+
+\begin{align*}
+  \frac{\mathrm{d} }{\mathrm{d} t} F(x, y, z) &= 0 \\
+F_x \cdot \dot{x} + F_y \cdot \dot{y} + F_z \cdot \dot{z} &= 0 && \text{v točki } m\\
+\left\langle \nabla F(m), \vec{r}(t_0) \right\rangle = 0
+\end{align*}
+
+Tangentni vektor krivulje \(  \odv{r}(t_0) \) leži v tangentni ravnini na ploskev \(  M \) v točki \(  m \), saj je krivulja v ravnini \(  M \). Vektor \(  \nabla F (m) \) je nanj pravokoten (saj je njun skalarni produkt enak 0), kar pomeni, da predstavlja normalni vektor ravnine. Enačba tangentne ravnine na ploskev \(  M \) v točki \(  m \) je torej
+
+\[ \left\langle (x, y, z) - \vec{r}(t_0), \nabla F (\vec{r}(t_0)) \right\rangle = 0
+\]
+* Rotacijsko invariantne ploskve (vrtenine)
+
+Način podajanja ploskev tako, da krivuljo v \(  xz \) ravnini zavtrimo okrog \(  z \) osi.
+
+Začetna parametrizacija krivulje je
+
+\[ \gamma(t) = \begin{bmatrix} x(t) \\ 0 \\ z(t) \end{bmatrix}, \ t \in I
+\]
+
+ki jo pomnožimo z rotacijsko matriko
+
+\[ \begin{bmatrix}
+\cos \phi & - \sin \phi & 0 \\
+\sin \phi & \cos \phi & 0 \\
+0 & 0 & 1
+\end{bmatrix} \begin{bmatrix} x(t) \\ 0 \\ z(t) \end{bmatrix} = \begin{bmatrix} x(t) \cos \phi \\ x(t) \sin \phi \\ z(t)  \end{bmatrix}
+\]
+** Plašč valja
+
+Daljico vzamemo za krivuljo \(  \gamma \):
+
+\[ \gamma(t) = \begin{bmatrix} a \\ 0 \\ t \end{bmatrix}, \ t \in I
+\]
+
+in parametrizacija je torej
+
+\[ \vec{r}(t, \phi) = \begin{bmatrix} a \cos \phi \\ a \sin \phi \\ t \end{bmatrix}, \ t \in I, \phi \in [0, 2\pi)
+\]
+** Stožec
+
+Premica skozi izhodišče kot krivulja \(  \gamma \):
+
+\[ \gamma(t) = \begin{bmatrix} t \\ 0  \\ at  \end{bmatrix}, t \in [0, b]
+\]
+
+Parametrizacija stožca je tako
+
+\[ \vec{r}(t, \phi) = \begin{bmatrix} t \cos \phi \\ t \sin \phi \\ a \end{bmatrix}, t \in [0, b], \phi \in [0, 2\pi)
+\]
+** Sfera
+
+Kot parametrizacijo vzamemo polkrožnico
+
+\[ \gamma(t) = \begin{bmatrix} \cos t \\ 0 \\ \sin t \end{bmatrix}, t \in \left[ - \frac{\pi}{2},  \frac{\pi}{2} \right]
+\]
+
+Parametrizacija enotske sfere
+
+\[ \vec{r}(t, \phi) = \begin{bmatrix} \cos t \cos \phi \\ \cos t \sin \phi \\ \sin t \end{bmatrix}, t \in  \left[ - \frac{\pi}{2},  \frac{\pi}{2} \right], \phi \in [0, 2 \pi)
+\]
+** Torus
+
+Kot parametrizacijo vzamemo krožnico s polmerom \(  r \) na oddaljenosti \(  a \) od izhodišča:
+
+\[ \gamma(t) = \begin{bmatrix} a + r \cos t \\ 0 \\ r \sin t \end{bmatrix}, t \in [0, 2\pi)
+\]
+
+Parametrizacija torusa je
+
+\[ \vec{r}(t, \phi) = \begin{bmatrix} (a + r \cos t)\cos \phi \\ (a + r \cos t)\sin \phi  \\ r \sin t \end{bmatrix}, \ t \in [0, 2\pi), \phi \in [0, 2 \pi)
+\]
+* Površina ploskve
+** Lagrangeov izrek
+Predpostavke:
+- \(  a, b \in \mathbb{R}, \ a < b \)
+- \(  f: [a, b] \to \mathbb{R} \) zvezna funkcija
+- \(  f \) odvedljiva na \(  (a, b) \)
+
+Obstaja \(  c \in (a, b) \), da je
+
+\[ f(b) - f(a) = f'(c)(b - a)
+\]
+*** Dokaz
+**** <1>1
+Case 1: \(  h(x) = f(x) (b - a) - x (f(b) - f(a)) \), zvezna na \(  [a, b] \), odvedljiva na \(  (a, b) \)
+
+Velja
+
+\begin{align*}
+  h(a) &= f(a) (b - a) - a(f(b) - f(a)) = f(a) b - f(b) a \\
+h(b) &= f(b) (b - a) - b(f(b) - f(a)) = - a f(b) + b f(a)
+\end{align*}
+
+Dokaz: Case 1
+**** <1>2
+
+\[ 0 = h'(c) = f'(c) (b - a) - (f(b) - f(a))
+\]
+
+Dokaz: <1>1 velja Rolleov izrek, \(  h'(x) \) obstaja po Case 1
+**** <1>3 QED
+Dokaz: <1>2
+** Ploščina paralelograma
+Predpostavke:
+- parametrizacije ploskve \(  \vec{r}: D \to \mathbb{R} ^3 \)
+*** <1>1
+Majhen pravokotnik \(  P \) z oglišči v \(  (u, v) \) in stranicama \(  \Delta u \), \(  \Delta v \) preslikamo v \(  \vec{r} \).
+
+Za dovolj majhen pravokotnik \(  P \) dobimo približno linearno preslikavo \(  \vec{r}(P) \), ki ga lahko aproksimiramo s ploščino paralelograma z oglišči \(  \vec{r}(u, v), \ \vec{r}(u + \Delta u, v), \vec{r}(u, v + \Delta v), \vec{r}(u + \Delta u, v + \Delta v) \).
+*** <1>2
+
+Velja
+
+\begin{align*}
+  \vec{r}(u + \Delta u, v) - \vec{r}(u, v) &= \vec{r}_u (u + \xi \Delta u, v) \Delta u && \xi \in (0, 1) \\
+  \vec{r}(u, v + \Delta v ) - \vec{r}(u, v) &= \vec{r}_v (u, v  + \eta \Delta v) \Delta v && \eta \in (0, 1) \\
+\end{align*}
+
+Dokaz: Lagrangeov izrek za posamezno spremenljivko in definicija, da je \(  \vec{r} \in C^1 \)
+*** <1>3
+
+\begin{align*}
+  \vec{r}_u(u + \xi \Delta u, v) &= \vec{r}_u (u, v) \\
+\vec{r}_v (u, v + \eta \Delta v) &= \vec{r}_v (u, v)
+\end{align*}
+
+Dokaz: za majhne \( \xi, \eta  \) to se lahko aproksimira
+*** <1>4
+
+Ploščina paralelograma je pribložno enaka
+
+\[ \left| \vec{r}_u \times \vec{r}_v \right| \Delta u \Delta v
+\]
+
+Dokaz: <1>3, <1>2
+* Definicija 4. 8
+
+Naj bo \(  D \subseteq \mathbb{R} ^2 \) območje in \(  \vec{r}: D \to \mathbb{R} ^3 \) parametrizirana ploskev \(  M = \left\{ \vec{r}(u, v); \ (u, v) \in D \right\} \). Njeno površino izračunamo kot
+
+\[ P(M) = \iint\limits_D^{} \left| \vec{r}_u \times \vec{r}_v \right| \,\mathrm{d S}
+\]
+** Opomba
+
+Oznaka \(  \left\lVert \cdot \right\rVert \) označuje normo.
+
+\begin{align*}
+  \left\lVert \vec{r}_u \times \vec{r}_v \right\rVert ^2 &= \left\lVert \vec{r}_u \right\rVert ^2 \left\lVert \vec{r}_v \right\rVert ^2 \sin \phi \\
+&= \left\lVert \vec{r}_u \right\rVert ^2 \left\lVert \vec{r}_v \right\rVert ^2 \left( 1 - \cos ^2 \phi \right) \\
+&= \left\lVert \vec{r}_u \right\rVert ^2 \left\lVert \vec{r}_v \right\rVert ^2 - \left| \left\langle \vec{r}_u, \vec{r}_v \right\rangle \right| ^2
+\end{align*}
+
+Z oznakami
+\[ \left\lVert \vec{r}_u \right\rVert ^2 = E; \ \left\lVert \vec{r}_v \right\rVert ^2 = G; \ \left\langle \vec{r}_u, \vec{r}_v \right\rangle = F
+\]
+
+\[ P(M) = \iint\limits_D^{} \sqrt{EG - F ^2} \,\mathrm{d S}
+\]
+* Trditev 4.9
+
+Definicija za površino ploskve je dobra (neodvisna od parametrizacije).
+** Dokaz
+*** <1>1
+Case 1: \(  \vec{r}: D \to M \) parametrizacija ploskve \(  M \)
+Case 2: \(  \vec{\rho} : \Delta \to M \) druga parametrizacija ploskve \(  M \)
+Case 3: \(  \Phi: D \to \Delta, \ (x, y) \mapsto (U(x, y), V(x, y)) \) gladka bijekcija \(  \vec{\rho} = \vec{r} \circ \Phi \)
+
+\begin{align*}
+  \vec{\rho}_x &= \vec{r}_u \cdot U_x + \vec{r}_v \cdot V_x \\
+\vec{\rho}_y &= \vec{r}_u \cdot U_y + \vec{r}_v \cdot V_y
+\end{align*}
+
+Dokaz: Verižno pravilo parcialnega odvoda \(  \vec{\rho} \).
+*** <1>2
+
+\[ \vec{\rho}_x \times \vec{\rho}_y = \det (J\Phi) \vec{r}_u \times \vec{r}_v
+\]
+
+Dokaz: Analiza 1 ter \(  \vec{r}_i \times \vec{r}_i = 0  \)
+
+\begin{align*}
+  \vec{\rho}_x \times \vec{\rho}_y &= \left( U_x \cdot V_y - V_x \cdot U_y \right) \cdot (\vec{r}_u \times \vec{r}_v) \\
+&= \begin{vmatrix}
+ U_x & U_y \\
+V_x & V_y
+ \end{vmatrix} \cdot (\vec{r}_u \times \vec{r}_v)
+\end{align*}
+*** <1>3 QED
+Dokaz:
+
+\begin{align*}
+  P(M) &= \iint\limits_D^{} \left| \vec{r}_u \times \vec{r}_v (u, v) \right|  \,\mathrm{d S} \\
+&= \iint\limits_{\Delta}^{} \left| \vec{r}_u \times \vec{r}_v (\Phi(x, y) \right| \left| \det (J \Phi) \right|\,\mathrm{d P} \\
+&= \iint\limits_{\Delta}^{} \left| \vec{\rho}_x \times \vec{\rho}_y \right| \,\mathrm{d P}
+\end{align*}
+* Definicija 4.11
+
+Lokalna orientacija gladke regularne krivulje \(  \Gamma \) brez samopresečišč v točki \(  \gamma \in \Gamma \) je podana z izbiro enotskega tangentnega vektorja v tej točki (imamo samo dve možni izbiri).
+
+Globalna orientacija je podana z zvezno izbiro enotskih tangentnih vektorjev v vsaki točki \(  \gamma \in \Gamma \).
+* Definicija 4.12
+
+Lokalna orientacija gladke regularne ploskve \(  M \subseteq \mathbb{R} ^3 \) je izbira enotske normalne v točki \( m \in M \)
+
+Globalna orientacija ploskve \(  M \) je zvezna izbira enotskih normalnih vektorjev za vse \(  m \in M \):
+
+
+\begin{align*}
+  \vec{n}:M &\to S ^2 \\
+m & \mapsto \vec{n}(m)
+\end{align*}
+
+* Definicija 4.13
+Naj bo \(  M \) orientabilna ploskev z robom \(  \partial M \). Za vsako točko \(  m \in \partial M \) naj bo \(  \vec{\mu} \) tisti enotski vektor iz tangentne ravnine \(  T_mM \), ki je pravokoten na \(  T_m\partial M \) (tangentno premico na \(  \partial \) v točki \(  m \)) in kaže ven iz \(  M \), in naj bo \(  \vec{n} \) enotski normalni vektor na \(  M \), podan z orientacijo.
+
+Potem vektor \(  \vec{n} \times \vec{\mu} \) določa inducirano orientacijo roba \(  \partial M \) v točki \(  m \in \partial M \).
+* Definicija 5.1
+Naj bo \(  \Omega \subseteq \mathbb{R} ^3 \). Skalarno polje na \(  \Omega \) je funkcija \(  f: \Omega \to \mathbb{R} \). Vektorsko polje na \(  \Omega \) je preslikava \(  \vec{F}: \Omega \to \mathbb{R} ^3 \).
+
+Definiramo nablo: \(  \nabla = \left( \frac{\partial }{\partial x}, \frac{\partial }{\partial y}, \frac{\partial }{\partial z}    \right) \)
+* Standardni diferencialni operatorji v poljubnih ortogonalnih koordinatah
+Vzamemo nabor ortogonalnih koordinat \(  \vec{\xi} = \left( \xi_1, \xi_2, \xi_3 \right) \) v \(  \mathbb{R} ^3 \). S parametrizacijo prostora \(  \mathbb{R} ^3 \) \(  \vec{r} \) dobimo kartezične koordinate
+
+\[ \vec{r} = \vec{r}(\xi)
+\]
+
+Zahtevamo za vsak \(  \vec{\xi} \) in \(  \vec{r}_j = \vec{r}_j \left( \vec{\xi} \right) = \frac{\partial \vec{r}}{\partial \xi_j}  \), da velja
+
+\[ \left\langle \vec{r}_j, \vec{r}_k \right\rangle _{\mathbb{R} ^3} = 0 \text{ za } j \ne k
+\]
+
+/Opomba/: z drugimi besedami, smerni odvodi oz. tangentni vektorji so me seboj ortogonalni v vsaki točki.
+* Definicija 5.8 (Laméjevi koeficienti)
+Laméjevi koeficienti so
+
+\[ H_j = \left| \vec{r}_j \right| , \ j = 1, 2, 3
+\]
+
+in označimo
+
+\[ H = H_1 H_2 H_3
+\]
+
+Definiramo še enotske tangentne vektorje na koordinate krivulje
+
+\[ \vec{\eta}_j = \frac{\vec{r}_j}{H_j} = \frac{\vec{r}_j}{\left| \vec{r}_j \right|}
+\]
+* Definicija 5.2 (gradient)
+Gradient skalarnemu polju \(  f \) priredi vektorsko polje \(  \nabla f \) na sledeč način
+
+\[ \mathrm{grad} f = \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}    \right)
+\]
+* Definicija 5.3 (divergenca)
+Divergenca vektorskemu polju \(  \vec{F} = (U, V, W) \) priredi skalarno polje \(  \nabla \cdot \vec{F} \) na
+
+\[ \mathrm{div} \vec{F} = X_x + Y_y + Z_z
+\]
+* Definicija 5.4 (rotor)
+Rotor vektorskemu polju \(  \vec{F} = (U, V, W) \) priredi vektorsko polje \(  \nabla \times \vec{F}  \) na sledeč način
+
+\[ \mathrm{rot} \vec{F} = (Z_y - Y_z, X_z - Z_x, Y_x - X_y)
+\]
+* Laplaceov operator
+
+\[ \Delta = \mathrm{div} \circ \nabla = \frac{\partial ^2}{\partial x ^2} +  \frac{\partial ^2}{\partial y ^2 } + \frac{\frac{\partial  ^2}{\partial z ^2 }
+\]
+* Trditev 5.9
+Predpostavke:
+
+- nabor ortogonalnih koordinat \(  \vec{\xi} = \left( \xi_1, \xi_2, \xi_3 \right) \) v \(  \mathbb{R} ^3 \)
+- skalarno polje \(  u: \mathbb{R} ^3 \to \mathbb{R} \)
+- \(  U \) je izražava \(  u(\vec{x}) \) v \(  \xi \), torej \(  U(\vec{\xi}) = u \left( \vec{r} \left( \vec{\xi} \right) \right) \) oz. \(  U = u \circ \vec{r} \)
+
+/Opomba/: \(  \vec{x} \) so kartezične in \(  \epsilon \) so poljubne koordinate
+
+Velja
+
+\[ \left( \nabla_{\vec{x}} u \right) \left( \vec{r} \right) = \left\langle \nabla_{\vec{\xi}} U, \begin{bmatrix} \frac{\vec{\eta}_1}{H_1}  \\ \frac{\vec{\eta}_2}{H_2} \\ \frac{\vec{\eta}_3}{H_3} \end{bmatrix} \right\rangle
+\]
+** Dokaz
+*** <1>1
+Case 1: \(  \vec{r} = (X, Y, Z) \)
+
+Velja
+
+\[ \frac{\partial U}{\partial \xi_j} = \left\langle \left( \nabla_{\vec{x}} u \right) \left( \vec{r}(\vec{\xi}) \right), \vec{r}_j (\vec{\xi}) \right\rangle
+\]
+
+Dokaz:
+**** <2>1
+
+\[ U(\vec{\xi}) = u \left( X (\vec{\xi}), Y(\vec{\xi}), Z(\vec{\xi}) \right) = u \left( \vec{r}(\vec{\xi}) \right)
+\]
+
+Dokaz: Case 1
+**** <2>2
+
+\[ \frac{\partial U}{\partial \xi_j} = \frac{\partial u}{\partial x} \left( \vec{r}(\vec{\xi}) \right) \cdot \frac{\partial X}{\partial \xi_j} \left( \vec{\xi} \right) + \frac{\partial u}{\partial y} \left( \vec{r}(\vec{\xi}) \right) \cdot \frac{\partial Y}{\partial \xi_j} \left( \vec{\xi} \right) + \frac{\partial u}{\partial z} \left( \vec{r}(\vec{\xi}) \right) \cdot \frac{\partial Z}{\partial \xi_j} \left( \vec{\xi} \right)
+\]
+
+Dokaz: <2>1 in verižno pravilo odvajanja
+**** <2>3 QED
+Dokaz: <2>2 se lahko zapiše kot
+
+\[ \frac{\partial U}{\partial \xi_j} =  \left\langle \left( \nabla_{\vec{x}} u  \right) \left( \vec{r}(\vec{\xi}) \right), r_j \left( \vec{\xi} \right)  \right\rangle
+\]
+*** <1>2
+
+\[ \left\langle \left( \nabla_{\vec{x}}u \right) \left( \vec{r} \left( \vec{\xi} \right) \right), \vec{r}_j \left( \vec{\xi} \right) \right\rangle = H_j \left\langle \left( \nabla_{\vec{x}} u \right) \left( \vec{r}\left( \vec{\xi} \right) \right), \vec{\eta}_j \right\rangle
+\]
+
+Dokaz: definicija Laméjevih koeficientov \(  \vec{r}_j = H_j \cdot \vec{\eta}_j \)
+*** <1>3
+
+\[ \left( \nabla_{\vec{x}} u \right) \left( \vec{r} \right) = \sum\limits_{j = 1}^3 \left\langle  \left( \nabla_{\vec{x}} u \right) \left( \vec{r} \right), \vec{\eta}_j  \right\rangle \cdot \vec{\eta}_j
+\]
+
+Dokaz: Ortonormirano bazo, kar \(  \vec{\eta}_j \) je, se zapiše za vsak \(  \vec{v} \in \mathbb{R} ^3 \) zapiše kot
+
+\[ \vec{v} = \sum\limits_1^3 \left\langle \vec{v}, \vec{\eta}_j \right\rangle \cdot \vec{\eta}_j
+\]
+
+*** <1>4
+
+\[ \sum\limits_{j = 1}^3 \left\langle \left( \nabla_{\vec{x}} u \right) \left( \vec{r} \right), \vec{\eta}_j \right\rangle \cdot \vec{\eta}_j = \left\langle \begin{bmatrix} \frac{\partial U}{\partial \xi_1} \\ \frac{\partial U}{\partial \xi_2}  \\ \frac{\partial U}{\partial \xi_3}  \end{bmatrix}, \begin{bmatrix} \frac{\vec{\eta}_1}{H_1} \\ \frac{\vec{\eta}_2}{H_2} \\ \frac{\vec{\eta}_3}{H_3} \end{bmatrix} \right\rangle
+\]
+
+Dokaz: linearna algebra
+
+\begin{align*}
+  \sum\limits_{j = 1}^3 \left\langle  \left( \nabla_{\vec{x}} u \right) \left( \vec{r} \right), \vec{\eta}_j \right\rangle \cdot \vec{\eta}_j &=  \sum\limits_{j= 1}^3 \frac{1}{H_j} \cdot \frac{\partial U}{\partial \xi_j} \cdot \vec{\eta}_j \\
+&= \sum\limits_{j = 1}^3 \frac{\partial U}{\partial \xi_j} \cdot \frac{\vec{\eta}_j}{H_j}
+\end{align*}
+*** <1>5 QED
+Dokaz: <1>4
+* Lema
+
+Predpostavke:
+- nabor ortogonalnih koordinat \(  \vec{\xi} = \left( \xi_1, \xi_2, \xi_3 \right) \) v \(  \mathbb{R} ^3 \)
+- \(  U \) je izražava \(  u(\vec{x}) \) v \(  \xi \), torej \(  U(\vec{\xi}) = u \left( \vec{r} \left( \vec{\xi} \right) \right) \) oz. \(  U = u \circ \vec{r} \)
+- Predpostavka 1: Definiramo inverz \(  \vec{R} = \vec{r}^{-1} \), kjer velja
+
+\[ x = \vec{r}(\vec{\xi}) \iff \vec{\xi} = \vec{R}(\vec{x})
+\]
+
+Dokaži
+
+\[ \mathrm{rot}_{\vec{x}} \left( \frac{\vec{\eta}_j}{H_j} \circ \vec{R} \right)
+\]
+
+** Dokaz
+*** <1>1
+Case 1: \(  k = 1, 2, 3 \)
+Case 2:
+
+\(  U_k \left( \vec{\xi} \right) = \xi_k \)
+
+
+Velja
+
+\[ \frac{\partial U_k }{\partial \xi_k} = \delta_{jk} = \begin{cases}
+1; \ k = j \\
+0; \ k \ne j
+\end{cases}
+\]
+
+Dokaz: Case 2
+*** <1>2 QED
+Case 2: \(  U_k \left( \vec{\xi} \right) = u_k \left( \vec{x} \right) \)
+
+\[ \mathrm{rot} \left( \nabla u_{k} \left( \vec{r} \right) \right) = \mathrm{rot} \left( \frac{\vec{\eta}_k}{H_k} \circ \vec{R} \right) = 0
+\]
+
+Dokaz:
+
+\[ \mathrm{rot} \circ \nabla = 0
+\]
+
+ter
+\begin{align*}
+\mathrm{rot} \left( \nabla u_k (\vec{r}) \right) &= \sum\limits_{k = 1}^3 \mathrm{rot} \left[ \left( \frac{\partial U}{\partial \xi_k} \cdot \frac{\vec{\eta}_k}{H_k} \circ \vec{R}  \right) \right] \\
+&= \mathrm{rot} \left( \frac{\vec{\eta}_k}{H_k} \circ \vec{R} \right)
+\end{align*}
+
+za <1>2
+* Posledica 1
+
+\[ \mathrm{div} \left( \frac{\vec{r}_j}{H} \circ \vec{R} \right) = 0, \ \forall j
+\]
+
+/Opomba/: Pri Laméjevih koeficientih smo definirali \(  H = H_1 H_2 H_3 \), kar pomeni za \(  i, j, k \)
+
+\[ \mathrm{div} \left( \frac{\vec{\eta}_i}{H_j H_k} \circ \vec{R} \right)
+\]
+** Dokaz:
+*** <1>1
+
+Velja
+
+\[ \vec{\eta}_1 + \pm \vec{\eta}_2 \times \vec{\eta}_3
+\]
+
+Dokaz: \(  \left\{ \eta_j \right\} \) je ortonormirana baza za \(  \mathbb{R} ^3 \)
+*** <1>2
+
+\[ \mathrm{div} \left( \frac{\vec{\eta}_i}{H_j H_k} \right) = \pm \mathrm{div} \left( \frac{\vec{\eta}_j}{H_j} \times \frac{\vec{\eta}_k}{H_k} \right) = \left\langle \mathrm{rot} \left( \frac{\vec{\eta}_j}{H_j} \right), \frac{\vec{\eta}_k}{H_k} \right\rangle - \left\langle \mathrm{rot } \left( \frac{\vec{\eta}_k}{H_k} \right) , \frac{\vec{\eta}_j}{H_j}\right\rangle
+\]
+
+Dokaz:
+
+Velja \(  \mathrm{div} \left( \vec{F} \times \vec{G} \right) = \left\langle \mathrm{rot } \vec{F}, \vec{G} \right\rangle - \left\langle \vec{F}, \mathrm{rot } \vec{G} \right\rangle\)
+*** <1>3 QED
+
+<1>2 je \(  0 - 0 \) zaradi leme
+* Posledica 2
+
+Predpostavka 1: \(  A_j = \frac{1}{H_j} \frac{\partial U}{\partial \xi_j}  \)
+
+Velja
+
+\[ \mathrm{div} \left[ \left( A_j \vec{\eta}_j \right) \circ  \vec{R} \right] = \left[ \frac{1}{H} \frac{\partial }{\partial \xi_j} \left( \frac{H}{H_j ^2} \frac{\partial U}{\partial \xi_j}  \right)  \right] \circ \vec{R}
+\]
+** Dokaz
+*** <1>1
+Case 1: \(  j = 1 \)
+
+\[ \mathrm{div} \left( A_1 \vec{\eta}_1 \right) = \mathrm{div} \left( A_1 H_2 H_3 \cdot \frac{\vec{\eta}_1}{H_2 H_3} \right) = \left\langle \nabla \left( A_1 H_2 H_3 \right), \frac{\vec{\eta}_1}{H_2 H_3} \right\rangle + A_1 H_2 H_3 \cdot \mathrm{div} \left( \frac{\vec{\eta}_1}{H_2 H_3} \right)
+\]
+
+Dokaz:
+
+Velja
+
+\[  \mathrm{div} \left( \phi \vec{F} \right) = \left\langle \nabla \phi, \vec{F} \right\rangle_{\mathbb{R} ^3} + \phi \mathrm{div} \vec{F}
+\]
+
+*** <1>2
+
+\[ \left\langle \nabla \left( A_1 H_2 H_3 \right), \frac{\vec{\eta}_1}{H_2 H_3} \right\rangle = \left\langle \nabla \left( \frac{H_2 H_3}{H_1} \frac{\partial U}{\partial \xi_1} , \frac{\vec{\eta}_1}{H_2 H_3} \right) \right\rangle = \frac{1}{H} \left\langle  \nabla \left( \frac{H}{H_1 ^2} \frac{\partial U}{\partial \xi_1}  \right), \vec{r}_1 \right\rangle
+\]
+
+
+Dokaz:
+
+Velja \(  \vec{\eta}_1 = \frac{\vec{r}_1}{ \left| \vec{r}_1 \right|} = \frac{\vec{r}_1}{H_1} \) in potem posledično
+
+\[ \frac{\vec{\eta}_1}{H_2 H_3} = \frac{\vec{r}_1}{H_1 H_2 H_3} = \frac{\vec{r}_1}{H}
+\]
+
+in predpostavka 1.
+*** <1>3 QED
+
+\[ \frac{1}{H} \left\langle \nabla \left( \frac{H}{H_1 ^2} \frac{\partial U}{\partial \xi_1}  \right), \vec{r}_1 \right\rangle = \frac{\partial }{\partial \xi_1} \left( \frac{H}{H_1 ^2} \frac{\partial U}{\partial \xi_1} \circ \vec{R}  \right)
+\]
+
+Dokaz:
+
+Z verižnim pravilom iz desne strani dobimo, levo
+* Izrek
+
+\[  \Delta u = \frac{1}{H} \sum\limits_{j = 1}^3 \frac{\partial }{\partial \xi_j} \left( \frac{H}{H_j ^2} \cdot \frac{\partial U}{\partial \xi_j}  \right) \circ \vec{R}
+\]
+** Dokaz:
+*** <1>1
+
+\[ \Delta u = \mathrm{div} \left( \nabla u \right) = \sum\limits_{j = 1}^{ 3} \mathrm{div} \left[ A_j \vec{\eta}_j \circ \vec{R} \right]
+\]
+*** <1>2 QED
+Upoštevamo posledico 2
+* Definicija 6.1
+
+Naj bo \(  \vec{r}: I \to \mathbb{R} ^3 \) regularna parametrizacija neke krivulje \(  \Gamma \) in \(  u: \Gamma \to \mathbb{R} \) zvezna. Integral skalarnega polja \(  u \) po \(  \Gamma \) definiramo kot
+
+\[ \int\limits_{\Gamma}^{} u \, \mathrm{ds} = \int\limits_I^{} u(\vec{r}(t)) \left| \odv{r}(t) \right|\, \mathrm{dt}
+\]
+* Trditev 6.2
+
+Definicija 6.1 je dobra.
+** Dokaz:
+*** <1>1
+Case 1: \(  I = [a, b] \in \mathbb{R} \)
+Case 2: \(  J = [\alpha, \beta] \in \mathbb{R} \)
+Case 3: Druga parametrizacija \(  \vec{R}: J \to \mathbb{R} ^3 \) in \(  \phi: J \to I \) in tao velja \(  \vec{R} = \vec{r} \circ \phi \)
+
+Prove:
+
+\[ \int\limits_{\alpha}^{ \beta} u \left( \vec{R}(s) \right) \left| \odv{R} (s) \right| \, \mathrm{ds} = \int\limits_{\alpha}^{\beta} u(\vec{r}(\phi(s))) \cdot \left| \vec{r}(\phi(s)) \right| \, \mathrm{ds}
+\]
+
+Dokaz: Upoštevali smo \(  \vec{R} = \vec{r} \circ \phi \)
+*** <1>2
+
+\[ \int\limits_{\alpha}^{\beta} u \left( \vec{r}(\phi(s)) \right) \cdot \left| \vec{r}(\phi(s)) \right|\dot{} \, \mathrm{ds} = \int\limits_{\alpha}^{\beta} u \left( \vec{r}(\phi(s)) \right) \left| \odv{r}(\phi(s)) \cdot \dot{\phi}(s) \right|
+\]
+
+Dokaz: Verižno pravilo
+*** <1>3
+Case 4: \(  \phi(s) = w \)
+
+\[ \int\limits_{\alpha}^{\beta} u \left( \vec{r}(\phi(s)) \left| \odv{r} \left( \phi(s)) \right) \cdot \dot{\phi}(s) \right| \right) \, \mathrm{ds} = \int\limits_a^b u \left( \vec{r}(w)\right) \left| \odv{r} (w) \right| \, \mathrm{dw}
+\]
+
+Dokaz:
+
+\[ \dot{\phi}(s) = \dot{w}(s)
+\]
+
+ter menjava spremenljivk v integralu.
+*** <1>4 QED
+
+Imamo dve možnosti:
+
+\[ \begin{cases}
+(\alpha, \beta) \mapsto (a, b), \ \dot{\phi} > 0 \\
+\left( \alpha, \beta) \mapsto (b, a), \ \dot{\phi} < 0 \right)
+\end{cases}
+\]
+* Definicija 6.4
+
+Naj bo \(  \vec{F}: \Gamma \to \mathbb{R} ^3 \) zvezna. Integral vektorskega polja \(  \vec{F} \) po \(  \Gamma \) definiramo kot
+
+\[ \int\limits_{\Gamma}^{} \vec{F} \, \mathrm{d} \vec{r} = \int\limits_a^b \left\langle \vec{F}\left( \vec{r}(t)) \right), \odv{r}(t) \right\rangle \, \mathrm{ dt}
+\]
+* Trditev 6.5
+
+Če v definiciji nadomestimo \(  \vec{r} \) z drugo parametrizacijo \(  \vec{R} \) iste krivulje, tedaj je novi izraz
+
+\[ \int\limits_{\Gamma}^{} \left\langle \vec{F} \circ \vec{R}, \odv{R} \right\rangle \, \mathrm{dx}
+\]
+
+- enak, če \(  \vec{R} \) ohranja orientacijo
+- nasprotno enak, če \(  \vec{R} \) obrne orientacijo.
+** Dokaz
+*** <1>1
+Case 1: \(  I = [a, b] \in \mathbb{R} \)
+Case 2: \(  J = [\alpha, \beta] \in \mathbb{R} \)
+Case 3: Druga parametrizacija \(  \vec{R}: J \to \mathbb{R} ^3 \) in \(  \phi: J \to I \) in tao velja \(  \vec{R} = \vec{r} \circ \phi \)
+* Definicija 6.8
+Vektorsko polje \(  \vec{F}: \Omega \to \mathbb{R} ^3 \), kjer je \(  \Omega \subseteq \mathbb{R} ^3 \) odprta množica, je potencialno, če obstaja skalarno polje \(  u: \Omega \to \mathbb{R} \), da je \(  \vec{F} = \mathrm{grad} u = \nabla u \). Funkcijo \(  u \) imenujemo potencial polja \(  \vec{F} \).
+* Trditev 6.9
+Naj bo \(  \Gamma \) regularna krivulja med točkama \(  A, B \in \mathbb{R} ^3 \) in naj bo \(  \vec{F} = \nabla u \) potencialno vektorsko polje. Potem je
+
+\[ \int\limits_{\Gamma}^{} \vec{F} \mathrm{d} \vec{r} = u(B) - u(A)
+\]
+** Dokaz
+*** <1>1
+
+\[ \int\limits_{\Gamma}^{} \vec{F} \mathrm{d} \vec{r} = \int\limits_{\Gamma}^{} \nabla u \mathrm{d} \vec{r}
+\]
+
+Dokaz: Predpostavka iz trditve
+*** <1>2
+Case 1: parametrizacija \( \vec{r}: [\alpha, \beta] \to \Gamma  \)
+
+\[ \int\limits_{\Gamma}^{} \nabla u \mathrm{d} \vec{r} = \int\limits_{\alpha}^{\beta} \left\langle \left( \nabla u \right) \circ \vec{r}, \odv{r} \right\rangle_{\mathbb{R} ^3} \mathrm{dt}
+\]
+
+Dokaz: Definicija integrala vektorskega polja
+*** <1>3
+\[ \int\limits_{\Gamma}^{} \frac{\mathrm{d} }{\mathrm{d} t} \left( u \circ \vec{r} \right) \, \mathrm{ dt}
+\]
+
+Dokaz: Verižno pravilo
+*** <1>4
+
+\[ \int\limits_{\alpha}^{\beta} \frac{\mathrm{d} }{\mathrm{d} t} \left( u \circ \vec{r} \right) \, \mathrm{dt} = \left( u \circ \vec{r} \right) \left( \beta \right) - \left( u \circ \vec{r} \right) \left( \alpha \right)
+\]
+
+Dokaz: Osnovni izrek analize
+*** <1>5 QED
+
+\[ \left( u \circ \vec{r} \right) \left( \beta \right) - \left( u \circ \vec{r} \right) \left( \alpha \right) = u (B) - u(A)
+\]
+* Trditev 6.10
+Predpostavke 1: \(  \Omega \subset \mathbb{R} ^3 \) povezana odprta množica
+Predpostavka 2: \(  \vec{F}: \Omega \to \mathbb{R} ^3 \)
+
+1) \(  \vec{F} \) je potencialno
+2) integral \(  \vec{F} \) po vsaki sklenjeni krivulji je enak 0
+3) za vsak \(  A, B \subset \Omega \) je integral \(  \vec{F} \) od \(  A \) do \(  B \) neodvisno od izbire poti med točkama
+** Dokaz:
+*** <1>1
+\(  1 \implies 2 \)
+
+Dokaz:
+**** <2>1
+Case 1: \(  \Gamma \) sklenjena krivulja v \(  \Omega \)
+Case 2: \(  A \in \Gamma \)
+
+\[ \oint\limits_{\Gamma}^{} \vec{F} \mathrm{d}\vec{r}  = u(A) - u(A) = 0
+\]
+
+Dokaz: Trditev 6.9
+**** <2>2 QED
+*** <1>2
+
+\(  2 \implies 3 \)
+
+Dokaz:
+**** <2>1
+Case 1: \(  \Gamma_1 \) in \(  \Gamma_2 \) sta dve krivulji, ki povezujeta točki \(  A \) in \(  B \)
+Case 2: \(  \Gamma = \Gamma_1 \cup \left( - \Gamma_2 \right) \), kjer je \(  -\Gamma_2 \) krivulja \(  \Gamma_2 \) z nasprotno orientacijo.
+
+\[ \int\limits_{\Gamma}^{} \vec{F} \mathrm{d} \vec{r} = 0
+\]
+
+Dokaz: 2)
+**** <2>2
+
+\[ \int\limits_{\Gamma_1}^{} \vec{F} \mathrm{d} \vec{r} + \int\limits_{- \Gamma_2}^{} \vec{F} \mathrm{d}\vec{r} = \int\limits_{\Gamma_1}^{} \vec{F} \mathrm{d}\vec{r} - \int\limits_{\Gamma_2}^{} \vec{F} \mathrm{d} \vec{r} = 0
+\]
+
+
+Dokaz: Trditev 6.5 za spremembo predznaka
+**** <2>3 QED
+
+Dokaz: <2>2
+
+\[ \int\limits_{\Gamma_1}^{} \vec{F} \mathrm{d}\vec{r} = \int\limits_{\Gamma_2}^{} \vec{F} \mathrm{d} \vec{r}
+\]
+*** <1>3
+
+\(  3 \implies 1 \)
+**** <2>1
+Case 1: \(  \vec{F} = \left( U, V, W \right) = \nabla u \)
+Case 2: \(  \Gamma \) je pote od \(  A \) do \(  B \)
+
+Definiramo funkcijo
+
+\[ u(B) = u(A) + \int\limits_{\Gamma}^{} \vec{F} \mathrm{d} \vec{r}
+\]
+
+kjer je \(  u(A) \) konstanten.
+Dokaz: Trditev 6.9
+**** <2>2
+
+\[ \nabla (u + C) = \vec{F}
+\]
+
+za konstanto \(  C \in \mathbb{R} \).
+
+Dokaz: Case 1 in odvod po konstanti
+**** <2>3
+
+\[ u(A) = 0
+\]
+
+Dokaz: Gradient je po <2>2 in <2>1 določen do aditivne konstante natančno
+**** <2>4
+Case 3: \(  \Gamma \) je poljubna pot od \(  A \) do \(  T \) znotraj \(  \Omega \)
+
+\[ u(T) = \int\limits_{\Gamma}^{} \vec{F} \mathrm{d} \vec{r}
+\]
+
+je dobro definiran.
+
+Dokaz: Predpostavka
+**** <2>5
+
+Velja
+
+\[ \nabla u = \vec{F}
+\]
+***** <3>1
+Case 1: \(  \Gamma_1 \) je poljubna pot od \(  A \) do \(  (x, y, z) \)
+Case 2: \(  \Gamma_2 \) je poljubna pot od \(  A \) do \(  (x + h, y, z) \)
+
+\[ u_x = \lim_{h \to 0} \frac{1}{h} \left[ u(x + h, y, z) - u(x, y, z) \right] = \lim_{h \to 0} \frac{1}{h} \left[ \int\limits_{\Gamma_2}^{} \vec{F} \mathrm{d}\vec{r} - \int\limits_{\Gamma_1}^{} \vec{F} \mathrm{d} \vec{r} \right]
+\]
+
+Dokaz: Definicija odvoda funkcije \(  u \) po \(  x \) ter <2>4
+***** <3>2
+Case 3: \(  \Gamma_3 \) je daljica \(  \left( x, y, z \right) \) do \(  \left( x + h, y, z \right) \)
+
+Velja \(  \Gamma_2 = \Gamma_1 \cup \Gamma_3 \)
+
+Dokaz: \(  \Gamma_2  \) je poljubna pot
+***** <3>3
+Case 4: parametriziramo \(  \Gamma_2 \) \(  \vec{r}(t) = \left( x + ht, y, z \right), t \in [0, 1] \)
+Case 5: \(  \odv{r} = \left( h, 0, 0 \right) \)
+
+\[ u(x + h, y, z) - u(x, y, z) = \int\limits_{\Gamma_3}^{} \vec{F} \mathrm{d} \vec{r} = \int\limits_0^1 \vec{F}\left( \vec{r}(t) \right) \cdot \odv{r} \mathrm{dt} = \int\limits_0^1 U \left( x + h, y, z \right) h \mathrm{dt}
+\]
+
+Dokaz: <2>4, <3>2 ter Case 4 in Case 5
+***** <3>4 QED
+
+\[ u_x = \lim_{h \to 0} \frac{1}{h} \int\limits_0^1 h \cdot U (x + h, y, z) \mathrm{dt} = U(x, y, z)
+\]
+
+Dokaz: upoštevamo <3>1, <3>3, ter, da je U zvezna in posledično tudi integral.
+
+Analogno še za \(  y \) in \(  z \).
+**** <2>6 QED
+Dokaz <2>5
+*** <1>4 QED
+* Izrek 6.12
+Delo rezultante sil (= vsote vseh sil), ki delujejo na delec, je enako spremembi kinetične energije. Ker je celotna energija enaka vsota kinetične in potencialne energije, je delo enako negativni spremembi potencialne energije
+
+\[ A = - \Delta u = U(r_0) - U(r_1)
+\]
+* Definicija 6.14
+Območje \(  \Omega \subset \mathbb{R} ^3 \) je zvezdasto, če obstaja \(  \omega_0 \in \Omega \) tako, da velja za vsak \(  \omega \in \Omega \) je daljica \(  \left[ \omega_0, \omega \right] \) cela vsebovana v \(  \Omega \).
+
+\[ \left[ \omega_0, \omega \right] = \left\{ (1 - t) \omega_0 + t \omega; \ t \in [0, 1] \right\}
+\]
+
+/Opomba/: Konveksna množica je množica, ki vsebuje vse daljice med dvema poljubnima točkama iz množice. Posledično je vsaka konveksna množica zvezdasta.
+* Izrek 6.15
+
+Predpostavka 1: \(  \Omega \subseteq \mathbb{R} ^3 \) zvezdasto območje
+Predpostavka 2: \(  \vec{F} \) odvedljivo vektorsko polje na \(  \Omega \)
+
+\[ \nabla \times \vec{F} = 0 \implies \vec{F} \text{ potencialno}
+\]
+** Dokaz
+*** <1>1
+Case 1: \(  \omega_0 \in \Omega \)
+Case 2: poljuben \( \omega \in \Omega: \ u(\omega) = \int\limits_{\left[ \omega_0, \omega \right]}^{} \vec{F} \mathrm{d} \vec{r} \)
+
+Velja
+
+\[ \nabla u = \vec{F}
+\]
+**** <2>1
+Case 3: daljico \(  \left[ \omega_0, \omega \right] = \left[ (x_0, y_0, z_0), (x, y, z) \right] \) parametriziramo
+
+\[ \vec{r}(t) = \begin{bmatrix} (1 - t)x_0 + tx \\ (1 -t) y_0 + ty  \\ (1 -t) z_0 + tz  \end{bmatrix} = \begin{bmatrix} r_1(t) \\ r_2(t) \\ r_3(t) \end{bmatrix}
+\]
+
+Velja
+
+\[ \int\limits_{\left[ \omega_0, \omega \right]}^{} \vec{F} \mathrm{d} \vec{r} = \int\limits_0^1 \left\langle \vec{F}(\vec{r}(t)), \odv{r}(t) \right\rangle_{\mathbb{R} ^3} \mathrm{dt} = \int\limits_0^1 \left\langle \vec{F}\left( \vec{r}(t) \right), \omega - \omega_0 \right\rangle \mathrm{dt}
+\]
+
+Dokaz: definicija integrala vektorskega polja ter definicija parametrizacije Case 3
+**** <2>2
+Case 4: \(  \left( \nabla u \right) \left( \omega \right) = \left( u_x, u_y, u_z \right) \left( \omega \right) \)
+
+\[ u_x \left( \omega \right) = \int\limits_0^1 \left( \left\langle \frac{\partial }{\partial x} \left[ \vec{F}\left( \vec{r}(t) \right) \right], \omega - \omega_0  \right\rangle + \left\langle \vec{F} \left( \vec{r}(t) \right), \frac{\partial }{\partial x} \left( \omega - \omega_0 \right)  \right\rangle \right)
+\]
+
+Dokaz: \(  u \) je odvedljiv, ker je integrand \(  \vec{F} \) po predpostavki 2 odvedljiv, ter verižno pravilo <2>1
+**** <2>3
+Case 5: \(  \vec{F} = \left( F_1, F_2, F_3 \right) \)
+
+Velja
+
+\[ \frac{\partial }{\partial x} \left[ \vec{F}(\vec{r}(t)) \right] = \left( \frac{\partial }{\partial x} \left( F_1 (\vec{r}) \right), \frac{\partial }{\partial x} F_2 \left( \vec{r}(t) \right), \frac{\partial }{\partial x} \left( F_3 \left( \vec{r}(t) \right) \right) \right)
+\]
+
+Dokaz: Odvod vektorja je odvod posamezne komponente vektorja
+**** <2>4
+Case 6: \(  F_i = F_i \left( a_i, b_i, c_i \right), \ i = 1, 2, 3 \) in \(  a_i, b_i, c_i = r_1, r_2, r_3 \)
+
+Za \(  i = 1 \) velja
+
+\[ \frac{\partial }{\partial x} \left( F_1 \left( \vec{r} \right) \right) = \left( \frac{\partial F_1}{\partial a}   \right)  \left( \vec{r}(t) \right) \cdot \frac{\partial }{\partial x} \left( r_1 (t) \right) + \underbrace{ \left( \frac{\partial F_1}{\partial b}   \right) \left( \vec{r}(t) \right) \cdot \frac{\partial }{\partial x} \left( r_2 (t) \right)}_{0} +  \underbrace{ \left( \frac{\partial F_1}{\partial c}  \right) \left( \vec{r}(t) \right) \cdot \frac{\partial }{\partial x} \left( r_3 (t) \right)}_{0}
+\]
+
+Dokaz: Verižno pravilo, \(  a = r_1, b=r_2, c = r_3 \) ter to, da po Case 3, \(  r_2 \ne r_2(x) \) in \(  r_3 \ne r_3(x) \)
+**** <2>5
+
+\[ \frac{\partial }{\partial x} \left[ \vec{F} \left( \vec{r}(t) \right) \right] = t \left( \frac{\partial F_1}{\partial a} \left( \vec{r} \right), \frac{\partial F_2}{\partial a} \left( \vec{r} \right), \frac{\partial F_3}{\partial a} \left( \vec{r} \right)    \right)
+\]
+
+Dokaz: Odvod iz <2>4 je po definiciji <2>1 Case 3 enak \( \frac{\partial }{\partial x} \left( r_1 \right) = t  \) in to za vsak \( i \) \( F_i \)
+**** <2>6
+
+\[  t \left( \frac{\partial F_1}{\partial a} \left( \vec{r} \right), \frac{\partial F_2}{\partial a} \left( \vec{r} \right), \frac{\partial F_3}{\partial a} \left( \vec{r} \right)    \right) = t \left( \frac{\partial F_1}{\partial a} \left( \vec{r} \right), \frac{\partial F_1}{\partial b} \left( \vec{r} \right), \frac{\partial F_1}{\partial c} \left( \vec{r} \right)\right)
+\]
+
+Dokaz: iz predpostavke \( \mathrm{rot} \vec{F} = 0 \) dobimo sledeče ekvivalence:
+
+\begin{align*}
+\begin{vmatrix}
+ i& j & k \\
+\partial_a & \partial_b & \partial_c \\
+F_1 & F_2 & F_3
+\end{vmatrix} = \left( \partial_b F_3 - \partial_c F_2, \partial_c F_1 - \partial_a F_3, \partial_a F_2 - \partial_b F_1 \right) &= (0, 0, 0) \\
+\implies \partial_c F_1 &= \partial_a F_3 \\
+\implies \partial_a F_2 &= \partial_b F_1
+\end{align*}
+**** <2>7
+Case 7: uvedemo oznako \(  \tilde{\nabla} = \left( \partial_a, \partial_b, \partial_c  \right) \)
+
+\[ \left( u_x  \right) \left( \omega \right) = \int\limits_0^1 \left( \left\langle t \tilde{\nabla} F_1 \left( \vec{r} \right), \omega - \omega_0 \right\rangle  + F_1 \left( \vec{r} \right) \right) \,\mathrm{d x}
+\]
+
+Dokaz: <2>1 in notacija uvedena v <2>7 Case 7, definiciji \(  \omega, \omega_0 \)
+**** <2>8
+
+\[ \int\limits_0^1 \left[ t \frac{\mathrm{d} \left( F_1 \circ \vec{r} \right)}{\mathrm{d} t} + \left( F_1 \circ \vec{r} \right)  \right] \,\mathrm{d t}
+\]
+
+Dokaz: \(  \omega - \omega_0 = \dot{r} \), in skupaj z verižnim pravilom
+**** <2>9
+
+\[ \int\limits_0^1 \frac{\mathrm{d}  \left( t \cdot \left( F_1 \circ \vec{r} \right) \right)}{\mathrm{d} t} \,\mathrm{d t}  = \left. \left( t \cdot F_1 (\vec{r}(t)) \right) \right|_{t = 0}^{t=1} = F_1 \left( \vec{r}(1) \right) = F_1 \left( \omega \right)
+\]
+
+Dokaz: osnovni izrek analize ter definicija \(  \vec{r} \) iz <2>1 Case 3
+**** <2>10 QED
+
+Dokazali smo, da velja \(  u_x = F_1 \) in enako velja za \(  u_y = F_2, \ u_z = F_3\)
+*** <1>2 QED
+Dokaz: <2>10

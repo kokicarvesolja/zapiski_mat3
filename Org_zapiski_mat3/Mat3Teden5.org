@@ -287,7 +287,7 @@ Ideja za pritisnjeno ravnino je:
 Dragi vpraša, ali je vse jasno kakšna umetniška zvrst je to.
 
 Sedaj nas zanima, ali se to da, kdaj (ne kot dan v tednu) ter kako.
-*** Izrek 3.3 (p.S.)
+*** Izrek 3.15 (p.S.)
 
 Naj bo \(  \gamma \) regularna parametrizacije \(  C ^2 \) neke krivulje v \(  \mathbb{R} ^3 \). Za dani \(  t_0 \in \mathbb{R} \) privzamemeo, da je
 \[ \vec{v} _0 = ( \dot{\gamma} \times \ddot{\gamma} )(t_0) \ne 0
@@ -323,7 +323,7 @@ Iz prve in druge točke sledi, da je \(  w \) skoraj pravokoten na \(  \dot{\gam
 
 Torej \(  w \) leži v ozkem stožcu okoli tega vektorja \(  \dot{\gamma}(t_0) \times \ddot{\gamma}(t_0) \), kar pa je protislovje, saj je \(  w \) poljuben element iz neke ravnine.
 
-Eksaktna izpeljava: Vzaemo \(  \epsilon > 0 \). Velja
+Eksaktna izpeljava: Vzamemo \(  \epsilon > 0 \). Velja
 
 \begin{align*}
   v_0 \times w &= [ \dot{\gamma}(t_0) \times \ddot{\gamma}(t_0)] \times w \\
@@ -331,8 +331,8 @@ Eksaktna izpeljava: Vzaemo \(  \epsilon > 0 \). Velja
 &\stackrel{1), 2)}{=} \left\langle \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1), w \right\rangle \ddot{\gamma}(t_0) - \left\langle \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3), w \right\rangle \dot{\gamma}(t_0)
 \end{align*}
 
-Katere črke nimam - Dragi
-A vsi poznate Cauchy-Schwartzovo neenakost? /~ The classroom is silent/~ Pričakoval sem večje navdušenje
+Katere črke nimam? - Dragi
+A vsi poznate Cauchy-Schwartzovo neenakost? /~ The classroom is silent/~ Pričakoval sem večje navdušenje.
 
 Cauchy-Schwartzova neenakost je \(  \left| \left\langle \vec{a}, \vec{b} \right\rangle \right| \le \left| \vec{a} \right| \cdot \left| \vec{b} \right|\)
 
@@ -368,17 +368,16 @@ Odtod sledi, da je
 \[ \sin\phi \le \frac{\left| \dot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}{\left| \dot{\gamma}(t_0) + \ddot{\gamma}(t_0) \right|} \epsilon
 \]
 
-Kot med \(  v_0 \) in poljubnim vektorjem iz \(  l(t_1, t_2)^{\perp} \) nujno majhen, če sta \(  t_1, t_2 \) blizu \(  t_0 \). Torej \(  l(t_1, t_2) \) res leži v majhnem ozkem stožcu okoli \(  v_0 \), kar je v protislovju (\(  l^{\perp} \) je ravnina). Torej poredpostavke na začetku (da so kolinearne), zato so \(  \gamma(t_0), \gamma(t_1), \gamma(t_2) \) nekolinearne za \(  t_1, t_2 \) blizu \(  t_0 \).
+Kot med \(  v_0 \) in poljubnim vektorjem \(  w \) iz \(  l(t_1, t_2)^{\perp} \) je nujno majhen, če sta \(  t_1, t_2 \) blizu \(  t_0 \). Torej \(  l(t_1, t_2) \)  leži v ozkem stožcu okoli \(  v_0 \), kar je v protislovju s predpostavko (\(  l^{\perp} \) je ravnina). Torej predpostavka na začetku (da so kolinearne) ne drži in zato so \(  \gamma(t_0), \gamma(t_1), \gamma(t_2) \) nekolinearne za \(  t_1, t_2 \) blizu \(  t_0 \).
 
 Q.E.D.
-
 
 #+begin_quote
 Triangulirajte svet okrog sebe. Ga boste bolje razumeli.
 #+end_quote
 
-Dragičevič be like.
-*** Something I don't know how to call thingy.
+Dragičevič
+*** Izrek 3.15.1
 Naj bodo \(  \gamma, t_0, v_0, \delta, t_1, t_2 \) kot v izrek od prej. Naj bo \(  \Pi(t_1, t_2) \) ravnina skozi \(  \gamma(t_1), \gamma(t_2), \gamma(t_0) \). Želimo pokazati, da \(  \Pi(t_1, t_2) \) limitirajo, ko gresta \(  t_1, t_2 \to t_0 \). proti ravnini z normalo \(  v_0 \).
 
 Dovolj je pokazati, da enotske normale \(  n(t_1, t_2) \) na \(  \Pi(t_1, t_2) \) limitirajo k \(  \pm  \frac{v_0}{\left| v_0 \right|} \) za \(  t_1, t_2 \to t_0 \).
@@ -397,25 +396,25 @@ Vzemimo \(  \epsilon > 0 \) in definiramo
  Velja \(  f(t_0) = f(t_1) = f(t_2) = 0 \). Ponovno po Rolleovem izreku \(  \exists t_0 < \xi_1 < t_1 \xi_2 < t_2 \ \ni \)
 
  \begin{align*}
-  0 &= f(\xi_1) = \left\langle \dot{\gamma}(\xi_1), n(t_1, t_2) \right\rangle \\
-  0 &= f(\xi_2) = \left\langle \dot{\gamma}(\xi_2), n(t_1, t_2) \right\rangle \\
+  0 &= f'(\xi_1) = \left\langle \dot{\gamma}(\xi_1), n(t_1, t_2) \right\rangle \\
+  0 &= f'(\xi_2) = \left\langle \dot{\gamma}(\xi_2), n(t_1, t_2) \right\rangle \\
 \end{align*}
 
 Odtod sledi, da \(  \exists \xi_3 \in (\xi_1, \xi_2)\  \ni \)
 
-\[ - = f''(\xi_3) = \left\langle \dot{\gamma}(\xi_3), n(t_1, t_2) \right\rangle
+\[ 0 = f''(\xi_3) = \left\langle \ddot{\gamma}(\xi_3), n(t_1, t_2) \right\rangle
 \]
 
 Naprej
 \begin{align*}
-v_0 \times n(t_1, t_2) &=  \left[ \dot{\gamma}(t_0) \times \ddot{\gamma}(t_j) \right] \times n(t_1, t_2) \\
-&= \left\langle \gamma(t_0), n \right\rangle\dot{\gamma}(t_0) - \left\langle \ddot{\gamma}(t_0), n \right\rangle \dot{\gamma}(t_0)\\
-&= \left\langle \dot{\gamma}(t_0 - \dot{\gamma}(\xi_3)), n \right\rangle \ddot{\gamma}(t_0) - \left\langle \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3), n \right\rangle \dot{\gamma}(t_0)
+v_0 \times n(t_1, t_2) &=  \left[ \dot{\gamma}(t_0) \times \ddot{\gamma}(t_0) \right] \times n(t_1, t_2) \\
+&= \left\langle \dot{\gamma}(t_0), n \right\rangle \cdot \ddot{\gamma}(t_0) - \left\langle \ddot{\gamma}(t_0), n \right\rangle \cdot \dot{\gamma}(t_0)\\
+&= \left\langle \dot{\gamma}(t_0 - \dot{\gamma}(\xi_1)), n \right\rangle \ddot{\gamma}(t_0) - \left\langle \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3), n \right\rangle \dot{\gamma}(t_0)
 \end{align*}
 
 Absolutna vrednost je tako
 
-\[ \left| v_0 \times n(t_1, t_2) \right| \le \left( \left| \dot{\gamma}(t_0) - \dot{\gamma}(\xi_3) \right| \left| \ddot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3) \right| \dot{\gamma}(t_0) \right) \left| n \right|
+\[ \left| v_0 \times n(t_1, t_2) \right| \le \left( \left| \dot{\gamma}(t_0) - \dot{\gamma}(\xi_1) \right| \left| \ddot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) - \ddot{\gamma}(\xi_3) \right| \dot{\gamma}(t_0) \right) \left| n \right|
 \]
 
 Absolutna vrednost \(  \left| n \right| \) je enaka 1.
@@ -429,21 +428,21 @@ Obstaja \(  \delta > 0 \) tako, da za \(  \eta_1, \eta_2 \in (t_0 - \delta, t_0 
 
 Za \(  t_1, t_2 \in (t_0 - \delta, t_0 + \delta) \) torej sledi
 
-\[ \left| v_0 \times n(t_1, t_2) \right|= \left| v_0 \right| \sin \psi \le \left( \left| \dot{\gamma}(t_0 ) \right| + \left| \ddot{\gamma}(t_0) \right| \right)
+\[ \left| v_0 \times n(t_1, t_2) \right|= \left| v_0 \right| \sin \psi \le \left( \left| \dot{\gamma}(t_0 ) \right| + \left| \ddot{\gamma}(t_0) \right| \right) \epsilon
 \]
 
 kjer je \(  \psi \) ostri kot med \(  v_0 \) in \(  n(t_1, t_2) \)
 
 Dokazali smo, da je
 
-\[ \sin \psi (t_1, t_2) \le \frac{\left| \vec{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}{\left|{\left| \vec{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}\right|} \epsilon
+\[ \sin \psi (t_1, t_2) \le \frac{\left| \dot{\gamma}(t_0) \right| + \left| \ddot{\gamma}(t_0) \right|}{\left|\dot{\gamma} \times \ddot{\gamma} \right| (t_0)} \epsilon
 \]
 
 Definiramo \(  \tilde{v}_0 = \frac{v_0}{\left| v_0 \right|} \). Sledi
 
 \begin{align*}
 \left| \tilde{v}_0  - n\right| ^2 &= \left\langle \tilde{v}_0 -n, \tilde{v}_0 - n \right\rangle \\
-&= \left| \tilde{v}_0 \right| ^2 + \left| n \right| ^2 - 2 \left\langle \tilde{v}_0, v \right\rangle = 1 + 1 - 2 \left| v_0 \right| \left| n \right| \cos \psi
+&= \left| \tilde{v}_0 \right| ^2 + \left| n \right| ^2 - 2 \left\langle \tilde{v}_0, n \right\rangle = 1 + 1 - 2 \left| \tilde{v}_0 \right| \left| n \right| \cos \psi
 \end{align*}
 
 Iz česar sledi, da je
@@ -453,7 +452,7 @@ Iz česar sledi, da je
 
 kar gre proti nič, ker je \(  \psi \) oster kot, ko gre \(  t_1, t_2 \to t_0 \).
 
-Dokazali so, da
+Dokazali smo, da
 
 \[ \lim_{t_1, t_2 \to t_0} n(t_1, t_2) = \pm \frac{v_0}{\left| v_0 \right|}
 \]
@@ -470,8 +469,8 @@ To je najbližja lokalna 2 dimenzionalna aproksimacija za našo krivuljo.
 
 Trdimo, da razdalja med funkcijo in ravnino padajo s kvadratom, ko se približujemo točki \(  \gamma(t_0) \)
 
-Oznaka \(  f(h) = o(g(h)), \ h \to a \) pomeni \(  \lim_{h \to 0} \frac{f(h)}{g(h)} = 0  \)
- \(  h \) gre proti 0, ampak \(  \frac{h}{h ^2} \) pa ne gre proti nič, ampak proti neskončno.
+Oznaka \(  f(h) = o(g(h)), \ h \to a \) pomeni \(  \lim_{h \to 0} \frac{f(h)}{g(h)} = 0  \), funkcija
+ \(  f(h) = h \) gre proti 0, ko \(  h \to 0  \), ampak \(  \frac{h}{h ^2} \) pa ne gre proti nič, ampak proti neskončno.
 
  [[file:figures/izrek34.svg]]
 
