@@ -1876,3 +1876,159 @@ Dokaz: Razlika dveh integralov je enaka integralu razlik integrandov
 
 Dokaz: Upoštevamo 1. Greenovo identiteto.
 *** <1>3 Dokaz prve Greenove identitete
+Case 1: \(  \vec{F} = u \Delta v = u \cdot \left( v_x, v_y, v_z \right) \)
+
+\[ \mathrm{div} \vec{F} = \left\langle \nabla u, \nabla v \right\rangle + u  \Delta v
+\]
+
+Dokaz: definicija divergence in verižno pravilo, ter \(  \Delta = \nabla ^2 \)
+*** <1>4
+
+\[ \iiint\limits_{\Omega}^{} \left( u \Delta v + \left\langle \nabla u, \nabla v \right\rangle \right) \,\mathrm{d V} = \iint\limits_{\partial \Omega}^{} \vec{F} \,\mathrm{d } \vec{S}
+\]
+
+Dokaz: Gaussova formula
+*** <1>5
+
+\[ \iint\limits_{\partial \Omega}^{} \vec{F} \,\mathrm{d } \vec{S} = \iint\limits_{\partial \Omega}^{} \left\langle \vec{F}, \vec{n} \right\rangle \,\mathrm{d S}
+\]
+
+Dokaz: Definicija integrala vektorskega polja
+*** <1>6
+
+\[ \iint\limits_{\partial \Omega}^{} \left\langle u \nabla v, \vec{n} \right\rangle \,\mathrm{d S} = \iint\limits_{\partial \Omega}^{} u \left\langle \nabla v, \vec{n} \right\rangle \,\mathrm{d S}
+\]
+
+Dokaz: \(  u \) je skalarna funkcija in se jo lahko izpostavi
+*** <1>7
+
+\[ \iint\limits_{\partial \Omega}^{} u \left\langle \nabla v, \vec{n} \right\rangle \,\mathrm{d S} = \iint\limits_{\partial \Omega}^{} u \frac{\partial v}{\partial \vec{n}}  \,\mathrm{d S}
+\]
+
+Dokaz:
+**** <2>1
+Vir:[[https://tutorial.math.lamar.edu/classes/calciii/directionalderiv.aspx][Directional derivati (slo. smerni odvod)]]
+Case 1: točka \(  \vec{v} = (x_0, y_0, z_0) \in \mathbb{R} ^3 \)
+Case 2: \(  u(x, y, z): \mathbb{R} ^2 \to \mathbb{R} \) zvezna realna funkcija, definirana v okolici točke \(  \vec{v} \)
+Case 3: \(  \vec{a} = (a, b, c) \in \mathbb{R} ^3 \) enotski vektor, \(  \left| a \right|  = 1 \)
+
+Definiramo /smerni odvod/ funkcije \(  u \) v točki \(  \vec{v} \) v smeri vektorja \(  \vec{a} \):
+
+\[ \frac{\partial u}{\partial \vec{a}} \left( \vec{v} \right) = \lim_{h \to 0} \frac{u \left( \vec{v} + h \vec{a} \right) - u(\vec{v})}{h} = \lim_{h \to 0} \frac{u(x + ha, y + bh, z + ch)}{h}
+\]
+**** <2>2
+
+Smerni odvod definiramo tudi kot
+
+\[ \frac{\partial u}{\partial \vec{a}} \left( \vec{v} \right) = \left\langle \nabla u, \vec{a} \right\rangle
+\]
+Dokaz:
+***** <3>1
+Case 4: \(  x_0, y_0, z_0, a, b, c\) so konstante
+Case 5: funkcija ene spremenljivke \(  g(t) = u(x_0 + ta, y_0 + tb, z_0 + tc) = u(x, y, z) \)
+
+Velja
+
+\[ g'(t) = \lim_{h \to 0} \frac{g(t + h) - g(t)}{h}
+\]
+
+
+***** <3>2
+
+Za \(  t = 0 \) velja
+
+\[ g'(0) = \lim_{h \to 0} \frac{g(h) - g(0)}{h} = \lim_{h \to 0} \frac{u(x_0 + ah, y_0 + bh, z_0 + ch) - u(x_0, y_0, z_0)}{h} = \frac{\partial u}{\partial \vec{a}} (x_0, y_0, z_0)
+\]
+
+Dokaz: definicija odvoda ene spremenljivke <3>1, definicija Case 5, ter <2>1
+
+***** <3>3
+
+Velja
+
+\[ g'(t) = \frac{\mathrm{d} }{\mathrm{d} t} g = \frac{\partial u}{\partial x} \cdot \frac{\partial x}{\partial t} + \frac{\partial u}{\partial y} \cdot \frac{\partial y}{\partial t} + \frac{\partial u}{\partial z} \cdot \frac{\partial z}{\partial t} = u_x \cdot a + u_y \cdot b + u_z \cdot c
+\]
+
+Dokaz: Case 5 in verižno pravilo
+***** <3>4
+
+Za \(  t = 0 \) velja
+
+\[ g'(0) = u_x (x_0, y_0, z_0) \cdot a + u_y (x_0, y_0, z_0) \cdot b + u_z (x_0, y_0, z_0) \cdot c
+\]
+
+Dokaz: \(  t = 0 \) za <3>3
+***** <3>5 QED
+
+\[ \frac{\partial u}{\partial \vec{a}} \left( \vec{v} \right) = \left\langle \nabla u, \vec{a} \right\rangle
+\]
+
+Dokaz: Izenačimo <3>4 in <3>2
+**** <2>3 QED
+
+Dokaz: <2>2
+*** <1>8 QED
+
+Dokaz: <1>6 in <1>7
+* Cauchyjev problem (Initial value problem)
+
+Eksplicitna diferencialna enačba prvega reda oblike \(  y' = f(x,y) \) s podanimi začetnimi, robnimi pogoji \(  y_0 = y(x_0) \), kjer so \(  f, x_0, y_0 \) podani.
+* Eulerjeva metoda
+
+Imamo Cauchyjev problem.
+** <1>1
+Case 1: \(  x \in \mathbb{R} \)
+Case 2: \(  x > x_0 \)
+
+Interval \(  [x_0, x] \) razdelimo na \(  n \) delov:
+
+\[ x_0 < x_1 < x_2 < \ldots < x_n = x
+\]
+** <1>2
+
+\[ x_j = x_0 + \frac{x - x_0}{n} j = x_0 + h j
+\]
+
+Dokaz: <1>1
+** <1>3
+
+Imamo nov Cauchyjev problem
+
+\begin{align*}
+  y' &= f(x, y) \\
+y_1 &= y(x_1)
+\end{align*}
+
+Dokaz:
+
+Za majhne \(  h \) (velike \(  n \)) je \(  y(x_1) \) blizu vrednosti tangente \(  y'(x_1) \).
+** <1>4
+
+Po \(  n \) korakih
+
+\[ y(x_n) = y(x)
+\]
+** <1>5
+Case 3: \(  Y = y_j \)
+Case 4: \(  X = x_j \)
+
+Tangenta skozi \(  (x_{j - 1}, y_{j -1}) \) z naklonom \(  f(x_{j -1}, y_{j -1}) \) je
+
+\[ Y - y_{j -1} = f(x_{j -1}, y_{j -1}) \left( X -x_{j-1} \right)
+\]
+
+Dokaz: definicija tangente
+** <1>6
+
+Na koncu dobimo
+
+\begin{align*}
+  x_j &= x_{j - 1} + h \\
+y_j &= y_{j - 1} + f(x_{j - 1}, y_{j - 1})h
+\end{align*}
+* Enačba z ločljivimi spremenljivkami
+
+Enačbe oblike
+
+\[ y' = P(x) \cdot Q(y)
+\]
