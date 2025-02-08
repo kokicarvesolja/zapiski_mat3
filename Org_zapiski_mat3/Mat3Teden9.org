@@ -42,7 +42,7 @@ Velja torej \(  \vec{N} = \underline{R} ^{-1} \vec{T} \). Vemo, da je \(  \under
 
 
 \begin{align*}
-  \left\langle \vec{G}, \vec{N} \right\rangle &= \left\langle \vec{G}, \underline{R} \vec{T} \right\rangle \\
+  \left\langle \vec{G}, \vec{N} \right\rangle &= \left\langle \vec{G}, \underline{R}^{-1} \vec{T} \right\rangle \\
 &= \left\langle  \underline{R} \vec{G}, \vec{T}   \right\rangle \\
 &= \left\langle \vec{H}, \vec{T} \right\rangle
 \end{align*}

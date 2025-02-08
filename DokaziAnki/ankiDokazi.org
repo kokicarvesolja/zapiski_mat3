@@ -1670,3 +1670,127 @@ Predpostavke:
 - \(  \partial D \) je končna unija odsekoma gladkih krivulj
 - \(  \partial D \) orientirana skaldno z normalo \(  (0, 0, 1) \) na D
 - \( \vec{F}(X, Y) \in C^1 \) vektorsko polje na okolici \(  \bar{D} \)
+
+Velja
+
+\[ \oint\limits_{\partial D}^{} X \,\mathrm{d x} + Y \, \mathrm{dy} = \iint\limits_D^{} \left( Y_x - X_y \right) \,\mathrm{d xdy}
+\]
+** Dokaz
+Dokaz je podoben dvodimenzionalnemu Gaussovemu izreku
+*** <1>1
+Case 1: \(  \vec{G} = (U, V) \)
+
+\[ \oint\limits_{\partial D}^{} \left\langle \vec{G}, \vec{N} \right\rangle \,\mathrm{d s} = \iint\limits_D^{} \mathrm{div} \vec{G} \,\mathrm{d S}
+\]
+*** <1>2
+Case 2: \(  \vec{T} \) je tangenta krivulje
+
+Integral <1>1 je zelo podoben temu, kar želimo dokazati, če \(  \vec{N} \) zamenjamo s \(  \vec{T} \)
+
+Za \(  \vec{H} = (-V, U) \) velja
+
+\[ \left\langle \vec{G}, \vec{N} \right\rangle = \left\langle \vec{H}, \vec{T} \right\rangle
+\]
+**** <2>1
+Case 3: \(  \underline{R} = \begin{bmatrix}
+0& -1 \\
+1 & 0
+\end{bmatrix} \)
+
+\[ \vec{T} = \underline{R} \vec{N}
+\]
+
+Dokaz: \(  \underline{R} \in \mathbb{R} ^2 \) rotira \(  \vec{N} \) za kot \(  \frac{\pi}{2} \), kar pa je ravno vektor \(  \vec{T} \).
+**** <2>2
+
+\[ \vec{N} = R^{-1} \vec{T}
+\]
+
+Dokaz:
+
+Množenje z \(  \underline{R}^{-1} \)
+
+**** <2>3
+
+\[ \left\langle \vec{G}, \vec{N} \right\rangle = \left\langle \vec{G}, \underline{R}^{-1} \vec{T} \right\rangle
+\]
+
+Dokaz:
+
+Upoštevamo <2>2
+
+**** <2>4
+
+\[ \left\langle \vec{G}, \underline{R}^{-1} \vec{T} \right\rangle = \left\langle \underline{R} \vec{G}, \underline{T} \right\rangle
+\]
+
+Dokaz:
+
+***** <3>1
+
+Matrika \(  \underline{R} \) je ortogonalna
+
+Dokaz: Za ortogonalno matriko velja
+
+\[ \underline{R}^T = \underline{R}^{-1} \iff \ \left( \underline{R}^{-1} \right)^T = \underline{R} \iff \ \underline{R}^T \underline{R} = \underline{R} \underline{R}^T = I
+\]
+
+***** <3>2
+
+\begin{align*}
+ \left. \underline{R} \cdot \right/ \quad \left\langle \vec{G}, \underline{R}^{-1} \vec{T} \right\rangle &= \left\langle \underline{R} \vec{G}, \underline{R} \cdot \underline{R}^{-1} \vec{T} \right\rangle \\
+&= \left\langle \underline{R} \vec{G}, \vec{T} \right\rangle
+\end{align*}
+
+Dokaz: Matrika je ortogonalna
+***** <3>3 QED
+**** <2>5 QED
+
+\[ \underline{R} \vec{G} = H = (-V, U)
+\]
+*** <1>3
+
+\[ \oint\limits_{\partial D}^{} \left\langle \vec{H}, \vec{T} \right\rangle \,\mathrm{d s} = \oint\limits_{\partial D}^{} -V \mathrm{dx} + U \,\mathrm{d y}
+\]
+
+Dokaz:<1>2  ter <1>1
+*** <1>4
+
+\[ \iint\limits_D^{} \mathrm{div} \vec{G} \,\mathrm{d S} = \iint\limits_D^{} U_x + V_y  \,\mathrm{d xdy}
+\]
+
+Dokaz: definicija divergence
+*** <1>5
+
+Z izborom \(  (U, V) = (Y, -X) \) velja
+
+\[ \oint\limits_{\partial D}^{} -V \,\mathrm{d x} + U \, \mathrm{dy} = \iint\limits_D^{} U_x + V_y \,\mathrm{d xdy}
+\]
+
+
+Dokaz: analiza 1
+*** <1>6 QED
+* Izrek 6.25 (Stokesov izrek)
+
+Predpostavke:
+
+- \(  M \) omejena gladka orientirana ploskev v \(  \mathbb{R} ^3 \)
+- \(  \vec{F} = (X, Y, Z): M \to \mathbb{R} \) vektorsko polje
+- \(  \vec{F} \) definirano v okolici \(  M \)
+
+Velja
+
+\[ \int\limits_{\partial M}^{} \vec{F} \,\mathrm{d } \vec{r} = \iint\limits_M^{} \vec{F} \,\mathrm{d S}
+\]
+** (Skica) dokaza
+*** <1>1
+Case 1: \(  D \subset \mathbb{R} ^2 \)
+Case 2: \(  f: D \to \mathbb{R} \)
+Case 3: \(  M = \Gamma_f = \left\{ \vec{r}(x, y) = \left( x, y, f(x, y) \right); (x,y) \in D \right\} \)
+
+\[ \int\limits_{\partial M}^{} \vec{F} \,\mathrm{d } \vec{r} = \int\limits_{\partial M}^{} X \,\mathrm{d x} + Y \, \mathrm{dy} + Z \left[ f_x \, \mathrm{dx} + f_y \, \mathrm{dy } \right]
+\]
+
+Dokaz:
+Definicija 6.4, kjer je \(  d \vec{r} = \odv{r}(t) dt = \left( \mathrm{dx}, \mathrm{dy}, f_x \, \mathrm{dx} + f_y \mathrm{dy} \right) \)
+*** <1>2
