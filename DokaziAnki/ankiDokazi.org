@@ -1794,3 +1794,29 @@ Case 3: \(  M = \Gamma_f = \left\{ \vec{r}(x, y) = \left( x, y, f(x, y) \right);
 Dokaz:
 Definicija 6.4, kjer je \(  d \vec{r} = \odv{r}(t) dt = \left( \mathrm{dx}, \mathrm{dy}, f_x \, \mathrm{dx} + f_y \mathrm{dy} \right) \)
 *** <1>2
+Case 4: \(  \vec{F} = (X, Y, Z) = \left( X (u, v, w), Y(u, v, w), Z(u, v, w) \right) \)
+
+\begin{align*}
+\int\limits_{\partial M}^{} \left[ X + Z f_x \right] \,\mathrm{d x} + \left[ Y + Zf_y \right] \, \mathrm{dy } = \iint\limits_D^{} &\left[ Y_u \left( \vec{r} \right) \frac{\partial x}{\partial x} + \underbrace{Y_v \left( \vec{r} \right) \cdot \frac{\partial y}{\partial x}}_{0} + Y_w \left( \vec{r} \right) \cdot \frac{\partial f(x, y)}{\partial x} + f_y \cdot \left( Z_u \left( \vec{r} \right) \cdot \frac{\partial x}{\partial x} + \underbrace{Z_v \left( \vec{r} \right) \cdot \frac{\partial y}{\partial x}}_{0} + Z_w \left( \vec{r} \right) \cdot \frac{\partial f(x, y)}{\partial x} \right) + Z \cdot f_{yx}    \right. \\
+ &-  \left. \left( \underbrace{X_u \left( \vec{r} \right) \cdot \frac{\partial x}{\partial y}}_{0} + X_v \left( \vec{r} \right) \cdot \frac{\partial y}{\partial y} + X_w \left( \vec{r} \right) \cdot \frac{\partial f(x, y)}{\partial y} + f_x \left[ \underbrace{Z_v \left( \vec{r} \right) \cdot \frac{\partial x}{\partial y} }_0 + Z_v \left( \vec{r} \right) \cdot \frac{\partial y}{\partial y} + Z_w \left( \vec{r} \right) \cdot \frac{\partial f(x, y)}{\partial y} \right] + Z \cdot f_{yx} \right) \right] \,\mathrm{dx dy} \\
+&= \iint\limits_D^{} \left[ -f_x \left( Z_v - Y_w \right) - f_y \left( X_w - Z_u \right) + \left( Y_u - X_v \right) \right] \,\mathrm{d xdy}
+\end{align*}
+
+Dokaz: Uporaba Greenove formule
+*** <1>3
+
+\[ \iint\limits_D^{} \left[ -f_x \left( Z_v - Y_w \right) - f_y \left( X_w - Z_u \right) + \left( Y_u - X_v \right) \right] \,\mathrm{d xdy} = \iint\limits_D^{} \left\langle  \mathrm{rot} \vec{F} \left( \vec{r} \right), \vec{N} \right\rangle \sqrt{1 + f_x ^2 + f_y ^2} \, \mathrm{dy dx}
+\]
+
+Dokaz: Definicija skalarnega produkta in rotorja vektorske funkcije \(  \vec{F} \)
+*** <1>4 QED
+
+\[ \iint\limits_D^{} \left\langle \mathrm{rot} \vec{F} \left( \vec{r} \right), \vec{N} \right\rangle \sqrt{1 + f_x ^2 + f_y ^2} \,\mathrm{dS } = \iint\limits_M^{} \mathrm{rot} \vec{F} \,\mathrm{d } \vec{S}
+\]
+* Posledica
+
+Rotor je neodvisen od izbire ONB.
+** Dokaz:
+*** <1>1
+Case 1: \(  \vec{r}_0 \in \mathbb{R} ^3 \)
+Case 2: \(  \vec{F} \) vektorsko polje definirano v okolici točke \(  \vec{r}_0 \)
