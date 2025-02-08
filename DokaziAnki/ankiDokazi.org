@@ -2032,3 +2032,86 @@ Enačbe oblike
 
 \[ y' = P(x) \cdot Q(y)
 \]
+** What to do?
+
+Funkcijo preoblikujemo
+
+\[ \frac{y'}{Q(y)} = P(x)
+\]
+
+in rešimo
+
+\begin{align*}
+  \int\limits_{}^{} \frac{1}{Q(y)} \,\mathrm{d y} &= \int\limits_{}^{} P(x) \,\mathrm{d x} \\
+F(y) &  = G(x)
+\end{align*}
+* Linearne diferencialne enačbe
+
+Linearna diferencialna enačba (LDE) prvega reda je enačba oblike
+
+\[ y' + py = q
+\]
+
+kjer sta \(  p, q \) dani integrabilni funkciji, \(  y \) pa iščemo.
+* Trditev 7.6
+
+Rešitve za \(  y \) so /afin/ prostor (linearno premaknjene rešitve). Če je \(  y_0 \) poljubna rešitev, in je \(  R \) prostor vseh rešitev za LDE, tedaj je
+
+\[ R - y_0 = \left\{ y - y_0;\ y \in R \right\}
+\]
+** Dokaz
+*** <1>1
+Case 1: Diferencialni operator \(  \mathrm{L} \): \(  Ly = y' + py \)
+/Opomba/: Operator je funkcija, ki vzame funkcijo in jo pretvori v neko novo funkcijo.
+Case 2: \(  y_1, y_2 \in R - y_0 \)
+Case 3: \(  Ly = q \)
+
+Vektorski prostor je zaprt za seštevanje.
+
+Dokaz:
+**** <2>1
+
+\[ y_1 + y_2 \in R - y_0 \iff y_0 + y_1 + y_2 \in R
+\]
+
+Dokaz:
+***** <3>1
+
+\[ L \left( y_1 + y_2 + y_0 \right) = L \left( \left( y_0 + y_1 \right) + \left( y_0 + y_2 \right) - y_0 \right)
+\]
+***** <3>2
+
+\[   L \left( \left( y_0 + y_1 \right) + \left( y_0 + y_2 \right) - y_0 \right) = L \left( y_0 + y_1 \right) + L \left( y_0 + y_2 \right) - L \left( y_0 \right)
+\]
+
+Dokaz: Operator \(  L \) je linearen.
+***** <3>3
+
+\[ L \left( y_0 + y_1 \right) + L \left( y_0 + y_2 \right) - L \left( y_0 \right) = q + q - q
+\]
+
+Dokaz: Case 2 se lahko spremeni v \(  y_1 + y_0, y_2 + y_0 \in R \)
+**** <2>2 QED
+*** <1>2
+
+Vektorski prostor je zaprt za množenje s skalarjem.
+
+Dokaz:
+**** <2>1
+Case 4: \(  \lambda \in \mathbb{R} \)
+
+\[ \lambda y_0 \in R
+\]
+
+Dokaz: ker je \(  y_0 \in R \)
+**** <2>2
+
+\[ \lambda y_1 \in R - y_0
+\]
+
+Dokaz:
+
+\[ L(\lambda y_1) = \lambda Ly_1
+\]
+**** QED
+*** <1>3 QED
