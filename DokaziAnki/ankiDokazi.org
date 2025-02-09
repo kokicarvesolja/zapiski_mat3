@@ -2331,3 +2331,295 @@ Pravimo, da je funkcija \(  F \) homogena reda \(  \alpha \), če za vsak par \(
 
 \[ F(tx, ty) = t^{\alpha} F(x, y)
 \]
+* Definicija 7.9
+
+Homogena diferencialna enačba je enačba oblike
+
+\[ y' = f(x, y)
+\]
+
+kjer je \(  f \) homogena funkcija reda \(  0 \), torej \(  f(x, y) = f \left( 1, \frac{y}{x} \right) \), če \(  x \ne 0 \).
+** What to do?
+
+Z vpeljavo \(  z = \frac{y}{x} \) dobimo rešitev
+
+\[ F(z) = \log \left| x \right|  + C
+\]
+* Definicija 7.11 (Prvi integral)
+
+Prvi integral DE  \(  F(x, y, y') =0 \) je takšna funkcija \(  u = u(x, y) \), da za vsako rešitev \(  y(x) \) velja
+
+\[ \frac{\mathrm{d} }{\mathrm{d}x } u(x, y(x)) = 0
+\]
+
+oz. \(  u(x, y(x)) = C \) za neki \(  C \in \mathbb{R} \).
+* Definicija 7.13
+
+Enačbi
+
+\[ P \, \mathrm{dx } + Q \, \mathrm{dy } = 0
+\]
+
+kjer je \(  P_y = Q_x \) pravimo eksaktna.
+* Implicitno podane DE
+Rešitve poiščemo parametrični obliki:
+
+\begin{align*}
+  x &= x(t) \\
+y &= y(t); t \in I
+\end{align*}
+
+Ter oznake
+
+\[ \dot{x} = \frac{\mathrm{d} x}{\mathrm{d} t} \quad \dot{y} = \frac{\mathrm{d} y}{\mathrm{d} t} \quad y' = \frac{\mathrm{d} y}{\mathrm{d} x}
+\]
+
+In pa zaradi verižnega pravila velja
+
+\[ y' = \frac{\dot{y}}{\dot{x}}
+\]
+
+** Primer \(  F(x, y') = 0 \)
+
+Primer, ki ga rešujemo \(  (x, y') \) leži na nivojnici \(  \left\{ F = 0 \right\} \). Nivojnico parametriziramo z \(  \left( \psi(t), \theta(t) \right), \ t \in J \).
+
+To pomeni, da je \(  (x, y') = \left( \psi(t), \theta(t) \right) \).
+
+Z upoštevanjem zgornjih oznak dobimo
+
+\[ \dot{y} = y' \cdot \dot{x} = \theta(t) \cdot \dot{\psi}(t)
+\]
+
+in posledično je rešitev
+
+\[ y(t) = \int\limits_{}^{} \dot{\psi} \cdot \theta \,\mathrm{d t}
+\]
+** Primer \(  F(y,y') = 0 \)
+
+To pomeni \(  \left( y, y' \right) = \left( \psi(t), \theta(t) \right) \).
+
+\[ \dot{x} = \frac{\dot{y}}{y'} = \frac{\dot{\psi}}{\theta}
+\]
+
+in posledično je rešitev
+
+\[ x(t) = \int\limits_{}^{} \left( \frac{\dot{\psi}}{\theta} \right) \,\mathrm{d t} \quad y(t) = \psi (t)
+\]
+* Diferencialne enačbe višjih redov
+
+Diferencialna enačba višjega reda je v splošnem podana kot
+
+\[ F(x, y, y', y'', \ldots, y^{(n)}) =0
+\]
+** 1. možnost
+
+\[ F(x, y^{(k)}, y^{k + 1}) = 0
+\]
+
+kjer vpeljemo \(  z = y^{(k)} \) in rešimo NDE.
+** 2. možnost
+
+\[ F(y, y') = 0
+\]
+
+torej \(  x \) ne nastopa direktno. Potem \(  y' = z(y) \) in \(  y'' = z'(y) y = zz' \)
+** 3. možnost
+
+Podano imamo eksplicitno enačbo reda \(  n \):
+
+\begin{equation}
+\label{eq:6}
+ y^{(n)} = f(x, y, y', \ldots, y^{(n -1)})
+\end{equation}
+
+ki jo lahko zapišemo kot sistem diferencialnih enačb
+
+\begin{align*}
+  z_1' &= z_2 \\
+z_2 ' &= z_{3} \\
+z_3 ' &= z_4 \\
+&\vdots \\
+z_n' &= f(x, z_1, \ldots, z_n)
+\end{align*}
+
+s prehodom \(  z_j = y^{(j-1)} \) za \(  j = 1, \ldots, n \)
+*** Trditev 7.20
+
+Definirajmo
+
+\[ \vec{N}(y) = \begin{bmatrix} y \\ y' \\ \vdots \\ y^{(n-1)} \end{bmatrix} = \begin{bmatrix} z_1 \\ z_2 \\ \vdots \\ z_n  \end{bmatrix}
+\]
+
+Tedaj je funkcija \(  \vec{N}: \left\{ \text{resitve za \ref{eq:6}} \right\} \to \left\{ \text{resitve za sistem DE } \right\}  \) bijektivna.
+**** Dokaz
+Dokazujemo injektivnost v obe smeri.
+***** <1>1
+Predpostavka 1:  \(  y \) reši enačbo \ref{eq:6}
+
+Velja:
+
+\[ \begin{bmatrix} z_1 \\ z_2 \\ \vdots  \\ z_n \end{bmatrix} = \vec{N}(y)
+\]
+
+Dokaz:
+Definicija prehoda \(  z_j = y^{(j - 1)} \) velja
+
+\begin{align*}
+  z_1 ' &= y' = z_2 \\
+z_2 ' &= y'' = z_3 \\
+& \vdots \\
+z_{n-1}' &= y^{(n -1)} = z_n \\
+z_n ' &= y^{(n)} = f(x, y, y', \ldots, y^{(n -1)}) = f(x, z_1, \ldots, z_n)
+\end{align*}
+***** <1>2
+Predpostavka 2:
+
+\[ \begin{bmatrix} z_1 \\ z_2 \\ \vdots \\ z_n \end{bmatrix} = \vec{N}(y)
+\]
+
+reši sistem enačb
+
+\begin{align*}
+  z_1' &= z_2 \\
+z_2 ' &= z_{3} \\
+z_3 ' &= z_4 \\
+&\vdots \\
+z_n' &= f(x, z_1, \ldots, z_n)
+\end{align*}
+
+Rešitev je injektivna.
+
+Dokaz:
+
+Velja \(  y = z_1 \), \(  y' = z_1' = z_2 \), itd. do \(  y^{(n -1)} = z_{n-1}' = y_n \) in \(  y^{(n)} = z_n ' = f(x, z_1, \ldots, z_n) = f(x, y, y', \ldots, y^{(n-1)}) \)
+* Eksistenčni izrek za DE 1. reda
+** Definicija 7.21
+
+Naj bodo \(  x_0, y_0 \in \mathbb{R} \) ter \(  a, b > 0 \). Označimo \(  P = \left[ x_0 - a, x_0 + a \right] \times \left[ y_0 - b, y_0 + b \right] \subset \mathbb{R} \).
+Funkcija \(  f = f(u, v): P \to \mathbb{R} \) je zvezna in enakomerno (neodvisna od parametra) Lipschitzova v 2. spremenljivki, če obstaja \(  \gamma > 0 \) tako, da velja \(  \left| f(u, v_1) - f(u, v_2) \right| \le \gamma \left| v_1 - v_2 \right|\) za vsak \(  \left( u, v_1 \right), \left( u, v_2 \right) \in P \). Če je funkcija enakomerno Lipschitzova, \(  \gamma \) ne sme biti odvisen od \(  u \), sicer je lahko.
+
+/Opomba/: pri razliki funkcij \(  f \) vzamemo isti \( u  \), vendar različna \(  v \). Beseda enakomerna pa je notri, ker velja za vse \(  u \in \left[ x_0 - a, x_0 + a \right] \). Prav tako je pogoj izpolnjen, če velja \(  \left| \frac{\partial f}{\partial v} \le \gamma  \right| \) na \(  P \).
+** Trditev 7.22 (eksistenčni izrek/ Picard-Lindelöf)
+
+Predpostavke:
+- \(  x_0, y_0 \in \mathbb{R} \)
+- \(  a, b > 0 \)
+- pravokotnik \(  P = \left[ x_0 - a, x_0 + a \right]\times \left[ y_0 - b, y_0 + b  \right] \)
+- funkcija \(  f = f(u, v): P \to \mathbb{R} \) je zvezna in enakomerno Lipschitzova v 2. spremenljivki
+
+Cauchyjev problem
+
+\begin{align*}
+  y' (x) &= f(x, y)\\
+y(x_0) &= y_0
+\end{align*}
+
+ima takrat natanko eno rešitev \(  y = y(x): I \to \left[ y_0 - b, y_0 + b \right] \), kjer je \(  I \subset \left[ x_0 - a, x_0 + a \right]   \)
+*** Dokaz:
+**** <1>1
+
+Zapis
+
+\[ \int\limits_{x_0}^x y'(\xi) \,\mathrm{d }\xi = y(x) - y(x_0) = y(x) - y_0
+\]
+
+je enak Cauchyjevemu problemu.
+
+Dokaz: Dobili smo ga z integriranjem CP problema, in z odvajanjem ga dobimo nazaj.
+**** <1>2
+
+Obstaja natanko ena zvezna funkcija \(  y: I \to \left[ y_0 - b, y_0 + b \right] \), ki reši
+
+\[ y(x)  = y_0 + \int\limits_{x_0}^x f \left( \xi, y \left( \xi \right) \right) \,\mathrm{d } \xi
+\]
+
+Temu problemu rečemo CiP
+
+Dokaz:
+***** <2>1
+
+Problem CiP zadošča rešiti na zaprtem intervalu \(  I\delta \).
+
+/Opomba/: \(  I\delta \) je interval \(  I \) skrajšan za \(  \delta \) na vsaki strani.
+
+Dokaz: ¯\_(ツ)_/¯
+***** <2>2
+Case 1: Fiksiramo \(  \delta \).
+
+Definiramo operator \(  F: y \mapsto F(y) \), kjer je \(  y \) funkcija, kot
+
+\[ F(y):x \mapsto y_0 + \int\limits_{x_0}^x f\left( \xi, y \left( \xi \right)\right) \,\mathrm{d }\xi
+\]
+***** <2>3
+
+Operatorju \(  F \) določimo definicijsko območje kot prostor \(  \mathcal{M} = \mathcal{M}_{\delta} \) vseh zveznih funkcij \(  I\delta \to \left[ y_0 - b, y_0 + b \right] \) z maksimum normo.
+
+****** Maksimum norma
+
+Metrika, ki poljubnima funkcijama \(  \phi, \psi \in \mathcal{M}  \) pripiše vrednost
+
+\[ d(\phi, \psi) = \max_{x \in I\delta} \left| \phi(x) - \psi(x) \right|
+\]
+****** Definicija metrike
+
+Naj bo \(  \mathcal{N} \) poljubna množica.
+
+Preslikavi \(  d: \mathcal{N} \times \mathcal{N} \to \mathbb{R} \) pravimo /metrika/ na množici \(  \mathcal{N} \), če za vse elemente \(  x, y, z \in \mathcal{N} \) velja
+
+a) \(  d(x, y) = d(y, x) \)
+b) \(  d(x, z) \le d(x, y) + d(y, z) \)
+c) \(  d(x, y) \ge 0 \)
+d) \(  d(x, x) = 0 \)
+e) če \(  x \ne y \), potem \(  d(x, y) > 0 \)
+***** <2>4
+
+Obstaja natanko eden \(  y \in \mathcal{M} \), da je
+
+\[ F(y) = y = y_0 + \int\limits_{x_0}^x f \left( \xi, y \left( \xi \right) \right) \,\mathrm{d } \xi
+\]
+
+tl;dr je, da iščemo fiksno točko operatorja \(  F: \mathcal{M} \to \mathcal{M} \) - slika se iz \(  \mathcal{M} \to \mathcal{M} \), ker je \(  y \in \mathcal{M} \)
+
+Dokaz:
+****** Banachov izrek o fiksni točki
+
+Predpostavke:
+- \(  \mathcal{N} \) poln neprazen metrični prostor
+- \(  f: \mathcal{N} \to \mathcal{N} \) skrčitev
+
+Tedaj obstaja natanko ena točka \(  b \in \mathcal{N} \), za katero velja \(  f(b) = b \)
+****** <3>1
+
+Metrični prostor \(  \mathcal{M} \) je poln.
+
+Dokaz:
+******* Definicije
+
+Metrični prostor \(  \mathcal{N} \) je poln, če je vsako Cauchyjevo zaporedje v \(  \mathcal{N} \) konvergentno.
+
+Zaporedje \(  \left( a_k \right) \) v metričnem prostoru \(  \left( \mathcal{N}, d \right) \) je /Cauchyjevo/, če za vsako \(  \epsilon > 0 \) obstaja tako velik \(  N \in \mathbb{N} \), da za vsaki dve \( k,j > N; \  k, j \in \mathbb{N} \) velja \(  d(a_k, a_j) < \epsilon \).
+
+Zaporedje v metričnem prostoru \(  \mathcal{N} \) je preslikava \(  \mathbb{N} \to \mathcal{N}, \ k \mapsto a_k \), ki jo običajno zapišemo kot \( \left( a_k \right)_{k \in \mathbb{N}} = \left( a_k \right) = \left( a_1, a_2, \ldots \right) \).
+******* <4>1
+Predpostavka 1: \(  \left( \phi_n \right)_{n \in \mathbb{N}} \) je Cauchyjevo zaporedje
+
+Prove: Za vsak \(  x \in I\delta \) je \(  \left( x_n \right) \) Cauchyjevo.
+
+\[ d(\phi_n, \phi_m) = \max_{x \in I\delta} \left| \phi_n(x) - \phi_m (x) \right|
+\]
+
+za poljubna \(  m, n \in \mathbb{N} \)
+
+Dokaz: Definicija maksimum norme <2>3
+******* <4>2
+
+\[   \max_{x \in I\delta} \left| \phi_n (x) - \phi_m (x) \right| < \epsilon \implies \left| \phi_n (x) - \phi_m  (x)\right| < \epsilon
+\]
+
+za vsaka \(  m, n > N; m, n \in \mathbb{N} \), dovolj velik \(  N \in \mathbb{N} \)
+
+
+
+****** <3>2
+
+\(  F: \mathcal{M} \to \mathcal{M} \) je skrčitev.
