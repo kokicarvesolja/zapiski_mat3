@@ -2261,7 +2261,7 @@ Za \(  \psi = \psi(u, v) \) sledi:
  \phi'(x) = \frac{\partial \psi}{\partial u} \cdot \frac{\partial x}{\partial x} + \frac{\partial \psi}{\partial v} \cdot \frac{\partial C(x)}{\partial x}
 \end{equation}
 
-Vemo, da singularna rešitev \(  y = \phi(x) \) in splošna rešitev \(  y = \psi(x, C) \) rešita enačbo \(  y' = f(x, y) \).  Vemo tudi, da je odvod \ref{eq:4} singularne rešitve enak odvodu \ref{eq:3} splošne rešitve v točki \(  x_0 \in J \), ki je konstantna. Odvoda \(  \psi_u \) se pokrajšata med sabo, ko enačimo odvoda in dobimo pogoj, da je
+Vemo, da singularna rešitev \(  y = \phi(x) \) in splošna rešitev \(  y = \psi(x, C) \) rešita enačbo \(  y' = f(x, y) \).  Vemo tudi, da je odvod \ref{eq:4} singularne rešitve enak odvodu \ref{eq:3} splošne rešitve v \(  x_0 \in J \), ki je konstantna. Odvoda \(  \psi_u \) se pokrajšata med sabo, ko enačimo odvoda in dobimo pogoj, da je
 
 \begin{equation}
 \label{eq:5}
@@ -2277,3 +2277,57 @@ Edini način, da je \ref{eq:5} enaka \(  0 \), je, da
 
 Preko te enačbe lahko izračunamo \(  C = C(x) \) in posledično dobimo enačbo singularne rešitve \(  y = \phi(x) \).
 * Clairautova diferencialna enačba
+To je enačba oblike
+
+\[ y' = xy' + f(y')
+\]
+
+kjer je \(  f \) odvedljiva na odprtem intervalu \(  J \subset \mathbb{R} \).
+* Trditev 7.18
+
+Splošna rešitev Clairautove diferencialne enačbe je podana s formulo
+
+\[ y = Cx + f(C)
+\]
+
+za \(  C \in J \).
+
+Singularna rešitev je podana z
+
+\begin{align*}
+  x &= - f'(t) \\
+y &= - f'(t) t + f(t), t \in J
+\end{align*}
+
+kar je parametrični zapis krivulje.
+** Dokaz:
+*** <1>1
+
+Velja
+
+\[ 0 = \frac{\partial y}{\partial C}
+\]
+
+Dokaz: Definicija singularne rešitve.
+*** <1>2
+
+\[ 0 = x + f' (C) \implies x = - f' (C)
+\]
+
+Dokaz: <1>1 in odvod splošne rešitve Clairautove enačbe.
+*** <1>3
+
+\[ y = - f'(C) C + f(C)
+\]
+
+Dokaz: <1>2 in pa definicija splošne rešitve Clairautove enačbe.
+* Definicija 7.8
+
+Predpostavke:
+- \(  F: \mathbb{R} \times \mathbb{R} = S \to \mathbb{R} \)
+- \(  \alpha \in \mathbb{R} \)
+
+Pravimo, da je funkcija \(  F \) homogena reda \(  \alpha \), če za vsak par \(  x, y \in S \) in za vsak \(  t > 0 \) velja
+
+\[ F(tx, ty) = t^{\alpha} F(x, y)
+\]
