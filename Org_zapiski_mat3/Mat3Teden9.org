@@ -617,7 +617,7 @@ Opazimo
 
 Vzamemo \(  w \in R \). Tedaj \(  \mathrm{L} (w - y_0) = \mathrm{L} w - \mathrm{L} y_0 = q - q = 0 \), kjer je \(  w - y_0 \in R - y_0 \).
 
-Če je \(  \mathrm{L}z = 0 \), tedaj \(  \mathrm{L}(z + y_0) = \mathrm{L}z  \mathrm{L}y_0 + q \ \implies \ z + y_0 \in R \) oz.
+Če je \(  \mathrm{L}z = 0 \), tedaj \(  \mathrm{L}(z + y_0) = \mathrm{L}z + \mathrm{L}y_0 = q \ \implies \ z + y_0 \in R \) oz.
 
 \[ R = y_0 + \left\{ y;\, \mathrm{L}y = 0 \right\}
 \]

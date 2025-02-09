@@ -2115,3 +2115,165 @@ Dokaz:
 \]
 **** QED
 *** <1>3 QED
+* Posledica 7.7
+
+Prostor \(  R \) vseh rešitev za LDE lahko zapišemo kot
+
+\[ R = y_0 + \left\{ h; \mathrm{L}h = 0 \right\}
+\]
+
+\(  y_0 \) je partikularna rešitev, množica v oklepaju pa rešitev pripadajoče homogene enačbe.
+** What to do?
+
+Želimo odvod produkta
+
+\begin{equation}
+\label{eq:2}
+ \left( y g \right) ' = y'g + g' y = q
+\end{equation}
+
+kjer je \(  g \) nepoznana funkcija.
+
+Z upoštevanjem \ref{eq:2} dobimo LDE
+
+\[ y' + p y = q \implies y' + py = y' g + g' y
+\]
+
+Enačbo pomnožimo z \(  m \) in primerjamo koeficienti z istimi \(  y \) in dobimo
+
+\begin{align*}
+  m &= g \\
+mpy = g' y  & \implies mp = m'
+\implies p = \log \left| m \right|  = p
+\end{align*}
+
+Tako dobimo
+
+\[ m(x) = e^{\int\limits_{x_0}^x p \left( \xi \right) \,\mathrm{d } \xi}
+\]
+
+Ter iz \(  \left( y'm \right) = qm \) dobimo
+
+\[ y(x) = \frac{1}{m(x)} \int\limits_{x_0}^x q \left( \eta \right) \cdot m \left( \eta \right) \,\mathrm{d } \eta
+\]
+
+Če sta \(  x_0 \) pri \(  m(x) \) in \(  y(x) \) enaka, potem vpeljemo konstanto \(  C \)
+
+\[ y(x) = \frac{1}{m(x)} \int\limits_{x_0}^x q \left( \eta \right) \cdot m \left( \eta \right) \,\mathrm{d } \eta  + \frac{C}{m(x)}
+\]
+* Izrek
+
+Splošna rešitev LDE \(  y' + py = q \) se glasi
+
+\[ y(x) = Ce^{-P(x)} + e^{-P(x)} \int\limits_{x_0}^x q \left( s \right) e^{P(s)} \,\mathrm{d s}; \ C \in \mathbb{R}
+\]
+
+kjer je \(  P(x) = \int\limits_{x_0}^x p( \left( \xi \right) ) \,\mathrm{d \xi} \) in je \(  x_0 \) poljubna točka na intervalu, na katerem je \(  p \) definiran.
+* Bernoullijeva DE
+
+Je DE oblike
+
+\[ y' + py = qy^{\alpha}
+\]
+
+kjer sta \(  p, q \) dani funkciji in \(  \alpha \in \mathbb{R} \) dan.
+** What to do?
+
+Z \(  \alpha = 1 \) dobimo homogeno LDE, za \(  \alpha \) imamo LDE.
+
+Delimo z \(  y^{\alpha} \) in uvedemo novo spremenljivko \(  z = y^{1 - \alpha} \).
+
+Dobimo
+
+\[ z' + \left( 1 - \alpha \right) pz = \left( 1 - \alpha \right) q
+\]
+
+kar pa je LDE, ki jo znamo rešiti.
+* Riccatijeva diferencialna enačba
+
+Enačba oblike
+
+\[ y' = ay ^2 + by + x
+\]
+
+kjer so \(  a, b, c \) podane funkcije in \( a \ne 0 \). Če je \(  c = 0 \), imamo Bernoullijevo enačbo.
+** What to do?
+
+Uganemo prvo rešitev \(  y_1 \), potem splošno rešitev dobimo s substitucijo \(  y = z + y_1 \).
+
+\[ z' + y'_1 = a \left( x ^2 + 2azy_1 + y_1 \right) + b (z + y_1) + c
+\]
+
+Velja \(  y_1' = a y_1 ^2 + by_1 + c \) in dobimo:
+
+\[ z' = az ^2 + \left( 2azy_1 + b \right)z
+\]
+
+kar pa je Bernoullijeva enačba.
+* Singularne rešitve
+Obravnavamo enačbo \(  y' = f(x, y) \). Splošna rešitev ima obliko \(  y = \psi (x, C), \ x \in J, \ C \in \mathcal{C} \subset \mathbb{R} \), kjer je \(  \mathcal{C} \) množica parametrov.
+* Definicija (Singularne točke)
+
+Točkam iz \(  \mathbb{R} ^2 \) skozi, katere gre več rešitev enačbe \(  y' = f(x, y) \) pravimo singularne točke.
+
+/Opomba/: Če je \(  T(x_0 , y_0) \) singularna točka in sta \(  y_1 \) in \(  y_2 \) dve različni rešitvi enačbe \(  y' = f(x, y) \), ki gre skozi \(  T \), tedaj imata \(  y_1, y_2 \) v točki \(  x_0 \) enaka odvoda.
+*** Kdaj ima LDE singularno točko?
+
+Splošna rešitev je oblike \(  y = C \phi(x) + \psi (x) \) za neki funkciji \(  \phi \) in \(  \psi \) ter poljuben \(  C \in \mathbb{R} \).
+
+Velja za \(  C_1 \ne C_2 \)
+
+\begin{align*}
+ y_1 &= C_1 \phi (x) + \psi(x) \\
+y_2 &= C_2  \phi (x) + \psi(x)
+\end{align*}
+
+Poleg tega, da v točki \(  T \) velja \(  y_1(x_0) = y_2 (x_0) = y_0 \), velja tudi, da sta odvoda enaka:
+
+\begin{align*}
+  y_1 '(x_0 ) &= y_2 ' (x_0) \\
+C_1 \phi' (x_0) + \psi'(x_0) &= C_2 \phi '(x_0) + \psi'(x_0) \\
+C_1 \phi'(x_0) &= C_2 \phi'(x_0)\\
+\implies \phi'(x_0) = 0
+\end{align*}
+** Ovojnica/singularna rešitev 
+
+Splošna rešitev je oblike
+
+\[ y = \psi(x, C); x \in J, C \in \mathcal{C} \subset \mathbb{R}
+\]
+
+Če odvajamo splošno rešitev za \(  \psi = \psi(u, v) \):
+
+\begin{equation}
+\label{eq:3}
+y' = \frac{\partial \psi}{\partial u} \frac{\partial x}{\partial x} + 0
+\end{equation}
+
+saj je \(  C \) konstanta.
+
+Singularna rešitev je, če obstaja podana z zahtevo, da v vsaki točki seka kakšno izmed krivulj \(  y = \psi(x, C) \) in da je nanjo tangentna. Graf singularne rešitev je ovojnica grafov splošne rešitve, ki bo imela obliko \(  \phi (x) = \psi(x, C(x)) \).
+
+Za \(  \psi = \psi(u, v) \) sledi:
+
+\begin{equation}
+\label{eq:4}
+ \phi'(x) = \frac{\partial \psi}{\partial u} \cdot \frac{\partial x}{\partial x} + \frac{\partial \psi}{\partial v} \cdot \frac{\partial C(x)}{\partial x}
+\end{equation}
+
+Vemo, da singularna rešitev \(  y = \phi(x) \) in splošna rešitev \(  y = \psi(x, C) \) rešita enačbo \(  y' = f(x, y) \).  Vemo tudi, da je odvod \ref{eq:4} singularne rešitve enak odvodu \ref{eq:3} splošne rešitve v točki \(  x_0 \in J \), ki je konstantna. Odvoda \(  \psi_u \) se pokrajšata med sabo, ko enačimo odvoda in dobimo pogoj, da je
+
+\begin{equation}
+\label{eq:5}
+ \frac{\partial \psi}{\partial v} (x, C(x)) C'(x) = 0
+\end{equation}
+
+Ker je singularna rešitev ovojnica splošnih rešitev, to pomeni, da funkcija \(  C \) mora biti odvisna od \(  x \). Nadalje to pomeni, da odvod funkcije \(  C \) ne sme biti enak \(  0 \), saj bi to pomenilo, da je \(  C \) konstanta.
+
+Edini način, da je \ref{eq:5} enaka \(  0 \), je, da
+
+\[ \frac{\partial \psi}{\partial v} = 0
+\]
+
+Preko te enačbe lahko izračunamo \(  C = C(x) \) in posledično dobimo enačbo singularne rešitve \(  y = \phi(x) \).
+* Clairautova diferencialna enačba
