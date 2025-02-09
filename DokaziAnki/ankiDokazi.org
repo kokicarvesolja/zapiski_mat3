@@ -2605,20 +2605,54 @@ Predpostavka 1: \(  \left( \phi_n \right)_{n \in \mathbb{N}} \) je Cauchyjevo za
 
 Prove: Za vsak \(  x \in I\delta \) je \(  \left( x_n \right) \) Cauchyjevo.
 
-\[ d(\phi_n, \phi_m) = \max_{x \in I\delta} \left| \phi_n(x) - \phi_m (x) \right|
+Dokaz:
+
+******** <5>1
+
+Za vsak \(  \epsilon > 0 \) obstaja \(  N \in \mathbb{N} \), da za vsaka \(  j, k > N; \ j, k \in \mathbb{N}  \) velja
+
+\[ d(\phi_n, \phi_m) < \frac{\epsilon}{2}
 \]
 
-za poljubna \(  m, n \in \mathbb{N} \)
+Dokaz: Predpostavka 1, da je \(  \left( \phi_n \right)_{n \in \mathbb{N}} \) Caucyjevo zaporedje.
+******** <5>2 QED
 
-Dokaz: Definicija maksimum norme <2>3
+Za vsak \(  x \in I\delta \) velja
+
+\[ \left| \phi_n (x) - \phi_m (x)  \right| < d(\phi_n, \phi_m) < \frac{\epsilon}{2}
+\]
+
+Dokaz: <5>1
+
 ******* <4>2
 
-\[   \max_{x \in I\delta} \left| \phi_n (x) - \phi_m (x) \right| < \epsilon \implies \left| \phi_n (x) - \phi_m  (x)\right| < \epsilon
+Prove:
+
+Ko gre \(  n \to \infty \), gre \(  \phi_n \to \phi \)
+
+Dokaz:
+******** <5>1
+Predpostavka: \(  \lim_{m \to \infty} \phi_m = \phi  \)
+
+Za vsak \(  \epsilon \) obstaja \(  N \in \mathbb{N} \) tako, da za vsak \(  n > N \) velja
+
+\[ \left| \phi_n - \phi \right| = \left| \phi_n - \lim_{m \to \infty} \phi_m  \right| = \lim_{m \to \infty} \left| \phi_n - \phi_m \right| < \frac{\epsilon}{2}
 \]
 
-za vsaka \(  m, n > N; m, n \in \mathbb{N} \), dovolj velik \(  N \in \mathbb{N} \)
+za vsak \(  x \in I\delta  \)
 
+Dokaz: <4>1 velja
+******** <5>2
 
+\[ d(\phi_n, \phi_m) = \max_{x \in I\delta} \left| \phi_n - \phi \right| < \epsilon
+\]
+
+Dokaz: Velja <5>1
+******* <4>3
+
+Funkcija \(  \phi_n \) je zvezna.
+
+Dokaz: Predpostavka <2>3, \(  \mathcal{M} \) je prostor vseh zveznih funkcij.
 
 ****** <3>2
 
