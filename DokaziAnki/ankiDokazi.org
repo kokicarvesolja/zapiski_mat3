@@ -2949,3 +2949,167 @@ Integracija <1>3 nam da
 \]
 * Definicija 7.31
 Če je \(  A: J \to \mathbb{R}^{n \times n} \) matrična funkcija z zveznimi koeficienti, definiramo njeno normo kot \(  \lVert A \rVert = \sup_{u \in J} \left| A(u) \right|\), kjer je slednje operatorska norma matrike A.
+
+Veljajo lastnosti za normo:
+
+- \(  \left\lVert B \right\rVert \le 0 \) in \(  \left\lVert B \right\rVert  = 0 \iff B = 0 \)
+- \(  \left\lVert \alpha B \right\rVert = \left| \alpha \right| \left\lVert B \right\rVert\) za vse \(  \alpha \in \mathbb{R} \) ter \(  B \in \mathbb{R}^{n \times n} \)
+- trikotniška neenakost \(  \left\lVert A + B \right\rVert \le \left\lVert A \right\rVert + \left\lVert B \right\rVert\)
+Ter ekstra stvari:
+- \(  \left\lVert B\epsilon \right\rVert \le \left\lVert B \right\rVert \left| \epsilon \right|\) za vsak \(  B \in \mathbb{R} ^{n \times n} \) in vsak \(  \epsilon \in \mathbb{R}^{n} \)
+- \(  \left\lVert A B \right\rVert \ge \left\lVert A \right\rVert \left\lVert B \right\rVert\) za vse \(  A, B \in \mathbb{R} ^{n\times n} \)
+
+Norma prav tako definira metriko
+
+\[ d (A, B) = \left\lVert A - B \right\rVert
+\]
+
+Za dano metriko \(  d \) je \(  \mathbb{R}^{n \times n} \) poln metričen prostor.
+* Posledica 7.32
+
+Za poljubna \(  u \in \tilde{J} \) in vektor \(  \vec{\xi} \in \mathbb{R}^n \) velja
+
+\[ \left| A(u) \vec{\xi} \right| \le \left\lVert A \right\rVert \left| \vec{\xi} \right
+\]
+* Definicija 7.33
+
+Naj bo \(  f(x) = e^x \). Za \(  B \in \mathbb{R} ^{n \times n} \) definiramo
+
+\[ e^B = \sum\limits_{j = 0}^{\infty} \frac{B^j}{j!}
+\]
+** Trditev
+
+Vrsta
+
+\[ e^B = \sum\limits_{j = 0}^{\infty} \frac{B^j}{j!}
+\]
+
+konvergira.
+*** Dokaz:
+**** <1>1
+Case 1: \(  s_n  \sum\limits_{j = 0}^{n} \frac{B^j}{j!} \)
+
+Zaporedje \(  \left( s_n \right)_n \) je Cauchyjevo.
+
+Spomnimo se: Za vsak \(  \epsilon > 0 \) obstaja tako velik \(  N \in \mathbb{N} \), da za vsaki števili \(  m, n > N; \ m, n \in \mathbb{N} \) velja \(  d(s_m, s_n) < \epsilon \)
+Dokaz:
+***** <2>1
+Case 2: \(  m > n \)
+
+\[ \left\lVert s_m - s_n \right\rVert = \left\lVert \sum\limits_{j = 0}^m \frac{B^j}{j!} - \sum\limits_{j = 0}^n \frac{B^j}{j!} \right\rVert
+\]
+
+Dokaz: definicija zaporedja.
+***** <2>2
+
+\[ \left\lVert \sum\limits_{j = n + 1}^m \frac{B^j}{j!} \right\rVert  \le \sum\limits_{j = n + 1}^m \frac{\left\lVert B^j \right\rVert}{j!}
+\]
+
+Dokaz: Vsoti v <2>1 se odštejeta in je tisto na levi strani, kar ostane ter neenakost
+***** <2>3
+\[  \sum\limits_{j = n + 1}^m \frac{\left\lVert B^j \right\rVert}{j!} \le \sum\limits_{j = n + 1}^{m} \frac{\left\lVert B \right\rVert^j}{j!}
+\]
+
+Dokaz: ponovno neenakost
+***** <2>4
+
+\[ \sum\limits_{j = n + 1}^m \frac{\left\lVert B \right\rVert^j}{j!}
+\]
+
+konvergira k 0, ko gresta \(  m, n \to \infty \)
+
+Dokaz:
+
+Taylorjeva vrsta \(  f(x) = e^x = \sum\limits_{j = 0}^{\infty} \frac{x^j}{j!} \) konvergira povsod na \(  \mathbb{R} \). Dana vsota je številska vrsta za \(  x = \left\lVert B \right\rVert \).
+***** <2>5 QED
+
+Zaradi <2>4, gre tudi <2>1 proti 0, ko gresta \(  m, n \to \infty \), kar pomeni, da je vrsta Cauchyjeva.
+**** <2>2 QED
+Dokaz: <1>1
+* Izrek 7.34
+
+Če \(  A, B \in \mathbb{R}^{n \times n} \) komutirata \(  AB = BA  \), potem je
+
+\[ e^{A + B} = e^{A} e^{B}
+\]
+* Trditev 7.35
+Predpostavke:
+- \(  A \in \mathbb{R} ^{n \times n} \) poljubna matrika
+
+Funkcija \(  Y: \mathbb{R} \to \left( \mathbb{R}^{n\times n}, \left\lVert \cdot \right\rVert \right), \ x \mapsto e^{xA } \) je odvedljiva v smilu, da obstaja tak \( Y' \in \mathbb{R}^{n \times n}   \), da velja
+
+\[ \lim_{h \to 0} \left\lVert Y'(x) - \frac{Y(x + h) - Y(x)}{h} \right\rVert = 0
+\]
+
+in velja \(  Y'(x) = AY \)
+** Dokaz
+*** <1>1
+
+\[   \left\lVert Y'(x) - \frac{Y(x + h) - Y(x)}{h} \right\rVert = \left\lVert AY - \frac{Y(x + h) - Y(x)}{h} \right\rVert
+\]
+
+Dokaz: Predpostavka trditve.
+*** <1>2
+
+\[   \left\lVert AY - \frac{Y(x + h) - Y(x)}{h} \right\rVert = \left\lVert Ae^{xA } - \frac{e^{(x + h) A} - e^{Ax }}{h} \right\rVert
+\]
+
+Dokaz: Predpostavka trditve
+*** <1>3
+
+\[  \left\lVert Ae^{xA } - \frac{e^{(x + h) A} - e^{Ax }}{h} \right\rVert = \left\lVert e^{xA } \left( A - \frac{e^{hA} - I}{h} \right) \right\rVert
+\]
+
+Dokaz: matriki \(  xA  \) in \(  hA \) komutirata in po izreku 7.34 si to lahko privoščimo. Prav tako smo izpostavili \(  e^{xA} \)
+*** <1>4
+
+\[  \left\lVert e^{xA } \left( A - \frac{e^{hA} - I}{h} \right) \right\rVert \le \left\lVert e^{xA} \right\rVert \cdot \left\lVert \frac{1}{h} e^{hA} - \frac{1}{h} I - A  \right\rVert
+\]
+
+Dokaz: To velja za našo normo.
+*** <1>5
+
+
+\[ \left\lVert e^{xA} \right\rVert \left\lVert \frac{1}{h} e^{hA} - \frac{1}{h} I - A \right\rVert = \left\lVert e^{xA } \right\rVert\cdot \left\lVert \sum\limits_{j = 2}^{\infty} \frac{h^{j - 1} A^j}{j!} \right\rVert
+\]
+
+Dokaz:
+
+\(  e^{hA } = \sum\limits_{j = 0}^{\infty} \frac{\left( hA  \right)^j}{j!} \). Z upoštevanjem prvih dveh členov, tj. \(  j = 0, 1 \) se \(  \frac{1}{h}I \) in \(  A \) pokrajšajo. Prav tako ulomek iz leve strani premaknemo pod vsoto in zato je \(  h^{j - 1} \)
+*** <1>6
+
+\[  \left\lVert e^{xA } \right\rVert\cdot \left\lVert \sum\limits_{j = 2}^{\infty} \frac{h^{j - 1} A^j}{j!} \right\rVert \le \left\lVert e^{xA} \right\rVert \sum\limits_{j = 2}^{\infty} \left| h \right|^{j -1} \frac{\left\lVert A \right\rVert^j}{j!}
+\]
+
+Dokaz: Glej prejšnji dokaz <2>3
+*** <1>7
+
+\[  \left\lVert e^{xA} \right\rVert \sum\limits_{j = 2}^{\infty} \left| h \right|^{j -1} \frac{\left\lVert A \right\rVert^j}{j!} = \left\lVert e^{xA} \right\rVert \cdot \left| h \right| \cdot \left\lVert A \right\rVert ^2 \cdot \sum\limits_{j = 2}^{\infty} \frac{\left| h \right|^{j - 2} \left\lVert A \right\rVert^{j -2}}{j!}
+\]
+*** <1>8
+
+\[ \left| h \right|  < 1
+\]
+
+Dokaz: Zanima nas \(  h \to 0 \) in je validna predpostavka.
+*** <1>9
+
+\[ \left\lVert e^{xA} \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 \sum\limits_{j = 2}^{\infty} \frac{\left| h \right|^{j-2} \left\lVert A \right\rVert ^{j - 2} }{j!} \le  \left\lVert e^{xA} \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 \sum\limits_{j = 2}^{\infty} \frac{ \left\lVert A \right\rVert^j}{j!}
+\]
+
+Dokaz: <1>8
+*** <1>10
+
+\[   \left\lVert e^{xA} \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 \sum\limits_{j = 2}^{\infty} \frac{ \left\lVert A \right\rVert^j}{j!} = \left\lVert e^{xA }  \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 \sum\limits_{k = 0}^{\infty} \frac{\left\lVert A \right\rVert^k}{ \left( k + 2 \right)! }
+\]
+
+Dokaz: uvedemo \(  k = j - 2 \)
+*** <1>11
+
+\[  \left\lVert e^{xA }  \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 \sum\limits_{k = 0}^{\infty} \frac{\left\lVert A \right\rVert^k}{ \left( k + 2 \right)! } \le   \left\lVert e^{xA }  \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 \sum\limits_{k = 0}^{\infty} \frac{\left\lVert A \right\rVert^k}{ \left( k \right)! } = \left\lVert e^{xA } \right\rVert \left| h \right| \left\lVert A \right\rVert ^2 e^{\left\lVert A \right\rVert} \left| h \right|
+\]
+
+Dokaz: Vsota v sredini je Taylorjev razvoj \(  f(x) = e^x \) za \(  x = \left\lVert A \right\rVert \)
+*** <1>12 QED
+
+<1>11 gre proti \(  0 \), ko gre \(  h \to 0 \), saj so ostali samo členi neodvisni od \(  h \). To pomeni, da za vse \(  x \in \mathbb{R} \) velja limita iz trditve.
