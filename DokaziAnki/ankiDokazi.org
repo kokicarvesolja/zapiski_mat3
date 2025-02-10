@@ -2589,6 +2589,7 @@ Predpostavke:
 
 Tedaj obstaja natanko ena točka \(  b \in \mathcal{N} \), za katero velja \(  f(b) = b \)
 ****** <3>1
+Vir: [[https://math.stackexchange.com/questions/5015683/doubts-about-proof-that-c-a-b-with-metric-rhoxt-yt-max-limits?rq=1]]
 
 Metrični prostor \(  \mathcal{M} \) je poln.
 
@@ -2615,14 +2616,22 @@ Za vsak \(  \epsilon > 0 \) obstaja \(  N \in \mathbb{N} \), da za vsaka \(  j, 
 \]
 
 Dokaz: Predpostavka 1, da je \(  \left( \phi_n \right)_{n \in \mathbb{N}} \) Caucyjevo zaporedje.
-******** <5>2 QED
+******** <5>2
 
 Za vsak \(  x \in I\delta \) velja
 
-\[ \left| \phi_n (x) - \phi_m (x)  \right| < d(\phi_n, \phi_m) < \frac{\epsilon}{2}
+\[ \left| \phi_n (x) - \phi_m (x)  \right| < d(\phi_n, \phi_m)
 \]
 
 Dokaz: <5>1
+******** <5>3 QED
+
+Za vsak \(  x \in I\delta \) velja
+
+\[ \left| \phi_n - \phi_m \right| < \frac{\epsilon}{2}
+\]
+
+Dokaz: iz <5>1 in <5>2
 
 ******* <4>2
 
@@ -2634,7 +2643,7 @@ Dokaz:
 ******** <5>1
 Predpostavka: \(  \lim_{m \to \infty} \phi_m = \phi  \)
 
-Za vsak \(  \epsilon \) obstaja \(  N \in \mathbb{N} \) tako, da za vsak \(  n > N \) velja
+Za vsak \(  \epsilon > 0 \) obstaja \(  N \in \mathbb{N} \) tako, da za vsak \(  n > N \) velja
 
 \[ \left| \phi_n - \phi \right| = \left| \phi_n - \lim_{m \to \infty} \phi_m  \right| = \lim_{m \to \infty} \left| \phi_n - \phi_m \right| < \frac{\epsilon}{2}
 \]
@@ -2642,12 +2651,16 @@ Za vsak \(  \epsilon \) obstaja \(  N \in \mathbb{N} \) tako, da za vsak \(  n >
 za vsak \(  x \in I\delta  \)
 
 Dokaz: <4>1 velja
+/Opomba/: Dokazali smo enakomerno konvergenco
 ******** <5>2
 
-\[ d(\phi_n, \phi_m) = \max_{x \in I\delta} \left| \phi_n - \phi \right| < \epsilon
-\]
+Za vsak \(  I\delta \) intervala je so \(  \phi \) zvezne.
 
-Dokaz: Velja <5>1
+Dokaz: <5>1 drži in \(  \phi_n \) so zvezne
+******** <5>3 QED
+
+Dokaz: \(  \phi \in \mathcal{M} \)
+
 ******* <4>3
 
 Funkcija \(  \phi_n \) je zvezna.
@@ -2657,3 +2670,212 @@ Dokaz: Predpostavka <2>3, \(  \mathcal{M} \) je prostor vseh zveznih funkcij.
 ****** <3>2
 
 \(  F: \mathcal{M} \to \mathcal{M} \) je skrčitev.
+
+******* Definicija
+
+- \(  \left( \mathcal{M}, d \right) \)
+- \(  \left( \mathcal{M}', d' \right) \)
+
+Preslikava \(  f: \mathcal{M} \to \mathcal{M}' \) je skrčitev, če obstaja takšna realna konstanta \(  q \), da je \(  0 \le q < 1 \) in da velja
+
+
+\[ d'(f(x) , f(y)) \le q d(x, y)
+\]
+
+za vse točke \(  x, y \in \mathcal{M} \)
+******* <4>1
+Case 2: \(  \phi, \psi \in \mathcal{M} \) dve funkciji
+
+Velja
+
+\[ d \left( F \left( \phi \right), F \left( \psi \right) \right) = d \left( y_0 + \int\limits_{x_0}^x f(\xi, \phi(\xi)) \,\mathrm{d }\xi, y_0 + \int\limits_{x_0}^x f \left( \xi, \psi(\xi) \right) \,\mathrm{d }\xi \right)
+\]
+
+Dokaz: Definicija operatorja \(  F \) <2>2
+******* <4>2
+
+Velja
+
+\[   d \left( y_0 + \int\limits_{x_0}^x f(\xi, \phi(\xi)) \,\mathrm{d }\xi, y_0 + \int\limits_{x_0}^x f \left( \xi, \psi(\xi) \right) \,\mathrm{d }\xi \right) = \max_{x \in I\delta} \left| \int\limits_{x_0}^x f \left( \xi, \phi(\xi) \right)  \,\mathrm{d }\xi - \int\limits_{x_0}^{x} f \left( \xi, \psi \left( \xi \right) \right) \,\mathrm{d }\xi  \right|
+\]
+
+Dokaz: Definicija metrike \(  d \) <2>3
+******* <4>4
+
+\[ \max_{x \in I\delta }  \left| \int\limits_{x_0}^x \left[ f \left( \xi, \phi(\xi) \right) - f \left(\xi,  \psi \left( \xi \right) \right) \right] \,\mathrm{d } \xi \right| \ge \left| \int\limits_{x_0}^x \left[ f \left( \xi, \phi(\xi) \right) - f \left( \xi, \psi \left( \xi \right) \right) \right] \,\mathrm{d } \xi \right|
+\]
+
+******* <4>5
+
+\[  \left| \int\limits_{x_0}^x f \left( \xi, \phi(\xi) \right)  \,\mathrm{d }\xi - \int\limits_{x_0}^{x} f \left( \xi, \psi \left( \xi \right) \right) \,\mathrm{d }\xi  \right| \le \int\limits_{x_0}^x \left| f \left( \xi, \phi \left( \xi \right) \right) - f \left( \xi, \psi \left( \xi \right) \right) \right| \,\mathrm{d }\xi
+\]
+
+Dokaz: Glej integrale s parametrom
+******* <4>6
+Case 3: \( \gamma \in [0, 1]  \)
+
+\[    \int\limits_{x_0}^x \left| f \left( \xi, \phi \left( \xi \right) \right) - f \left( \xi, \psi \left( \xi \right) \right) \right| \,\mathrm{d }\xi \le \int\limits_{x_0}^x \gamma   \left| \phi(\xi) - \psi \left( \xi \right) \right| \,\mathrm{d }\xi
+\]
+
+Dokaz: Definicija enakomerno Lipschitzove funkcije
+******* <4>7
+
+\[ \int\limits_{x_0}^x \gamma \left| \phi - \xi \right| \,\mathrm{d } \xi \le \int\limits_{x_0}^x \gamma \max_{x \in I\delta} \left| \phi \left( \xi \right) - \psi \left( \xi \right) \right| \,\mathrm{d } \xi
+\]
+
+Dokaz: absolutna razlika bo vedno manjša ali enaka od maksimalne razlike
+
+******* <4>7
+
+\[ \int\limits_{x_0}^x \gamma d \left( \phi, \psi \right) \,\mathrm{d }\xi = \left( x - x_0 \right) \gamma d \left( \phi, \psi \right)
+\]
+
+Dokaz: Definicija metrike ter osnovni izrek analize
+******* <4>8
+
+\[ \gamma d \left( \phi, \psi \right) \left( x - x_0 \right) \le \gamma \left| a - \delta \right| d \left( \phi, \psi \right)
+\]
+
+Dokaz:  Predpostavka 2, definicija pravokotnika \(  P \), kjer ima \(  x \) maksimalno vrednost \(  a  + x_0 \) in potem je na skrčitvi \( I\delta  \) \(  x_0 + a - \delta \).
+******* <4>9 QED
+
+Dokaz: Za \(  \delta < a \), vendar da bo \(  \delta \) dovolj blizu \(  a \), bo \(  \gamma \left| a - \delta \right| < 1 \) in po definicije skrčitve, bo \(  F \) skrčitev.
+****** <3>3 QED
+
+Dokaz: <3>1 in <3>2
+***** <2>5 QED
+
+Pogoji za Banachov izrek so dokazani, in ga lahko uporabimo. Obstaja fiksna točka. <2>4
+**** <1>3 QED
+
+Dokaz: <1>2 velja
+* Trditev 7.25
+
+Imamo sistem enačb \(  \vec{y}' = A \vec{y} + \vec{b} \), kjer so \(  \vec{y}', \vec{y}, \vec{b} \in \mathbb{R}^n \) ter \(  A \in \mathbb{R}^{n \times n} \), ki ga zapišemo kot
+
+\begin{equation}
+\label{eq:7}
+\vec{y}' = A \vec{y} + \vec{b}
+\end{equation}
+
+Predpostavke:
+
+- \(  \vec{y}_0 \) je neka vektorska funkcija, ki reši \ref{eq:7}
+
+Tedaj velja
+
+\[ \left\{ \text{resitve enačbe } \ref{eq:7} \right\} = \left\{ \text{resitve enacbe } \vec{y}' = A \vec{y} \right\} + y_0
+\]
+** Dokaz:
+*** <1>1
+Case 1: \(  \vec{y} \) je rešitev enačbe \(  \vec{y}' = A \vec{y} \)
+
+\[ \left( \vec{y} + \vec{y}_0 \right)' = \vec{y}' + \vec{y}_0 '
+\]
+
+Dokaz: Odvod vsote je vsota odvodov
+*** <1>2
+
+\[ \vec{y}' + \vec{y}_0' = A \vec{y} + A \vec{y}_0 + \vec{b} = A \left( \vec{y} + \vec{y}_0 \right) + \vec{b}
+\]
+
+Dokaz: enakosti v predpostavki v trditvi in Case 1
+*** <1>3
+
+\[ \vec{y} + \vec{y}_0
+\]
+
+je rešitev enačbe \[ \vec{z}' = A \vec{z} + \vec{b}
+\]
+
+Dokaz: <1>2
+*** <1>4
+Case 2: \(  \vec{y} \) je rešitev \(  \vec{y}' = A \vec{y} + \vec{b} \)
+
+\[ \left( \vec{y} - \vec{y}_{0} \right) ' = A \vec{y} + \vec{b} - A \vec{y}_0 - \vec{b} = A  \left( \vec{y} - \vec{y}_0 \right)
+\]
+
+Dokaz: odvod razlike je razlika odvodov ter enakost predpostavke v trditvi in Case 2
+*** <1>5
+
+\[ \left( \vec{y} -  \vec{y}_0 \right)
+\]
+
+reši homogeno enačbo
+
+Dokaz: <1>4
+*** <1>6 QED
+
+Dokaz: <1>3 ter <1>5
+* Izrek 7.26
+
+Predpostavke:
+- \(  J \subseteq \mathbb{R} \) omejen odprt interval
+- \(  A: \bar{J} \to \mathbb{R}^{n \times m} \) matrična funkcija z zveznimi koeficienti
+Za \(  x_0 \in J \) in \(  \xi_0 \in \mathbb{R} ^n \) obstaja natanko ena rešitev sistema
+
+\[ \vec{y}' = A \vec{y}, \ \vec{y} (x_0) = \xi_0
+\]
+
+ki je definirana *povsod* na \(  J \).
+
+/Opomba/: Pri LDE so samo *nekje* na \(  J \).
+* Izrek 7.27 (variacije konstante)
+** Fundamentalna matrika
+
+Homogene rešitve sistema \(  \vec{y}' = A \vec{y} \) tvorijo \(  n \) dimenzionalen vektorski prostor. Tedaj lahko izberemo linearno neodvisne rešitve \(  \vec{y}_1, \vec{y}_2, \ldots, \vec{y}_n \) za homogen sistem in tvorimo fundamentalno matriko
+
+\[ \underline{Y} = \left[ \vec{y}_1 \vec{y}_2 \ldots \vec{y}_n\right]
+\]
+
+in velja \(  \underline{Y}' = A \underline{Y} \)
+** Variacija konstante
+
+Predpostavka:
+
+- \(  \underline{Y} \) je fundamentalna matrika sistema \(  \vec{y}' = A \vec{y} \)
+
+Potem je vektorska funkcija
+
+\[ \vec{y}_p = \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x}
+\]
+
+rešitev sistema \(  \vec{y}' = A \vec{y} + \vec{b} \)
+*** Dokaz:
+**** <1>1
+
+\[ \vec{y}_p ' =  \left( \underline{Y}\int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} \right) '
+\]
+
+Dokaz: Trditev
+**** <1>2
+
+\[ \left( \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} \right)' =  \left( \underline{Y} \right)' \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} +  \underline{Y} \left( \int\limits_{}^{} \underline{Y}^{-1}\vec{b} \,\mathrm{d x}\right) '
+\]
+
+Dokaz: odvod produkta
+**** <1>3
+
+\[   \left( \underline{Y} \right)' \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} +  \underline{Y} \left( \int\limits_{}^{} \underline{Y}^{-1}\vec{b} \,\mathrm{d x}\right) ' = A\underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} + \underline{Y} \underline{Y}^{-1} \vec{b}
+\]
+
+Dokaz:
+
+Velja \(  \underline{Y}' = A \underline{Y} \) ter \(  \left( \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} \right)' = \underline{Y}^{-1} \vec{b} \)
+**** <1>4 QED
+
+\[  A\underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} + \underline{Y} \underline{Y}^{-1} \vec{b}  = A \left( \underline{Y} \int\limits_{}^{} \underline{Y}^{-1} \vec{b} \,\mathrm{d x} \right) + \vec{b} = A \vec{y}_p + \vec{b}
+\]
+
+Dokaz: \(  \underline{Y} \underline{Y}^{-1} = 1 \) ter trditev
+* Definicija 7.28
+
+Predpostavke:
+- \(  I \subset \mathbb{R} \) je odprt interval
+- \(  \vec{y}_1, \vec{y}_2, \ldots, \vec{y}_n \) so \(  n \) razsežne vektorske funkcije na \(  I \) oz. \(  \vec{y}_j: I \to \mathbb{R}^{n} \)
+Za fundamentalno matriko \(  \underline{Y} = \left[ \vec{y}_1 \vec{y}_2 \ldots \vec{y}_n \right]: I \to \mathbb{R}^{n \times n} \) se
+
+\[ W = \det \underline{Y}
+\]
+
+imenuje determinanta Wrónskega
