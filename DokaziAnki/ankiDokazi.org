@@ -2515,6 +2515,8 @@ y(x_0) &= y_0
 \end{align*}
 
 ima takrat natanko eno rešitev \(  y = y(x): I \to \left[ y_0 - b, y_0 + b \right] \), kjer je \(  I \subset \left[ x_0 - a, x_0 + a \right]   \)
+
+Oznaka \(  c = \min \left\{ a, \frac{b}{M}, \frac{1}{\gamma} \right\} \), kjer je \(  M = \max_{x \in I} f \)
 *** Dokaz:
 **** <1>1
 
@@ -2544,7 +2546,7 @@ Problem CiP zadošča rešiti na zaprtem intervalu \(  I\delta \).
 
 Dokaz: ¯\_(ツ)_/¯
 ***** <2>2
-Case 1: Fiksiramo \(  \delta \).
+Case 1: Fiksiramo \(  \delta (0, c) \).
 
 Definiramo operator \(  F: y \mapsto F(y) \), kjer je \(  y \) funkcija, kot
 
@@ -2637,7 +2639,7 @@ Dokaz: iz <5>1 in <5>2
 
 Prove:
 
-Ko gre \(  n \to \infty \), gre \(  \phi_n \to \phi \)
+Ko gre \(  n \to \infty \), gre enakomerno \(  \phi_n \to \phi \) na \(  I_{\delta} \)
 
 Dokaz:
 ******** <5>1
@@ -2645,7 +2647,7 @@ Predpostavka: \(  \lim_{m \to \infty} \phi_m = \phi  \)
 
 Za vsak \(  \epsilon > 0 \) obstaja \(  N \in \mathbb{N} \) tako, da za vsak \(  n > N \) velja
 
-\[ \left| \phi_n - \phi \right| = \left| \phi_n - \lim_{m \to \infty} \phi_m  \right| = \lim_{m \to \infty} \left| \phi_n - \phi_m \right| < \frac{\epsilon}{2}
+\[ \left| \phi_n - \phi \right| = \left| \phi_n - \lim_{m \to \infty} \phi_m  \right| \le \lim_{m \to \infty} \left| \phi_n - \phi_m \right| < \frac{\epsilon}{2} < \epsilon
 \]
 
 za vsak \(  x \in I\delta  \)
@@ -3113,3 +3115,100 @@ Dokaz: Vsota v sredini je Taylorjev razvoj \(  f(x) = e^x \) za \(  x = \left\lV
 *** <1>12 QED
 
 <1>11 gre proti \(  0 \), ko gre \(  h \to 0 \), saj so ostali samo členi neodvisni od \(  h \). To pomeni, da za vse \(  x \in \mathbb{R} \) velja limita iz trditve.
+* Eulerjeva DE
+
+je DE oblike
+
+\[ \sum\limits_{j = 0}^n a_j x^j y^{(j)} \left( x \right) = b(x)
+\]
+* Trditev 7.21
+Predpostavke:
+- \(  k \in \mathbb{N} \)
+- \(  y: \left( 0, \infty \right) \to \mathbb{R} \)
+- \(  y \in C^k \)
+
+Definiramo \(  z\in C^k \left( \mathbb{R} \right) \) kot
+
+\[ z(t) = y(e^t);\ t \in \mathbb{R}
+\]
+
+Označimo operator
+
+\[ D = \frac{\mathrm{d} }{\mathrm{d} t}
+\]
+
+torej \(  D g = g' \).
+
+Za vsak \(  x = e^t > 0 \),
+
+\[ x^ky^{(k)} (x) = \left[ D(D - I)(D - 2I)\ldots (D - (k - 1)I)z \right] \left( t \right) = p_k \left( D \right)
+\]
+
+kjer je \(  I \) identiteta.
+** Dokaz s pomočjo indukcije:
+*** <1>1
+Case 1: \(  k = 1 \)
+
+\[ x y' (x) = e^t y'(e^t)
+\]
+
+Dokaz:
+
+Predpostavka iz trditve.
+*** <1>2
+
+Desna stran enakosti:
+
+\[ x y'(x) = \left[ p_1 \left( D \right)z \right] \left( t \right) = \dot{z}(t) = \frac{\mathrm{d} }{\mathrm{d} t}z(t) = \frac{\mathrm{d} }{\mathrm{d} t} y(e^t) = e^t y'(e^t)
+\]
+*** <1>3
+Če velja za \(  k \), potem velja za \(  k + 1 \).
+
+Za neki \(  k\in \mathbb{N} \) definiramo operator
+
+\[ D - Ik: \phi \to \dot{\phi} - k \phi
+\]
+
+
+
+*** <1>4
+
+Case 2: \(  p_k = x^k y^{(k)} \)
+\[ x^{k+1} y^{(k + 1)} (x) = [(D - Ik)z](t) = \left[ x^k y^{(k)} \right] \dot{} - k \left[ x^k y^{(k)} \right]
+\]
+
+Dokaz: Verižno pravilo in pa definicija operatorja \(  D - Ik \)
+*** <1>5 QED
+
+/Opomba/: Slab dokaz, lahko da ker sem utrujen.
+* Variacijski račun
+
+Imamo funkcionale oblike
+
+\[ I (y) = \int\limits_a^b L(x, y, y'(x) \,\mathrm{d x}
+\]
+
+kjer je \(  L = L(u, v, w): \mathbb{R} ^3 \to \mathbb{R} \) dana funkcija. \(  y \in C^1(J) \), kjer je \(  J = [a, b] \).
+
+Pogosto uporabljamo funkcije iz razreda
+
+\[ X = \left\{ y \in C^1 (J); y(a) = \alpha, y(b) = \beta \right\}
+\]
+
+Imamo fiksna krajišča.
+* Definicija 8.1
+
+(Lokalni) ekstrem/ ekstremala funkcionala \(  I \) definiramo kot funkcijo \(  y \in X \), v kateri ima \(  I \) v vseh "smereh" svoj ekstrem. To pomeni, da ima za vsako gladko funkcijo \(  \eta \), za katero je \(  y + \epsilon \eta \in X  \) za dovolj majhne \(  \epsilon \), ki je definirana na realnih številih, esktrem v \(  \epsilon = 0 \). Stacionarna točka za \(  I \) je funkcija, v kateri ima \(  I \) vse smerne odvode enake nič
+
+\[ \left. \frac{\partial }{\partial \epsilon} I \left( y + \epsilon \eta \right) \right|_{\epsilon = 0} = 0
+\]
+* Lema 8.2 (variacijski lema)
+
+Naj bo \(  J = [a, b] \) zaprt omejen interval v \(  \mathbb{R} \) in \(  f \in C(J) \). Če za vsako funkcijo \(  \eta \in C_0^1 \) velja
+
+\[ \int\limits_{}^{} f \eta \,\mathrm{d x} = 0, \ \forall \eta \in C_0^1 \left( J \right)
+\]
+
+tedaj je \(  f= 0 \) na \(  J \) oz. za vsak \(  x \in J: \ f(x) = 0 \)
+** Dokaz:
+*** <1>1

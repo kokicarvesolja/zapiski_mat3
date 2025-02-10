@@ -20,7 +20,7 @@ Označimo
 *** Definicija
 
 Naj bo \(  X \subset C^1(J \to \mathbb{R} ^2) \) in \(  I: X \to \mathbb{R} \). Pravimo, da je \(  y \in X \) lokalni ekstrem oz. ekstremala za \(  I \), če za vsak vektorsko funkcijo \(  \eta = (\eta_1, \eta_2) \in C^1 (J \to \mathbb{R} ^2) \) tako, da \(  y + \epsilon \eta \in X \) za majhne \(  \epsilon \in \mathbb{R} \), fukcional
-\[ \epsilon \ to I(y \epsilon \eta)
+\[ \epsilon \to I(y \epsilon \eta)
 \]
 
 Doseže lokalni ekstrem v \(  \epsilon = 0 \).
@@ -29,7 +29,7 @@ Doseže lokalni ekstrem v \(  \epsilon = 0 \).
 *** Izrek
 Naj bo \(  L = L (u, v_1, v_2, w_1, w_2): J \times \mathbb{R} \times \mathbb{R} \times \mathbb{R} \times \mathbb{R} \to \mathbb{R} \) parcialno odvedljiva na vse spremenljivke. Definiramo
 
-\[ I \left( y_1, y_2 \right) = \int\limits_a^b L(x, y_1, y_2, y_1 ', y_2 '\,\mathrm{dx}
+\[ I \left( y_1, y_2 \right) = \int\limits_a^b L(x, y_1, y_2, y_1 ', y_2')\,\mathrm{dx}
 \]
 
 /Opomba/: Tudi \(  y_1, y_2, y_1', y_2' \) so odvisne od \(  x \).
@@ -349,7 +349,7 @@ tako, da velja
 
 1) \(  \left\langle x + y, z \right\rangle = \left\langle x, z \right\rangle + \left\langle y, z \right\rangle\)
 2) \(  \left\langle \lambda x, z \right\rangle = \lambda \left\langle x, z \right\rangle\), če je množenje s skalarjem v prvem faktorju
-3) \(  \left\langle z, x \right\rangle \bar{\left\langle x, z \right\rangle}}\) - s tem smo rešili problem množenja s skalarjem v drugem faktorju, torej \(  \left\langle x, z \right\rangle = \left\langle z, x \right\rangle\) če je prostor realen.
+3) \(  \left\langle z, x \right\rangle = \overline{\left\langle x, z \right\rangle} \) - s tem smo rešili problem množenja s skalarjem v drugem faktorju, torej \(  \left\langle x, z \right\rangle = \left\langle z, x \right\rangle\) če je prostor realen.
 4) \(  \left\langle x, x \right\rangle \le 0 \) in \(  \left\langle x, x \right\rangle  \iff x = 0 \)
    Vprašati se moramo, če imamo \(  0 \) v naši množici, na kar je odgovor, ja, ker smo v vektorskem prostoru.
 Operacija \(  \left\langle \cdot, \cdot \right\rangle \) se imenuje /skalarni produkt/.
@@ -425,8 +425,8 @@ To pomeni, da mora diskriminanta biti enaka
 \begin{align*}
   D &= b ^2 - 4ac \le 0  \\
 (2 \left\langle x, y \right\rangle) ^2 - 4 \left\lVert x \right\rVert ^2 \left\lVert x \right\rVert &\le 0 \\
-4 \left\langle x, y \right\rangle ^2 \le 4 \left\lVert x \right\rVert ^2 \left\lVert y \right\rVert ^2 && \left/\sqrt{} \right. \\
-\left| \left\langle x, y \right\rangle \right| \le  \left\lVert x \right\rVert \left\lVert y \right\rVert  && \square
+4 \left\langle x, y \right\rangle ^2 &\le 4 \left\lVert x \right\rVert ^2 \left\lVert y \right\rVert ^2 && \left/\sqrt{} \right. \\
+\left| \left\langle x, y \right\rangle \right| &\le  \left\lVert x \right\rVert \left\lVert y \right\rVert  && \square
 \end{align*}
 
 
@@ -619,7 +619,7 @@ In hočemo:
 
 Velja
 
-\[ \left| \left\langle y_n, a \right\rangle - \left\langle x, a \right\rangle \right| = \left| \left\langle y_n, a \right\rangle \right| \underset{\text{CSB}} \left\lVert y_n - x \right\rVert \left\lVert a \right\rVert \underset{\ref{eq:7}}{\longrightarrow} 0 \quad \square
+\[ \left| \left\langle y_n, a \right\rangle - \left\langle x, a \right\rangle \right| = \left| \left\langle y_n, a \right\rangle \right| \underset{\text{CSB}}{\longrightarrow}\left\lVert y_n - x \right\rVert \left\lVert a \right\rVert \underset{\ref{eq:7}}{\longrightarrow} 0 \quad \square
 \]
 ** Definicija
 
