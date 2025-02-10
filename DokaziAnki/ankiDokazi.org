@@ -2878,4 +2878,74 @@ Za fundamentalno matriko \(  \underline{Y} = \left[ \vec{y}_1 \vec{y}_2 \ldots \
 \[ W = \det \underline{Y}
 \]
 
-imenuje determinanta Wrónskega
+imenuje determinanta Wrónskega.
+* Izrek 7.29 (Liouvilleova formula)
+Predpostavke:
+- \(  \underline{Y}: I \to \mathbb{R}^{n \times n} \) matrična funkcija, ki reši enačbo \(  \underline{Y}' = A \underline{Y} \)
+
+Za \(  W = \det \underline{Y} \) velja
+
+\[ W(x) = W (x_0) e^{\int\limits_{x_0}^x \mathrm{tr} A \left( \xi \right) \,\mathrm{d } \xi}
+\]
+** Dokaz za \(  n = 2 \):
+*** <1>1
+Case 1:
+
+\[ \underline{Y} = \begin{bmatrix}
+y_{11 } & y_{12} \\
+y_{21} & y_{22}
+\end{bmatrix}
+\]
+
+Case 2:
+
+\[ A = \begin{bmatrix}
+a_{11 } & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\]
+
+Velja
+
+\[ \underline{Y}' = A \underline{Y}  \implies \begin{bmatrix}
+y_{11 }' & y_{12}' \\
+y_{21}' & y_{22}'
+\end{bmatrix}  = \begin{bmatrix}
+y_{11 } & y_{12} \\
+y_{21} & y_{22}
+\end{bmatrix} \cdot \begin{bmatrix}
+a_{11 } & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\]
+
+Dokaz: Predpostavka trditve
+/Opomba/: Dobili smo sistem enačb
+*** <1>2
+
+\[ W = \det \underline{Y} = y_{11 } y_{22} - y_{12} y_{21}
+\]
+
+Dokaz: definicija determinante
+*** <1>3
+
+\[ W' = y_{11 }' y_{22} + y_{11 } y_{22 }' - y_{12}' y_{21} - y_{12} y_{21}'
+\]
+
+Dokaz: Odvod produkta
+*** <1>4
+
+\[ W' = \left( a_{11 } + a_{22} \right) \left( y_{11 }y_{22} - y_{12} y_{21} \right) = \mathrm{tr} A \det \underline{Y}
+\]
+
+Dokaz: Upoštevamo sistem enačb iz <1>1 ter <1>2 in definicija sledi
+\[ \mathrm{sl} A= \mathrm{tr }A = \sum\limits_{i = 1}^n b_{ii}
+\]
+*** <1>5 QED
+
+Integracija <1>3 nam da
+
+\[ W(x) = W(x_0) e^{\int\limits_{x_0}^x \mathrm{tr} A \left( \xi \right) \,\mathrm{d }\xi}
+\]
+* Definicija 7.31
+Če je \(  A: J \to \mathbb{R}^{n \times n} \) matrična funkcija z zveznimi koeficienti, definiramo njeno normo kot \(  \lVert A \rVert = \sup_{u \in J} \left| A(u) \right|\), kjer je slednje operatorska norma matrike A.
