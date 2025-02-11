@@ -2505,7 +2505,7 @@ Predpostavke:
 - \(  x_0, y_0 \in \mathbb{R} \)
 - \(  a, b > 0 \)
 - pravokotnik \(  P = \left[ x_0 - a, x_0 + a \right]\times \left[ y_0 - b, y_0 + b  \right] \)
-- funkcija \(  f = f(u, v): P \to \mathbb{R} \) je zvezna in enakomerno Lipschitzova v 2. spremenljivki
+- Funkcija \(  f = f(u, v): P \to \mathbb{R} \) je zvezna in enakomerno Lipschitzova v 2. spremenljivki
 
 Cauchyjev problem
 
@@ -2611,13 +2611,14 @@ Prove: Za vsak \(  x \in I\delta \) je \(  \left( x_n \right) \) Cauchyjevo.
 Dokaz:
 
 ******** <5>1
-
 Za vsak \(  \epsilon > 0 \) obstaja \(  N \in \mathbb{N} \), da za vsaka \(  j, k > N; \ j, k \in \mathbb{N}  \) velja
 
 \[ d(\phi_n, \phi_m) < \frac{\epsilon}{2}
 \]
 
 Dokaz: Predpostavka 1, da je \(  \left( \phi_n \right)_{n \in \mathbb{N}} \) Caucyjevo zaporedje.
+
+**V katerem primeru to ne bi veljalo?**
 ******** <5>2
 
 Za vsak \(  x \in I\delta \) velja
@@ -3386,3 +3387,310 @@ Za vsak \(  x, y \) iz prostor s skalarnim produktom \(  V \), velja
 *** <1>1
 Case 1: prostor skalarjev je \(  \mathbb{R} \)
 Case 2: \(  \lambda \in \mathbb{R} \)
+
+o\[ 0 \le \lVert x \rVert ^2 + \lVert y \rVert ^2 + \lambda \left\langle x, y \right\rangle
+\]
+
+za vsak \(  x, y \in V \) ter za vsak \(  \lambda \in \mathbb{R} \)
+
+Dokaz:
+**** <2>1
+
+\[ 0 \le \left\langle x + \lambda y, x + \lambda y \right\rangle
+\]
+
+Dokaz: Definicija 9.1, 4)
+**** <2>2
+
+\[ \left\langle x + \lambda y, x + \lambda y \right\rangle = \left\langle x, x + \lambda y \right\rangle + \left\langle \lambda y, x + \lambda y \right\rangle
+\]
+
+Dokaz: Definicija 9.1, 1)
+**** <2>3
+
+\[   \left\langle x, x + \lambda y \right\rangle + \left\langle \lambda y, x + \lambda y \right\rangle = \left\langle x, x + \lambda y \right\rangle + \lambda \left\langle y, x + \lambda y \right\rangle
+\]
+
+Dokaz: Definicija 9.1 2)
+**** <2>4
+
+\[  \left\langle x, x + \lambda y \right\rangle + \lambda \left\langle y, x + \lambda y \right\rangle = \left\langle x + \lambda y, x \right\rangle + \lambda \left\langle x + \lambda y, x \right\rangle
+\]
+
+Dokaz: Definicija 9.1 3) in pa smo na prostoru \(  \mathbb{R} \)
+**** <2>5 QED
+
+\[ \left\langle x + \lambda y, x \right\rangle  + \lambda \left\langle x + \lambda y, x \right\rangle = \lVert x \rVert ^2 + \lVert y \rVert ^2 + \lambda \left\langle x, y \right\rangle
+\]
+
+za vsak \(  x, y \in V \) ter za vsak \(  \lambda \in \mathbb{R} \)
+Dokaz: Definicija 9.1 in definicija norme
+***
+*** <1>2
+Case 3:
+
+\[ \lVert x \rVert ^2 + \lVert y \rVert ^2 + \lambda \left\langle x, y \right\rangle = f( \lambda )
+\]
+
+\(  f(\lambda) \ge 0 \), ko je diskriminanta \(  D \le 0 \)
+
+Dokaz: Kvadratna enačba
+*** <1>3 QED
+
+\[ \left| \left\langle x, y \right\rangle \right|  \le \lVert x \rVert \lVert y \rVert
+\]
+
+Dokaz:
+
+Iz <1>2 velja
+
+\begin{align*}
+  D &= b ^2 - 4ac \le 0 \\
+(2 \left\langle x, y \right\rangle) ^2 - 4 \lVert x \rVert ^2 \lVert y \rVert ^2 &\le 0 \\
+4 \left\langle x, y \right\rangle &\le 4 \lVert x \rVert ^2 \lVert y \rVert ^2 \\
+\left| \left\langle x, y \right\rangle \right| \le \lVert x \rVert \lVert y \rVert
+\end{align*}
+* Definicija 9.4
+
+Prostor \(  V \) s skalarnim produktom je Hilbertov, če je v inducirani metriki poln.
+* Definicija 9.9
+
+Predpostavke:
+- \(  X \) je prostor s skalarnim produktom
+- \(  A \subset X \)
+
+Množica
+
+\[ A^{\perp } = \left\{ y \in X; y \perp a, \ \forall a \in A \right\}
+\]
+* Trditev 9.10
+
+\(  A^{\perp } \) je zaprt vektorski prostor.
+** Dokaz
+*** <1>1
+
+Velja linearnost (množenje s skalarjem).
+*** <1>2
+
+Konvergentno zaporedje v \(  A^{\perp } \) ima limito v \(  A^{\perp } \).
+
+Dokaz:
+**** <2>1
+Case 1: \(  a \in A \)
+Case 2: \(  y_n \in A^{\perp } \)
+Case 3: \(  y_n \) konvergira k \(  y \)
+
+\[ \lim_{n \to \infty} \left| \left\langle y - y_n, a \right\rangle \right|  \le \lim_{n \to \infty} \lVert y - y_n \rVert \lVert a \rVert
+\]
+
+Dokaz: CBS neenakost
+**** <2>2
+
+\[ \lim_{n \to \infty} \lVert y - y_n \rVert = 0
+\]
+
+Dokaz: Case 3
+**** <2>3 QED
+
+<2>1 gre proti 0, ker gre <2>2 proti 0, torej \(  y \in A^{\perp } \)
+*** <1>3 QED
+Dokaz: <1>1 in <1>2
+* Definicija 9.11
+Predpostavke:
+
+- \(  X \) je prostor s skalarnim produktom
+- \(  Y \subseteq X \)
+- \(  x \in X \)
+
+\(  y \) je ortogonalna projekcija vektorja \(  x \) na podprostor \(  Y \), če je \(  x - y \perp Y  \) oz. \(  x - y \in Y ^{\perp} \)
+
+Oznake:
+
+- \(  y = P_Y x \)
+- preslikava \(  P_Y: X \to Y, x \mapsto y = P_Y x \) je ortogonalni projektor prostora \(  X \) na podprostor \(  Y \).
+* Trditev 9.12
+Predpostavke:
+- \(  X \) je prostor s skalarnim produktom
+- \(  Y \subseteq X \) linearni podprostor
+- za vsak \(  x \in X \)  obstaja neki \(  P_Y x \) kot iz prejšnje definicije
+
+Veljajo sledeče stvari:
+
+1) \(  P_Y x \) je enolično določen
+2) \(  P_Y x \) je najboljši približek za \(  x \) v \(  Y \), v smislu
+
+   \[ \lVert x - P_Y x \rVert = \inf_{z \in Y} \lVert x - z \rVert = d(x, Y)
+   \]
+3) \(  P_Y \) je linearna
+4) Preslikava \(  P_Y \) je zvezna, celo skrčitev: \(  \lVert P_Y x \rVert \le \lVert x \rVert\) za vsak \(  x \in X \)
+5) \(  Y \) je zaprt v \(  X \)
+** Dokaz:
+*** 1)
+**** <1>1
+Case 1: \(  y_1, y_2 \in Y \)
+Case 2: \(  x - y_1 \perp Y \)
+Case 3: \(  x - y_2 \perp Y \)
+
+\[ x - y_1 - x + y_2 = -y_1 + y_2 \in Y
+\]
+
+Dokaz: Odštejemo Case 2 in Case 3, ter Case 1
+**** <1>2
+
+\[ y_2 - y_1 \perp Y
+\]
+
+Dokaz: Case 3 in Case 2
+**** <1>3 QED
+
+Dokaz: iz <1>1 in <1>2 sledi, da je \(  y_2 - y_1 \perp y_2 - y_1 \), kar je možno samo, če \(  y_1 = y_2 \)
+*** 2)
+**** <1>1
+Case 1: \(  z \in Y \)
+
+\[ x - z = \underbrace{x - P_Y x}_{\in Y^{\perp}} + \underbrace{P_Yx - z}_{\in Y}
+\]
+
+Dokaz: Prištejemo in odštejemo isto vrednost ter definicija 9.11
+**** <1>2 QED
+
+\[ \lVert x - P_Y x \rVert  ^2 \le \lVert x - z \rVert ^2
+\]
+
+Dokaz: Pitagorov izrek
+*** 3)
+**** <1>1
+Case 1: \(  x_1, x_2 \in X \)
+Case 2: \(  x_1 - P_Y x_1, x_2 - P_Y x_2 \in Y^{\perp} \)
+
+\[ \left( x_1 + x_2 \right) - \underbrace{\left( P_Y x_1 + P_Y x_2 \right)}_{\in Y} \in Y ^{\perp}
+\]
+**** <1>2 QED
+
+Iz 1) sledi \(  P_Y x_1 + P_Y x_2 = P(x_1 + x_2) \)
+*** 4)
+**** <1>1
+Case 1: \(  x = (x - P_Y x) + P_Y x \)
+
+\[ \lVert x \rVert  ^2 = \underbrace{\lVert x - P_Y x \rVert ^2}_{\ge 0} + \lVert P_Y x \rVert \ge \lVert P_Y x \rVert
+\]
+**** <1>2 QED
+Dokaz: <1>1
+*** 5)
+**** <1>1
+Case 1: \(  \left( y_n \right)_n \subset Y \)
+Case 2: \(  y_n \to x \) za neki \(  x \in X \)
+
+\[ x \in Y
+\]
+***** <2>1
+
+\[ P_Y y_n \to P_Y x
+\]
+
+Dokaz: \(  P \) je zvezen
+***** <2>2
+
+\[  \lVert P_Y y_n - P_Y x \rVert = \lVert P_Y \left( y_n - x \right) \rVert
+\]
+
+Dokaz: \(  P \) je linearen 3)
+***** <2>3
+
+\[ \lVert P_Y \left( y_n - x \right) \rVert \le \lVert y_n - x \rVert
+\]
+
+Dokaz: 4)
+***** <2>4
+
+<2>3 je enako 0
+
+Dokaz: Case 2
+***** <2>5
+
+\[ P_Y y_n = y_n
+\]
+
+Dokaz: Case 1, \(  y_n \in Y \)
+***** <2>6
+
+\[ P_Y x = x
+\]
+
+Dokaz:
+
+\[ P_Y x \Leftarrow P_Y y_n = y_n \Rightarrow x
+\]
+***** <2>7 QED
+
+\(  x \in Y  \) iz <2>6
+**** <1>2 QED
+Prostor je linearen in zaprt
+* Trditev
+Predpostavke:
+- \(  X \) je vektorski prostor s skalarnim produktom
+- \(  Y \subseteq X \) končno dimenzionalen prostor
+- \(  \left\{ e_1, \ldots, e_n \right\} \) njegova ONS
+
+Tedaj je
+
+\[ P_Y x = \sum\limits_{j = 1}^n \left\langle x, e_j \right\rangle e_j
+\]
+** Dokaz:
+*** <1>1
+
+\[ \left\langle x - \sum\limits_{j = 1}^n \left\langle x, e_j \right\rangle e_j, e_k \right\rangle = 0
+\]
+
+Dokaz: ko razpišemo dobimo \(  \left\langle x, e_k \right\rangle - \sum\limits_{j = 1}^n \left\langle x, e_j \right\rangle \delta_{j k} = 0 \)
+*** <1>2
+Case 1: \(  y = \left( x - \sum\limits_{j = 1}^{n \left\langle x, e_j \right\rangle}e_j \right) \)
+
+Velja
+
+\[ y \perp e_k, \ \forall k \in \left\{ 1, \ldots n \right\}
+\]
+*** <1>3
+
+\[ y \perp \mathrm{Lin } \left\{ e_1, \ldots, e_n \right\} = Y
+\]
+
+Dokaz: <1>2
+*** <1>4 QED
+
+Po definicija ortogonalnega operatorja je vsota res enaka \(  P_Y x \)
+
+* Definicija 9.14
+
+Pravimo, da je družina \(  \left\{ e_j, j \in \mathbb{N} \right\} \) ortonormiran sistem, če velja \(  \left\langle e_j, e_k \right\rangle = \delta_{j k}\)
+* Trditev 9.15 (Besselova neenakost)
+
+Predpostavke:
+- \(  X \) vektorski prostor s skalarnim produktom
+- \(  \left\{ e_j, j \in N \right\} \) ortonormirana baza v \(  X \)
+
+Za vsak \(  x \in X  \) velja
+
+\[ \sum\limits_{j = 1}^{\infty} \left| \left\langle x, e_j \right\rangle \right| ^2 \le \lVert x \rVert ^2
+\]
+** Dokaz:
+*** <1>1
+Case 1: \(  Y_n = \mathrm{Lin } \left\{ e_1, \ldots e_n \right\} \)
+Case 2: \(  P_{Y_n} x = \sum\limits_{j = 1}^n \left\langle x, e_j \right\rangle e_j \)
+
+\[ \lVert P_{Y_n} x \rVert  ^2 = \sum\limits_{j = 1}^n \left| \left\langle x, e_j \right\rangle \right| ^2
+\]
+
+Dokaz: Pitagorov izrek in pa \(  e_j \) so ortogonalni med sabo
+*** <1>2
+
+\[ \sum\limits_{j = 1}^n \left| \left\langle x, e_j \right\rangle \right|  ^2 \le \lVert x \rVert ^2, \ \forall n  \in \mathbb{N}
+\]
+
+Dokaz: Trditev 9.12 4)
+*** <1>3
+
+\[ \sum\limits_{j = 1}^{\infty } \left| \left\langle x, e_j \right\rangle \right|  ^2 \le \lVert x \rVert ^2
+\]
+
+Dokaz: <1>2
