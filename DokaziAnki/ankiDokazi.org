@@ -3312,3 +3312,77 @@ Dokaz: <1>4 in <1>5
 \]
 
 Dokaz: Variacijska lema ter <1>6
+* Gibljiva krajišča
+
+V primeru gibljivih krajišč, se integral v koraku <1>5 dokaza ne prevede na \(  0 \) in dobimo
+
+\[ \int\limits_a^b \left[ \frac{\partial L}{\partial v} \left( \omega_0 \right) - \frac{\mathrm{d} }{\mathrm{d} x} \left[ \frac{\partial L}{\partial w} \left( \omega_0 \right)  \right]  \right]\eta \,\mathrm{d x} +\left. \eta(x) \frac{\partial L}{\partial w} \left( \omega_0 \right) \right|_{x = a} ^{x = b} = 0; \ \forall \eta \in C^1 (J)
+\]
+
+
+Edina možnost, da je produkt \(  \eta(x) \cdot C = 0; \forall \eta \in C^1(J)  \), je, če je \(  C = 0 \). Iz tega dobimo
+
+\[ \frac{\partial L}{\partial w} \left( \omega_0(a) \right) = \frac{\partial L}{\partial w} lr(\omega_0 (b)) = 0
+\]
+* \(L = L(x, y) \)
+
+EL se prevede na \(  L_{y'}= C \)
+* \( L = L(y, y') \)
+
+Dobimo /Beltramijevo identiteto/, ker je levi del EL pogoja enak \(  0 \).
+
+\[ L - y' L_{y'} = C, \ C \in \mathbb{R}
+\]
+
+Z odvajanjem po \(  x \) in verižnim pravilom dobimo
+
+\[ \left( L - y' L_{y'} \right)' = \left( L_y - \frac{\mathrm{d} }{\mathrm{d}x} L_{y'} \right) y'
+\]
+* Definicija 9.1
+
+Prostor s skalarnim produktom je vektorski prostor \(  V \) nad \(  \mathbb{R} \) ali \(  \mathbb{C} \), na katerem obstaja preslikava
+
+\[ \left\langle \cdot, \cdot \right\rangle : V \times V \to \mathbb{C}
+\]
+
+tako, da velja
+
+1. \(  \left\langle x + y, z \right\rangle = \left\langle x, z  \right\rangle + \left\langle y, z \right\rangle\)
+2. \(  \left\langle \lambda x, z \right\rangle =\lambda \left\langle  x, z\right\rangle\)
+3. \(  \left\langle x, z \right\rangle = \overline{\left\langle z, x \right\rangle}\)
+4. ter \(  \left\langle x, x \right\rangle \ge 0 \) in \(  \left\langle x, x \right\rangle = 0 \iff x = 0\)
+
+/Opomba/: Ali je \(  0 \in V \)? Ja, ker je \(  V \) vektorski prostor.
+* Definicija 9.2
+
+Predpostavka:
+- \(  V \) je prostor s skalarnim produktom
+
+Norma, ki izhaja iz skalarnega produkta, je definirana s predpisom
+
+\[ \lVert x \rVert = \sqrt{\left\langle x, x \right\rangle}
+\]
+
+Preslikava \(  \lVert \cdot \rVert: V \to [0, \infty) \) se imenuje norma, če velja
+
+1. \(  \lVert x \rVert \ge 0 \forall x \in V \)
+2. \(  \lVert x \rVert = 0 \iff x = 0\)
+3. \(  \lVert \lambda x \rVert = \left| \lambda \right| \lVert x \rVert  \forall x \in V, \lambda \in \mathbb{C}/ \mathbb{R}\)
+4. \(  \lVert x + y \rVert \le \lVert x \rVert + \lVert y \rVert\)
+
+Če je \(  V \) prostor s skalarnim produktom, tedaj predpis
+
+\[ \lVert x \rVert  = \sqrt{\left\langle x, x \right\rangle}
+\]
+
+res definira normo na \(  V \).
+* Trditev 9.3 (CSB neenakost)
+
+Za vsak \(  x, y \) iz prostor s skalarnim produktom \(  V \), velja
+
+\[ \left| \left\langle x, y \right\rangle \right|  \le \lVert x \rVert \lVert y \rVert
+\]
+** Dokaz
+*** <1>1
+Case 1: prostor skalarjev je \(  \mathbb{R} \)
+Case 2: \(  \lambda \in \mathbb{R} \)
