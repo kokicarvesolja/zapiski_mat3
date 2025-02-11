@@ -3202,6 +3202,10 @@ Imamo fiksna krajišča.
 
 \[ \left. \frac{\partial }{\partial \epsilon} I \left( y + \epsilon \eta \right) \right|_{\epsilon = 0} = 0
 \]
+** Opombe in druge oznake
+
+Označimo množico \(  C^1_0 = \left\{ \eta \in C^1 (J); \ \left \eta \right|_{J_{\delta}} = 0 \right\} \). To je množica testnih funkcij, kjer ničla v indeksu pove, da imajo funkcije \(  \eta \) v krajiščih vrednosti \(  0 \).
+
 * Lema 8.2 (variacijski lema)
 
 Naj bo \(  J = [a, b] \) zaprt omejen interval v \(  \mathbb{R} \) in \(  f \in C(J) \). Če za vsako funkcijo \(  \eta \in C_0^1 \) velja
@@ -3210,5 +3214,101 @@ Naj bo \(  J = [a, b] \) zaprt omejen interval v \(  \mathbb{R} \) in \(  f \in 
 \]
 
 tedaj je \(  f= 0 \) na \(  J \) oz. za vsak \(  x \in J: \ f(x) = 0 \)
+** Dokaz s protislovjem:
+
+Obstaja \(  x \in J \), kjer
+
+\[ f(x) \ne 0
+\]
+
+*** <1>1
+Case 1: \(  f(x) \gneqq 0 \)
+
+Obstaja \(  \delta > 0 \), da na \(  \left( x - \delta, x + \delta \right) \cap J \) velja
+
+\[ f(t) \le \frac{f(x)}{2}; \ t \in \left( x -\delta, x + \delta \right) \cap J
+\]
+
+Dokaz: \(  f \) je zvezna
+*** <1>2
+Case 2:
+
+\[ \eta = \begin{cases}
+\eta \le 0; \\
+\eta > 0; \ \left( x - \delta, x + \delta \right) \cap J \\
+\eta = 0; \text{else}
+\end{cases}
+\]
+
+Velja
+
+\[ \int\limits_J^{} f \eta \,\mathrm{d x} = \int\limits_{\left( x- \delta, x + \delta \right) \cap J}^{} f\eta \,\mathrm{d x} + \int\limits_{\text{else}}^{}f \eta \,\mathrm{d x}  \gneq 0
+\]
+*** <1>3 QED
+
+Protislovje, saj je integral večji od \(  0 \), ker je \(  f(x) \ne 0 \)
+* Izrek 8.3
+
+Predpostavke:
+- \(  J = [a, b] \subset \mathbb{R} \)
+- \(  L : J \times \mathbb{R} \times \mathbb{R} \to \mathbb{R} \) zvezno odvedljiva na vse spremenljivke
+- \(  X \subset C^1 (J) \)
+- \(  y \in X \) tako, da \(  y + C^0^1 (J) \subset X \)
+
+Če je \(  y \) stacionarna točka za funkcional \(  I: X \to \mathbb{R} \), definiran s predpisom
+
+\[ I(y) = \int\limits_a^b L(x, y, y') \,\mathrm{d x}
+\]
+
+tedaj \(  y \) ustrza EL pogoju
+
+\[ L_y (x, y, y') = \frac{\mathrm{d} }{\mathrm{d}x } L_{y'} (x, y , y')
+\]
 ** Dokaz:
 *** <1>1
+Case 1: \(  \eta \in C_0^1(J) \)
+
+Velja
+
+\[ y + \eta \epsilon \in X \ \forall \epsilon  \in \mathbb{R}
+\]
+
+Dokaz: Predpostavka 4
+*** <1>2
+Case 2: definiramo \(  F(I, y, \eta): \mathbb{R} \to \mathbb{R} \) s predpisom \(  F(\epsilon) = I(y + \epsilon \eta) \)
+
+Velja \(  F'(0) = 0 \)
+
+Dokaz: Predpostavka 5, da je \(  y \) stacionarna točka za \(  I \).
+*** <1>3
+Case 3: \(  \omega_{\epsilon}(x) = \left( x, y + \epsilon \eta, y' + \epsilon \eta' \right) \)
+
+\[ \frac{\partial }{\partial \epsilon} F(\epsilon) = \int\limits_a^b \left[ \frac{\partial L}{\partial v} \left( \omega_{\epsilon} \right) \eta + \frac{\partial L}{\partial w} \left( \omega_{\epsilon} \right) \eta'   \right] \,\mathrm{d x}
+\]
+
+Dokaz: Verižno odvajanje pod integralom.
+*** <1>4
+Case 4: \(  \omega_0(x) = \left( x, y(x), y'(x) \right) \)
+
+\[ F'(0) = 0 = \int\limits_a^b \left[ \frac{\partial L}{\partial v} \left( \omega_0 \right) \eta + \frac{\partial L}{\partial w} \left( \omega_0 \right) \cdot \eta'   \right] \,\mathrm{d x}
+\]
+
+Dokaz: <1>3 in <1>2
+*** <1>5
+
+\[ \int\limits_a^b \frac{\partial L}{\partial w} \left( \omega_0 \right)\cdot \eta'  \,\mathrm{d x} = \left. \eta \frac{\partial L}{\partial w} \right|_{x = a}^{x = b} - \int\limits_a^b \eta \frac{\mathrm{d} }{\mathrm{d}x }\left[ \frac{\partial L}{\partial w} \left( \omega_0 \right)  \right] \,\mathrm{d x} =  \int\limits_a^b \eta \frac{\mathrm{d} }{\mathrm{d}x }\left[ \frac{\partial L}{\partial w} \left( \omega_0 \right)  \right] \,\mathrm{d x}
+\]
+
+Dokaz: Integracija per partes ter Case 1, da je \(  \eta \) v krajiščih \(  0 \).
+*** <1>6
+
+\[ 0 = \int\limits_a^b \left[ \frac{\partial L}{\partial v} \left( \omega_0 \right) - \frac{\mathrm{d} }{\mathrm{d}x} \left[ \frac{\partial L}{\partial w} \left( \omega_0 \right)  \right]  \right]\cdot \eta \,\mathrm{d x}
+\]
+
+Dokaz: <1>4 in <1>5
+*** <1>7 QED
+
+\[  \left[ \frac{\partial L}{\partial v} \left( \omega_0 \right) - \frac{\mathrm{d} }{\mathrm{d}x} \left[ \frac{\partial L}{\partial w} \left( \omega_0 \right)  \right]  \right] = 0
+\]
+
+Dokaz: Variacijska lema ter <1>6
